@@ -1,0 +1,26 @@
+{
+  "name": "campusvoice",
+  "version": "1.0.0",
+  "description": "Privacy-Preserving Verified Anonymous Campus Issue Reporting & Resolution Platform",
+  "main": "server/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "npm run build --prefix client",
+    "seed": "npm run seed --prefix server",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "install:all": "npm install --prefix server && npm install --prefix client"
+  },
+  "keywords": [
+    "mern",
+    "campus-voice",
+    "verified-anonymous",
+    "privacy-preserving",
+    "react",
+    "express",
+    "mongodb"
+  ],
+  "author": "CampusVoice Team",
+  "license": "ISC"
+}

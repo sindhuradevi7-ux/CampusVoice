@@ -61,7 +61,7 @@ export const MessageThread = ({ complaintId, currentUserRole }) => {
   };
 
   return (
-    <div className="flex flex-col h-[480px] bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+    <div className="flex flex-col h-[380px] sm:h-[480px] bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
       {/* Header */}
       <div className="p-4 border-b border-slate-800 bg-slate-950/60 flex items-center justify-between">
         <div className="flex items-center gap-2">

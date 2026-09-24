@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2, Clock, HelpCircle, ArrowUpRight, Wrench, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, Clock, HelpCircle, ArrowUpRight, Wrench, ShieldCheck, Check } from 'lucide-react';
 
 const STAGES = [
   { key: 'Submitted', label: 'Submitted', icon: Clock },
@@ -13,7 +13,6 @@ export const Timeline = ({ status, statusHistory = [] }) => {
   const currentStageIndex = STAGES.findIndex((s) => s.key === status);
   const effectiveIndex = currentStageIndex === -1 ? (status === 'Closed' ? 4 : 0) : currentStageIndex;
 
-  // Format date helper
   const formatDate = (dateStr) => {
     if (!dateStr) return '';
     const d = new Date(dateStr);
@@ -27,15 +26,15 @@ export const Timeline = ({ status, statusHistory = [] }) => {
 
   return (
     <div className="w-full">
-      {/* Horizontal Step Bar */}
-      <div className="relative mb-8">
-        <div className="hidden sm:block absolute top-1/2 left-0 right-0 h-1 bg-slate-800 -translate-y-1/2 z-0"></div>
+      {/* Desktop/Tablet Horizontal Tracker (sm and above) */}
+      <div className="hidden sm:block relative mb-8">
+        <div className="absolute top-1/2 left-0 right-0 h-1 bg-slate-800 -translate-y-1/2 z-0"></div>
         <div
-          className="hidden sm:block absolute top-1/2 left-0 h-1 bg-gradient-to-r from-emerald-500 to-indigo-500 -translate-y-1/2 z-0 transition-all duration-500"
+          className="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-emerald-500 to-indigo-500 -translate-y-1/2 z-0 transition-all duration-500"
           style={{ width: `${(effectiveIndex / (STAGES.length - 1)) * 100}%` }}
         ></div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 relative z-10">
+        <div className="grid grid-cols-5 gap-2 relative z-10">
           {STAGES.map((stage, idx) => {
             const isCompleted = idx <= effectiveIndex;
             const isCurrent = idx === effectiveIndex;
@@ -55,7 +54,7 @@ export const Timeline = ({ status, statusHistory = [] }) => {
                   <Icon className="w-5 h-5" />
                 </div>
                 <span
-                  className={`text-xs mt-2 font-medium ${
+                  className={`text-xs mt-2 font-medium truncate max-w-full px-1 ${
                     isCurrent
                       ? 'text-indigo-300 font-bold'
                       : isCompleted
@@ -71,6 +70,54 @@ export const Timeline = ({ status, statusHistory = [] }) => {
         </div>
       </div>
 
+      {/* Mobile Vertical Stepper (below sm screens) */}
+      <div className="sm:hidden space-y-3 mb-6 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+        <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2">
+          Current Progress Status:
+        </span>
+        <div className="space-y-2.5">
+          {STAGES.map((stage, idx) => {
+            const isCompleted = idx <= effectiveIndex;
+            const isCurrent = idx === effectiveIndex;
+            const Icon = stage.icon;
+
+            return (
+              <div key={stage.key} className="flex items-center gap-3">
+                <div
+                  className={`w-7 h-7 rounded-full flex items-center justify-center border text-xs shrink-0 ${
+                    isCurrent
+                      ? 'bg-indigo-600 border-indigo-400 text-white font-bold'
+                      : isCompleted
+                      ? 'bg-emerald-950 border-emerald-500 text-emerald-400'
+                      : 'bg-slate-900 border-slate-700 text-slate-500'
+                  }`}
+                >
+                  {isCompleted ? <Check className="w-3.5 h-3.5" /> : <Icon className="w-3.5 h-3.5" />}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span
+                    className={`text-xs font-semibold ${
+                      isCurrent
+                        ? 'text-indigo-300 font-bold'
+                        : isCompleted
+                        ? 'text-slate-200'
+                        : 'text-slate-500'
+                    }`}
+                  >
+                    {stage.label}
+                  </span>
+                </div>
+                {isCurrent && (
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-bold border border-indigo-500/30 shrink-0">
+                    Active
+                  </span>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Detailed Status History Log */}
       <div className="mt-6 border-t border-slate-800/80 pt-5">
         <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-4 flex items-center gap-2">
@@ -78,22 +125,22 @@ export const Timeline = ({ status, statusHistory = [] }) => {
           Official Status Log & Resolution History
         </h4>
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {statusHistory.length > 0 ? (
             statusHistory.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3 relative pl-2">
+              <div key={idx} className="flex items-start gap-2.5 sm:gap-3 relative pl-1 sm:pl-2">
                 {idx !== statusHistory.length - 1 && (
-                  <div className="absolute left-[13px] top-6 bottom-0 w-0.5 bg-slate-800"></div>
+                  <div className="absolute left-[11px] sm:left-[13px] top-6 bottom-0 w-0.5 bg-slate-800"></div>
                 )}
-                <div className="w-3 h-3 rounded-full bg-indigo-500 border-2 border-slate-900 mt-1 shrink-0"></div>
-                <div className="flex-1 bg-slate-900/60 border border-slate-800/80 rounded-xl p-3.5">
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-indigo-500 border-2 border-slate-900 mt-1 shrink-0"></div>
+                <div className="flex-1 bg-slate-900/60 border border-slate-800/80 rounded-xl p-3 sm:p-3.5">
                   <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
                     <span className="text-xs font-semibold text-indigo-300 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
                       {item.status}
                     </span>
-                    <span className="text-[11px] text-slate-400">{formatDate(item.updatedAt)}</span>
+                    <span className="text-[10px] sm:text-[11px] text-slate-400">{formatDate(item.updatedAt)}</span>
                   </div>
-                  <p className="text-sm text-slate-200 mt-1">{item.note || 'Status updated by administration.'}</p>
+                  <p className="text-xs sm:text-sm text-slate-200 mt-1 leading-relaxed">{item.note || 'Status updated by administration.'}</p>
                 </div>
               </div>
             ))

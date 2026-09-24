@@ -13,7 +13,9 @@ import {
   LogOut, 
   User, 
   Lock,
-  Sparkles
+  Search,
+  Sparkles,
+  Zap
 } from 'lucide-react';
 import { PrivacyExplainerModal } from './PrivacyExplainerModal';
 
@@ -23,10 +25,21 @@ export const Navbar = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isExplainerOpen, setIsExplainerOpen] = useState(false);
+  const [quickTrackId, setQuickTrackId] = useState('');
+  const [showTrackInput, setShowTrackInput] = useState(false);
 
   const handleLogout = () => {
     logout();
     navigate('/login');
+  };
+
+  const handleQuickTrackSubmit = (e) => {
+    e.preventDefault();
+    if (!quickTrackId.trim()) return;
+    const cleanId = quickTrackId.trim().toUpperCase();
+    navigate(`/complaints/${cleanId}`);
+    setQuickTrackId('');
+    setShowTrackInput(false);
   };
 
   const isActive = (path) => location.pathname === path;
@@ -65,37 +78,35 @@ export const Navbar = () => {
                     : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
                 }`}
               >
-                <Compass className="w-4 h-4" />
+                <Compass className="w-4 h-4 text-indigo-400" />
                 Issue Explorer
               </Link>
 
-              {isStudent && (
-                <>
-                  <Link
-                    to="/submit"
-                    className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-1.5 ${
-                      isActive('/submit')
-                        ? 'bg-indigo-600/30 text-indigo-200 border border-indigo-500/40'
-                        : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
-                    }`}
-                  >
-                    <PlusCircle className="w-4 h-4 text-emerald-400" />
-                    Submit Report
-                  </Link>
+              {/* Submit Report - Always Available & Visible */}
+              <Link
+                to="/submit"
+                className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-1.5 ${
+                  isActive('/submit')
+                    ? 'bg-indigo-600/30 text-indigo-200 border border-indigo-500/40'
+                    : 'text-emerald-300 hover:text-emerald-200 hover:bg-emerald-950/40'
+                }`}
+              >
+                <PlusCircle className="w-4 h-4 text-emerald-400" />
+                Submit Report
+              </Link>
 
-                  <Link
-                    to="/my-complaints"
-                    className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-1.5 ${
-                      isActive('/my-complaints')
-                        ? 'bg-slate-800 text-indigo-300 border border-slate-700'
-                        : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
-                    }`}
-                  >
-                    <FileText className="w-4 h-4" />
-                    My Reports
-                  </Link>
-                </>
-              )}
+              {/* My Reports - Always Available & Visible */}
+              <Link
+                to={isAuthenticated && isStudent ? '/my-complaints' : '/login'}
+                className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-1.5 ${
+                  isActive('/my-complaints')
+                    ? 'bg-slate-800 text-indigo-300 border border-slate-700'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                }`}
+              >
+                <FileText className="w-4 h-4 text-sky-400" />
+                My Reports
+              </Link>
 
               {isAdmin && (
                 <>
@@ -126,8 +137,45 @@ export const Navbar = () => {
               )}
             </div>
 
-            {/* Right Action Badges & Auth */}
-            <div className="hidden md:flex items-center gap-3">
+            {/* Right Action Badges, Quick Track & Auth */}
+            <div className="hidden md:flex items-center gap-2.5">
+              {/* Quick ID Tracker Box */}
+              {showTrackInput ? (
+                <form onSubmit={handleQuickTrackSubmit} className="flex items-center gap-1 animate-fadeIn">
+                  <input
+                    type="text"
+                    value={quickTrackId}
+                    onChange={(e) => setQuickTrackId(e.target.value)}
+                    placeholder="e.g. CV-A82F91"
+                    className="w-32 bg-slate-900 border border-indigo-500 rounded-lg px-2.5 py-1 text-xs text-slate-100 placeholder-slate-500 focus:outline-none"
+                    autoFocus
+                  />
+                  <button
+                    type="submit"
+                    className="p-1 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs"
+                    title="Track"
+                  >
+                    <Zap className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowTrackInput(false)}
+                    className="p-1 text-slate-400 hover:text-slate-200"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </form>
+              ) : (
+                <button
+                  onClick={() => setShowTrackInput(true)}
+                  className="px-2.5 py-1.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-white text-xs font-medium flex items-center gap-1 transition-colors"
+                  title="Quick Track by Public Complaint ID"
+                >
+                  <Search className="w-3.5 h-3.5 text-indigo-400" />
+                  <span>Track ID</span>
+                </button>
+              )}
+
               {/* Privacy Model Explainer Trigger */}
               <button
                 onClick={() => setIsExplainerOpen(true)}
@@ -166,13 +214,13 @@ export const Navbar = () => {
                 <div className="flex items-center gap-2">
                   <Link
                     to="/login"
-                    className="px-4 py-2 text-xs font-semibold text-slate-300 hover:text-white transition-colors"
+                    className="px-3.5 py-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors"
                   >
                     Log In
                   </Link>
                   <Link
                     to="/register"
-                    className="px-4 py-2 text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl shadow-md shadow-indigo-600/30 transition-all"
+                    className="px-4 py-1.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl shadow-md shadow-indigo-600/30 transition-all"
                   >
                     Register
                   </Link>
@@ -207,33 +255,33 @@ export const Navbar = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-900"
             >
-              <Compass className="w-4 h-4 inline-block mr-2" /> Issue Explorer
+              <Compass className="w-4 h-4 inline-block mr-2 text-indigo-400" /> Issue Explorer
+            </Link>
+
+            <Link
+              to="/submit"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-2.5 rounded-xl text-sm font-medium text-emerald-300 hover:bg-slate-900"
+            >
+              <PlusCircle className="w-4 h-4 inline-block mr-2 text-emerald-400" /> Submit Report
+            </Link>
+
+            <Link
+              to={isAuthenticated && isStudent ? '/my-complaints' : '/login'}
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-900"
+            >
+              <FileText className="w-4 h-4 inline-block mr-2 text-sky-400" /> My Reports
             </Link>
 
             {isStudent && (
-              <>
-                <Link
-                  to="/submit"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2.5 rounded-xl text-sm font-medium text-emerald-300 hover:bg-slate-900"
-                >
-                  <PlusCircle className="w-4 h-4 inline-block mr-2" /> Submit Report
-                </Link>
-                <Link
-                  to="/my-complaints"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-900"
-                >
-                  <FileText className="w-4 h-4 inline-block mr-2" /> My Reports
-                </Link>
-                <Link
-                  to="/student-dashboard"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2.5 rounded-xl text-sm font-medium text-indigo-300 hover:bg-slate-900"
-                >
-                  <LayoutDashboard className="w-4 h-4 inline-block mr-2" /> Student Dashboard
-                </Link>
-              </>
+              <Link
+                to="/student-dashboard"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-2.5 rounded-xl text-sm font-medium text-indigo-300 hover:bg-slate-900"
+              >
+                <LayoutDashboard className="w-4 h-4 inline-block mr-2" /> Student Dashboard
+              </Link>
             )}
 
             {isAdmin && (

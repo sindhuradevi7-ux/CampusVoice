@@ -191,3 +191,50 @@ export const getComplaintByPublicId = async (req, res, next) => {
     next(error);
   }
 };
+
+/**
+ * @desc    Public status tracker by public complaint ID (no auth required for basic status lookup)
+ * @route   GET /api/complaints/track/:publicComplaintId
+ * @access  Public
+ */
+export const trackComplaintPublicly = async (req, res, next) => {
+  try {
+    const { publicComplaintId } = req.params;
+
+    const complaint = await Complaint.findOne({
+      publicComplaintId: publicComplaintId.trim().toUpperCase(),
+    }).populate('issueClusterId', 'publicIssueId title status affectedCount assignedDepartment');
+
+    if (!complaint) {
+      return res.status(404).json({
+        success: false,
+        message: 'No complaint found with this Public ID.',
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      complaint: {
+        publicComplaintId: complaint.publicComplaintId,
+        category: complaint.category,
+        location: complaint.location,
+        affectedArea: complaint.affectedArea,
+        severity: complaint.severity,
+        status: complaint.status,
+        statusHistory: complaint.statusHistory || [],
+        issueCluster: complaint.issueClusterId
+          ? {
+              publicIssueId: complaint.issueClusterId.publicIssueId,
+              title: complaint.issueClusterId.title,
+              affectedCount: complaint.issueClusterId.affectedCount,
+              status: complaint.issueClusterId.status,
+            }
+          : null,
+        createdAt: complaint.createdAt,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+

@@ -46,6 +46,7 @@ export const complaintAPI = {
   submitComplaint: (data) => api.post('/complaints', data),
   getMyComplaints: () => api.get('/complaints/my'),
   getComplaintByPublicId: (publicComplaintId) => api.get(`/complaints/${publicComplaintId}`),
+  trackPublicly: (publicComplaintId) => api.get(`/complaints/track/${publicComplaintId}`),
 };
 
 // Issue Explorer & Support Services

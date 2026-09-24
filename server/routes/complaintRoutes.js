@@ -3,6 +3,7 @@ import {
   submitComplaint,
   getMyComplaints,
   getComplaintByPublicId,
+  trackComplaintPublicly,
 } from '../controllers/complaintController.js';
 import {
   getMessagesForComplaint,
@@ -11,6 +12,9 @@ import {
 import { protect, authorize } from '../middleware/auth.js';
 
 const router = express.Router();
+
+// Public quick status tracker
+router.get('/track/:publicComplaintId', trackComplaintPublicly);
 
 // Student submission and retrieval
 router.post('/', protect, authorize('student'), submitComplaint);
@@ -22,3 +26,4 @@ router.get('/:id/messages', protect, getMessagesForComplaint);
 router.post('/:id/messages', protect, postMessage);
 
 export default router;
+

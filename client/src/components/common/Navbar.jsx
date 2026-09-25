@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { 
-  ShieldCheck, 
   Menu, 
   X, 
   PlusCircle, 
@@ -12,11 +11,11 @@ import {
   BarChart3, 
   LogOut, 
   User, 
-  Lock,
-  Search,
-  Sparkles,
-  Zap
+  Search, 
+  Zap,
+  ShieldCheck
 } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 import { PrivacyExplainerModal } from './PrivacyExplainerModal';
 
 export const Navbar = () => {
@@ -46,24 +45,18 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-40 w-full glass-panel border-b border-slate-800/80">
+      <nav className="sticky top-0 z-40 w-full bg-cream-50/90 backdrop-blur-md border-b border-burgundy-900/10 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            {/* Brand Logo */}
-            <div className="flex items-center gap-3">
-              <Link to="/" className="flex items-center gap-2.5 group">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-emerald-400 p-0.5 shadow-glow group-hover:scale-105 transition-transform duration-300">
-                  <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                    <ShieldCheck className="w-5 h-5 text-emerald-400" />
-                  </div>
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-extrabold text-lg sm:text-xl tracking-tight bg-gradient-to-r from-white via-slate-100 to-indigo-200 bg-clip-text text-transparent">
-                    Campus<span className="text-indigo-400">Voice</span>
-                  </span>
-                  <span className="text-[10px] text-emerald-400 font-semibold tracking-wider -mt-1 flex items-center gap-1">
-                    <Lock className="w-2.5 h-2.5" /> VERIFIED ANONYMOUS
-                  </span>
+          <div className="flex items-center justify-between h-16 sm:h-20">
+            {/* Primary Visual Brand Mark (Open-Book Logo Only) */}
+            <div className="flex items-center">
+              <Link 
+                to="/" 
+                aria-label="Home" 
+                className="flex items-center group transition-transform duration-200"
+              >
+                <div className="p-1.5 rounded-2xl bg-white shadow-sm border border-burgundy-100 group-hover:border-burgundy-300 group-hover:shadow-md transition-all">
+                  <BrandLogo className="w-9 h-9 sm:w-11 sm:h-11" showGlow={false} />
                 </div>
               </Link>
             </div>
@@ -72,39 +65,39 @@ export const Navbar = () => {
             <div className="hidden md:flex items-center gap-1.5">
               <Link
                 to="/issues"
-                className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-1.5 ${
+                className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
                   isActive('/issues')
-                    ? 'bg-slate-800 text-indigo-300 border border-slate-700'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                    ? 'bg-burgundy-800 text-cream-50 shadow-sm'
+                    : 'text-wine-800 hover:text-burgundy-800 hover:bg-cream-200/70'
                 }`}
               >
-                <Compass className="w-4 h-4 text-indigo-400" />
+                <Compass className={`w-4 h-4 ${isActive('/issues') ? 'text-peach-300' : 'text-burgundy-700'}`} />
                 Issue Explorer
               </Link>
 
-              {/* Submit Report - Always Available & Visible */}
+              {/* Submit Report */}
               <Link
                 to="/submit"
-                className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-1.5 ${
+                className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
                   isActive('/submit')
-                    ? 'bg-indigo-600/30 text-indigo-200 border border-indigo-500/40'
-                    : 'text-emerald-300 hover:text-emerald-200 hover:bg-emerald-950/40'
+                    ? 'bg-burgundy-800 text-cream-50 shadow-sm'
+                    : 'text-burgundy-800 bg-peach-100 hover:bg-peach-200/90 border border-peach-300'
                 }`}
               >
-                <PlusCircle className="w-4 h-4 text-emerald-400" />
+                <PlusCircle className="w-4 h-4 text-peach-700" />
                 Submit Report
               </Link>
 
-              {/* My Reports - Always Available & Visible */}
+              {/* My Reports */}
               <Link
                 to={isAuthenticated && isStudent ? '/my-complaints' : '/login'}
-                className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-1.5 ${
+                className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
                   isActive('/my-complaints')
-                    ? 'bg-slate-800 text-indigo-300 border border-slate-700'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                    ? 'bg-burgundy-800 text-cream-50 shadow-sm'
+                    : 'text-wine-800 hover:text-burgundy-800 hover:bg-cream-200/70'
                 }`}
               >
-                <FileText className="w-4 h-4 text-sky-400" />
+                <FileText className={`w-4 h-4 ${isActive('/my-complaints') ? 'text-peach-300' : 'text-burgundy-700'}`} />
                 My Reports
               </Link>
 
@@ -112,25 +105,25 @@ export const Navbar = () => {
                 <>
                   <Link
                     to="/admin"
-                    className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-1.5 ${
+                    className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
                       isActive('/admin')
-                        ? 'bg-slate-800 text-indigo-300 border border-slate-700'
-                        : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                        ? 'bg-burgundy-800 text-cream-50 shadow-sm'
+                        : 'text-wine-800 hover:text-burgundy-800 hover:bg-cream-200/70'
                     }`}
                   >
-                    <LayoutDashboard className="w-4 h-4 text-indigo-400" />
+                    <LayoutDashboard className={`w-4 h-4 ${isActive('/admin') ? 'text-peach-300' : 'text-burgundy-700'}`} />
                     Admin Hub
                   </Link>
 
                   <Link
                     to="/analytics"
-                    className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-1.5 ${
+                    className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
                       isActive('/analytics')
-                        ? 'bg-slate-800 text-indigo-300 border border-slate-700'
-                        : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                        ? 'bg-burgundy-800 text-cream-50 shadow-sm'
+                        : 'text-wine-800 hover:text-burgundy-800 hover:bg-cream-200/70'
                     }`}
                   >
-                    <BarChart3 className="w-4 h-4 text-emerald-400" />
+                    <BarChart3 className={`w-4 h-4 ${isActive('/analytics') ? 'text-peach-300' : 'text-burgundy-700'}`} />
                     Analytics
                   </Link>
                 </>
@@ -141,26 +134,26 @@ export const Navbar = () => {
             <div className="hidden md:flex items-center gap-2.5">
               {/* Quick ID Tracker Box */}
               {showTrackInput ? (
-                <form onSubmit={handleQuickTrackSubmit} className="flex items-center gap-1 animate-fadeIn">
+                <form onSubmit={handleQuickTrackSubmit} className="flex items-center gap-1.5 animate-fadeIn">
                   <input
                     type="text"
                     value={quickTrackId}
                     onChange={(e) => setQuickTrackId(e.target.value)}
                     placeholder="e.g. CV-A82F91"
-                    className="w-32 bg-slate-900 border border-indigo-500 rounded-lg px-2.5 py-1 text-xs text-slate-100 placeholder-slate-500 focus:outline-none"
+                    className="w-36 bg-white border border-burgundy-600 rounded-xl px-3 py-1.5 text-xs text-wine-900 placeholder-wine-400 focus:outline-none focus:ring-2 focus:ring-peach-400 shadow-sm"
                     autoFocus
                   />
                   <button
                     type="submit"
-                    className="p-1 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs"
+                    className="p-1.5 bg-burgundy-800 hover:bg-burgundy-900 text-white rounded-xl text-xs transition-colors"
                     title="Track"
                   >
-                    <Zap className="w-3.5 h-3.5" />
+                    <Zap className="w-3.5 h-3.5 text-peach-300" />
                   </button>
                   <button
                     type="button"
                     onClick={() => setShowTrackInput(false)}
-                    className="p-1 text-slate-400 hover:text-slate-200"
+                    className="p-1.5 text-wine-500 hover:text-wine-900"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -168,10 +161,10 @@ export const Navbar = () => {
               ) : (
                 <button
                   onClick={() => setShowTrackInput(true)}
-                  className="px-2.5 py-1.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-white text-xs font-medium flex items-center gap-1 transition-colors"
+                  className="px-3 py-1.5 rounded-xl bg-white border border-cream-300 text-wine-800 hover:border-burgundy-300 hover:text-burgundy-800 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm"
                   title="Quick Track by Public Complaint ID"
                 >
-                  <Search className="w-3.5 h-3.5 text-indigo-400" />
+                  <Search className="w-3.5 h-3.5 text-burgundy-700" />
                   <span>Track ID</span>
                 </button>
               )}
@@ -179,9 +172,9 @@ export const Navbar = () => {
               {/* Privacy Model Explainer Trigger */}
               <button
                 onClick={() => setIsExplainerOpen(true)}
-                className="px-3 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-xs font-semibold hover:bg-emerald-900/40 transition-colors flex items-center gap-1.5"
+                className="px-3 py-1.5 rounded-xl bg-peach-100 border border-peach-300 text-peach-900 text-xs font-semibold hover:bg-peach-200 transition-colors flex items-center gap-1.5 shadow-sm"
               >
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <ShieldCheck className="w-3.5 h-3.5 text-burgundy-700" />
                 Privacy Model
               </button>
 
@@ -189,15 +182,15 @@ export const Navbar = () => {
                 <div className="flex items-center gap-2.5">
                   <Link
                     to="/profile"
-                    className="flex items-center gap-2 p-1.5 pr-3 rounded-full bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors"
+                    className="flex items-center gap-2.5 p-1 pr-3 rounded-full bg-white border border-cream-300 hover:border-burgundy-300 shadow-sm transition-all"
                   >
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-indigo-600 to-emerald-500 flex items-center justify-center text-xs font-bold text-white">
+                    <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-burgundy-800 to-peach-500 flex items-center justify-center text-xs font-bold text-white shadow-sm">
                       {user?.name?.charAt(0) || 'U'}
                     </div>
                     <div className="text-left">
-                      <p className="text-xs font-semibold text-slate-200 leading-none">{user?.name?.split(' ')[0]}</p>
-                      <p className="text-[10px] text-slate-400 leading-none mt-0.5 capitalize">
-                        {user?.role === 'admin' ? 'Campus Admin' : 'Verified Student'}
+                      <p className="text-xs font-bold text-wine-900 leading-none">{user?.name?.split(' ')[0]}</p>
+                      <p className="text-[10px] text-peach-800 font-medium leading-none mt-0.5 capitalize">
+                        {user?.role === 'admin' ? 'Administration' : 'Verified Student'}
                       </p>
                     </div>
                   </Link>
@@ -205,7 +198,7 @@ export const Navbar = () => {
                   <button
                     onClick={handleLogout}
                     title="Logout"
-                    className="p-2 text-slate-400 hover:text-rose-400 hover:bg-slate-800/60 rounded-xl transition-colors"
+                    className="p-2 text-wine-600 hover:text-burgundy-800 hover:bg-peach-100 rounded-xl transition-colors"
                   >
                     <LogOut className="w-4 h-4" />
                   </button>
@@ -214,13 +207,13 @@ export const Navbar = () => {
                 <div className="flex items-center gap-2">
                   <Link
                     to="/login"
-                    className="px-3.5 py-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors"
+                    className="px-3.5 py-2 text-xs font-bold text-wine-800 hover:text-burgundy-800 transition-colors"
                   >
                     Log In
                   </Link>
                   <Link
                     to="/register"
-                    className="px-4 py-1.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl shadow-md shadow-indigo-600/30 transition-all"
+                    className="px-4 py-2 text-xs font-bold bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 rounded-xl shadow-sm hover:shadow-glow transition-all"
                   >
                     Register
                   </Link>
@@ -232,14 +225,16 @@ export const Navbar = () => {
             <div className="flex md:hidden items-center gap-2">
               <button
                 onClick={() => setIsExplainerOpen(true)}
-                className="p-1.5 rounded-lg bg-emerald-950/50 text-emerald-400 border border-emerald-500/30"
+                className="p-2 rounded-xl bg-peach-100 text-burgundy-800 border border-peach-300"
+                aria-label="Privacy Model"
               >
                 <ShieldCheck className="w-4 h-4" />
               </button>
 
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white"
+                className="p-2 rounded-xl bg-white border border-cream-300 text-wine-800 hover:text-burgundy-800"
+                aria-label="Open menu"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -249,36 +244,36 @@ export const Navbar = () => {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-slate-800 bg-slate-950/95 px-4 py-4 space-y-2 animate-fadeIn">
+          <div className="md:hidden border-t border-cream-300 bg-cream-50/98 px-4 py-4 space-y-2 animate-fadeIn shadow-lg">
             <Link
               to="/issues"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-900"
+              className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-wine-800 hover:bg-cream-200"
             >
-              <Compass className="w-4 h-4 inline-block mr-2 text-indigo-400" /> Issue Explorer
+              <Compass className="w-4 h-4 inline-block mr-2 text-burgundy-700" /> Issue Explorer
             </Link>
 
             <Link
               to="/submit"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2.5 rounded-xl text-sm font-medium text-emerald-300 hover:bg-slate-900"
+              className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-burgundy-800 bg-peach-100 hover:bg-peach-200"
             >
-              <PlusCircle className="w-4 h-4 inline-block mr-2 text-emerald-400" /> Submit Report
+              <PlusCircle className="w-4 h-4 inline-block mr-2 text-peach-700" /> Submit Report
             </Link>
 
             <Link
               to={isAuthenticated && isStudent ? '/my-complaints' : '/login'}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-900"
+              className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-wine-800 hover:bg-cream-200"
             >
-              <FileText className="w-4 h-4 inline-block mr-2 text-sky-400" /> My Reports
+              <FileText className="w-4 h-4 inline-block mr-2 text-burgundy-700" /> My Reports
             </Link>
 
             {isStudent && (
               <Link
                 to="/student-dashboard"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2.5 rounded-xl text-sm font-medium text-indigo-300 hover:bg-slate-900"
+                className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-burgundy-800 hover:bg-cream-200"
               >
                 <LayoutDashboard className="w-4 h-4 inline-block mr-2" /> Student Dashboard
               </Link>
@@ -289,29 +284,29 @@ export const Navbar = () => {
                 <Link
                   to="/admin"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2.5 rounded-xl text-sm font-medium text-indigo-300 hover:bg-slate-900"
+                  className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-burgundy-800 hover:bg-cream-200"
                 >
                   <LayoutDashboard className="w-4 h-4 inline-block mr-2" /> Admin Hub
                 </Link>
                 <Link
                   to="/analytics"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2.5 rounded-xl text-sm font-medium text-emerald-300 hover:bg-slate-900"
+                  className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-burgundy-800 hover:bg-cream-200"
                 >
-                  <BarChart3 className="w-4 h-4 inline-block mr-2" /> Campus Analytics
+                  <BarChart3 className="w-4 h-4 inline-block mr-2" /> Analytics
                 </Link>
               </>
             )}
 
-            <div className="pt-3 border-t border-slate-800">
+            <div className="pt-3 border-t border-cream-300">
               {isAuthenticated ? (
                 <div className="flex items-center justify-between">
                   <Link
                     to="/profile"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center gap-2 text-sm text-slate-300"
+                    className="flex items-center gap-2 text-sm font-semibold text-wine-900"
                   >
-                    <User className="w-4 h-4 text-indigo-400" />
+                    <User className="w-4 h-4 text-burgundy-700" />
                     <span>{user?.name}</span>
                   </Link>
                   <button
@@ -319,7 +314,7 @@ export const Navbar = () => {
                       setMobileMenuOpen(false);
                       handleLogout();
                     }}
-                    className="text-xs font-semibold text-rose-400 hover:underline flex items-center gap-1"
+                    className="text-xs font-bold text-burgundy-700 hover:text-burgundy-900 flex items-center gap-1"
                   >
                     <LogOut className="w-3.5 h-3.5" /> Log Out
                   </button>
@@ -329,14 +324,14 @@ export const Navbar = () => {
                   <Link
                     to="/login"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-center py-2 text-xs font-semibold bg-slate-900 border border-slate-800 rounded-xl"
+                    className="text-center py-2 text-xs font-bold bg-white border border-cream-300 rounded-xl text-wine-900"
                   >
                     Log In
                   </Link>
                   <Link
                     to="/register"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-center py-2 text-xs font-semibold bg-indigo-600 text-white rounded-xl"
+                    className="text-center py-2 text-xs font-bold bg-burgundy-800 text-cream-50 rounded-xl"
                   >
                     Register
                   </Link>

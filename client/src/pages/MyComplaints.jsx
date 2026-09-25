@@ -4,15 +4,12 @@ import { complaintAPI } from '../services/api';
 import { 
   FileText, 
   Search, 
-  Filter, 
   ArrowUpRight, 
-  Clock, 
   PlusCircle, 
-  ShieldCheck,
   Layers,
   MapPin
 } from 'lucide-react';
-import { StatusBadge, SeverityBadge, VerifiedAnonymousBadge } from '../components/common/StatusBadge';
+import { StatusBadge, SeverityBadge } from '../components/common/StatusBadge';
 import { PrivacyNoticeBanner } from '../components/common/PrivacyNoticeBanner';
 
 const CATEGORIES = [
@@ -88,37 +85,37 @@ export const MyComplaints = () => {
       <PrivacyNoticeBanner />
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-cream-300 pb-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white flex items-center gap-2">
-            <FileText className="w-6 h-6 text-indigo-400" />
+          <h1 className="text-2xl sm:text-3xl font-bold text-wine-900 flex items-center gap-2">
+            <FileText className="w-6 h-6 text-burgundy-700" />
             My Anonymous Reports
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-wine-600 mt-1 font-medium">
             Track real-time progress and official resolution notes for your submissions.
           </p>
         </div>
 
         <Link
           to="/submit"
-          className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold rounded-xl shadow-lg shadow-indigo-600/30 flex items-center gap-1.5 transition-all"
+          className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 text-xs sm:text-sm font-bold rounded-xl shadow-warm flex items-center gap-1.5 transition-all"
         >
-          <PlusCircle className="w-4 h-4 text-emerald-300" />
+          <PlusCircle className="w-4 h-4 text-peach-300" />
           Submit New Report
         </Link>
       </div>
 
       {/* Filters & Search Toolbar */}
-      <div className="glass-panel p-4 rounded-2xl grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div className="bg-white p-4 rounded-2xl border border-cream-300 shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-3">
         {/* Search */}
         <div className="relative">
-          <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-wine-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search by ID, location, or keyword..."
-            className="w-full bg-slate-900 border border-slate-700/80 rounded-xl pl-10 pr-4 py-2 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+            className="w-full bg-cream-50 border border-cream-300 rounded-xl pl-10 pr-4 py-2 text-xs sm:text-sm text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 font-medium"
           />
         </div>
 
@@ -127,7 +124,7 @@ export const MyComplaints = () => {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-2 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
+            className="w-full bg-cream-50 border border-cream-300 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 focus:outline-none focus:border-burgundy-700 font-medium"
           >
             {CATEGORIES.map((cat) => (
               <option key={cat} value={cat}>
@@ -142,7 +139,7 @@ export const MyComplaints = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-2 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
+            className="w-full bg-cream-50 border border-cream-300 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 focus:outline-none focus:border-burgundy-700 font-medium"
           >
             {STATUSES.map((st) => (
               <option key={st} value={st}>
@@ -155,14 +152,14 @@ export const MyComplaints = () => {
 
       {/* Complaints List */}
       {loading ? (
-        <div className="p-12 text-center text-slate-500 text-sm glass-panel rounded-2xl">
+        <div className="p-12 text-center text-wine-500 text-sm bg-white rounded-2xl border border-cream-300">
           Loading your verified reports...
         </div>
       ) : filteredComplaints.length === 0 ? (
-        <div className="p-12 text-center glass-panel rounded-2xl border border-slate-800">
-          <FileText className="w-10 h-10 text-slate-600 mx-auto mb-2" />
-          <h3 className="text-base font-semibold text-slate-200">No reports found</h3>
-          <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
+        <div className="p-12 text-center bg-white rounded-2xl border border-cream-300 shadow-sm">
+          <FileText className="w-10 h-10 text-wine-400 mx-auto mb-2" />
+          <h3 className="text-base font-bold text-wine-900">No reports found</h3>
+          <p className="text-xs text-wine-600 mt-1 max-w-sm mx-auto font-medium">
             {complaints.length === 0
               ? 'You have not submitted any complaints yet. When you submit one, it will appear here.'
               : 'No complaints match the selected filter criteria.'}
@@ -174,11 +171,11 @@ export const MyComplaints = () => {
             <Link
               key={complaint._id}
               to={`/complaints/${complaint.publicComplaintId}`}
-              className="glass-panel p-5 rounded-2xl glass-panel-hover flex flex-col justify-between block"
+              className="bg-white p-5 rounded-2xl border border-cream-300 hover:border-burgundy-300 shadow-sm hover:shadow-warm transition-all flex flex-col justify-between block"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2.5">
-                  <span className="font-mono text-xs font-extrabold text-indigo-300 bg-indigo-950/80 px-2.5 py-0.5 rounded border border-indigo-500/20">
+                  <span className="font-mono text-xs font-extrabold text-burgundy-900 bg-peach-50 px-2.5 py-0.5 rounded-lg border border-peach-200">
                     {complaint.publicComplaintId}
                   </span>
                   <div className="flex items-center gap-2">
@@ -187,36 +184,36 @@ export const MyComplaints = () => {
                   </div>
                 </div>
 
-                <h4 className="text-sm font-bold text-white mb-2 line-clamp-2">
+                <h4 className="text-sm font-bold text-wine-900 mb-2 line-clamp-2">
                   {complaint.category}: {complaint.description}
                 </h4>
 
-                <div className="flex items-center gap-2 text-xs text-slate-400 mb-3">
-                  <MapPin className="w-3.5 h-3.5 text-slate-500" />
+                <div className="flex items-center gap-2 text-xs text-wine-600 mb-3 font-medium">
+                  <MapPin className="w-3.5 h-3.5 text-peach-700" />
                   <span className="truncate">{complaint.location}</span>
                   {complaint.affectedArea && (
-                    <span className="text-slate-500">({complaint.affectedArea})</span>
+                    <span className="text-wine-400">({complaint.affectedArea})</span>
                   )}
                 </div>
 
                 {complaint.issueClusterId && (
-                  <div className="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs mb-3">
-                    <div className="flex items-center justify-between text-[11px] text-slate-400">
-                      <span className="flex items-center gap-1 text-emerald-300 font-semibold">
-                        <Layers className="w-3 h-3 text-emerald-400" /> Linked Cluster: {complaint.issueClusterId.publicIssueId}
+                  <div className="p-2.5 rounded-xl bg-peach-50/60 border border-peach-200 text-xs mb-3">
+                    <div className="flex items-center justify-between text-[11px] text-wine-700">
+                      <span className="flex items-center gap-1 text-burgundy-900 font-bold">
+                        <Layers className="w-3 h-3 text-peach-700" /> Linked Cluster: {complaint.issueClusterId.publicIssueId}
                       </span>
-                      <span>{complaint.issueClusterId.affectedCount} students</span>
+                      <span className="font-semibold text-peach-800">{complaint.issueClusterId.affectedCount} students</span>
                     </div>
                   </div>
                 )}
               </div>
 
-              <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
-                <span className="text-slate-500">
+              <div className="pt-3 border-t border-cream-300 flex items-center justify-between text-xs">
+                <span className="text-wine-500 font-medium">
                   {new Date(complaint.createdAt).toLocaleDateString()}
                 </span>
-                <span className="text-indigo-400 font-semibold flex items-center gap-1 hover:underline">
-                  Track Details <ArrowUpRight className="w-3.5 h-3.5" />
+                <span className="text-burgundy-800 font-bold flex items-center gap-1 hover:underline">
+                  Track Details <ArrowUpRight className="w-3.5 h-3.5 text-peach-700" />
                 </span>
               </div>
             </Link>

@@ -25,7 +25,7 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-slate-400">
+      <div className="min-h-screen flex items-center justify-center text-wine-600 font-medium">
         Loading session...
       </div>
     );
@@ -44,7 +44,7 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
 
 export const App = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-indigo-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-cream-50 text-wine-900 selection:bg-burgundy-800 selection:text-cream-50">
       <Navbar />
 
       <main className="flex-1">

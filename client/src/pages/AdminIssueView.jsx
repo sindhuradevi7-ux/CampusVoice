@@ -6,15 +6,7 @@ import {
   ArrowLeft, 
   Building2, 
   Users, 
-  MapPin, 
-  ShieldCheck, 
-  MessageSquare, 
-  CheckCircle2, 
   Clock, 
-  Sparkles,
-  Send,
-  Lock,
-  Layers,
   FileText
 } from 'lucide-react';
 import { StatusBadge, SeverityBadge, VerifiedAnonymousBadge } from '../components/common/StatusBadge';
@@ -115,7 +107,7 @@ export const AdminIssueView = () => {
 
   if (loading) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-16 text-center text-slate-400">
+      <div className="max-w-4xl mx-auto px-4 py-16 text-center text-wine-500 font-medium">
         Loading admin cluster details...
       </div>
     );
@@ -124,11 +116,11 @@ export const AdminIssueView = () => {
   if (!issue) {
     return (
       <div className="max-w-xl mx-auto px-4 py-16 text-center">
-        <div className="glass-panel p-8 rounded-3xl border border-rose-500/30">
-          <h2 className="text-xl font-bold text-white mb-2">Issue Not Found</h2>
+        <div className="bg-white p-8 rounded-3xl border border-burgundy-200 shadow-warm">
+          <h2 className="text-xl font-bold text-wine-900 mb-2">Issue Not Found</h2>
           <Link
             to="/admin"
-            className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold"
+            className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 rounded-xl text-xs font-bold"
           >
             Back to Admin Hub
           </Link>
@@ -140,53 +132,53 @@ export const AdminIssueView = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 pb-16">
       {/* Top Nav */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between flex-wrap gap-2">
         <Link
           to="/admin"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-wine-600 hover:text-burgundy-800 transition-colors"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-4 h-4 text-burgundy-700" />
           Back to Admin Hub
         </Link>
-        <span className="text-xs text-emerald-400 font-mono">🔒 Organization View (Zero Identity Leaks)</span>
+        <span className="text-xs text-burgundy-800 font-bold font-mono">🔒 Organization View (Zero Identity Leaks)</span>
       </div>
 
       {/* Cluster Header Card */}
-      <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+      <div className="bg-white p-6 sm:p-8 rounded-3xl border border-cream-300 shadow-warm space-y-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-cream-300 pb-5">
           <div>
             <div className="flex items-center gap-2.5 flex-wrap">
-              <span className="font-mono text-sm font-extrabold text-indigo-300 bg-indigo-950/80 px-3 py-1 rounded-lg border border-indigo-500/30">
+              <span className="font-mono text-sm font-extrabold text-burgundy-900 bg-peach-50 px-3 py-1 rounded-xl border border-peach-200">
                 {issue.publicIssueId}
               </span>
               <StatusBadge status={issue.status} />
               <SeverityBadge severity={issue.severity} />
             </div>
-            <h1 className="text-xl sm:text-2xl font-bold text-white mt-2">
+            <h1 className="text-xl sm:text-2xl font-bold text-wine-900 mt-2">
               {issue.title}
             </h1>
           </div>
 
-          <div className="text-right text-xs text-slate-400">
-            <span className="inline-flex items-center gap-1.5 font-bold text-emerald-300 bg-emerald-950/80 px-3 py-1.5 rounded-xl border border-emerald-500/30">
-              <Users className="w-4 h-4 text-emerald-400" />
+          <div className="text-right text-xs text-wine-600">
+            <span className="inline-flex items-center gap-1.5 font-bold text-burgundy-900 bg-peach-100 px-3.5 py-2 rounded-xl border border-peach-300 shadow-sm">
+              <Users className="w-4 h-4 text-peach-700" />
               {issue.affectedCount} Verified Students Affected
             </span>
           </div>
         </div>
 
         {/* Action Controls: Update Status & Assign Department */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-950/60 p-5 rounded-2xl border border-slate-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-cream-50 p-5 rounded-2xl border border-cream-300 shadow-sm">
           {/* Status Update Form */}
           <form onSubmit={handleStatusSubmit} className="space-y-3">
-            <h4 className="text-xs font-bold text-indigo-300 uppercase tracking-wider flex items-center gap-1.5">
-              <Clock className="w-4 h-4" /> Update Cluster Status
+            <h4 className="text-xs font-bold text-burgundy-900 uppercase tracking-wider flex items-center gap-1.5">
+              <Clock className="w-4 h-4 text-peach-700" /> Update Cluster Status
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <select
                 value={statusForm.status}
                 onChange={(e) => setStatusForm({ ...statusForm, status: e.target.value })}
-                className="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-semibold text-slate-100"
+                className="bg-white border border-cream-300 rounded-xl px-3 py-2 text-xs font-bold text-wine-900 focus:outline-none focus:border-burgundy-700"
               >
                 <option value="Submitted">Submitted</option>
                 <option value="Under Review">Under Review</option>
@@ -198,7 +190,7 @@ export const AdminIssueView = () => {
               <button
                 type="submit"
                 disabled={updatingStatus}
-                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold shadow-md shadow-indigo-600/30"
+                className="px-4 py-2 bg-burgundy-800 hover:bg-burgundy-900 disabled:opacity-50 text-cream-50 rounded-xl text-xs font-bold shadow-sm"
               >
                 {updatingStatus ? 'Saving...' : 'Apply Status Update'}
               </button>
@@ -208,20 +200,20 @@ export const AdminIssueView = () => {
               value={statusForm.note}
               onChange={(e) => setStatusForm({ ...statusForm, note: e.target.value })}
               placeholder="Public resolution note (e.g. Technician dispatched)..."
-              className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 placeholder-slate-500"
+              className="w-full bg-white border border-cream-300 rounded-xl px-3 py-2 text-xs text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 font-medium"
             />
           </form>
 
           {/* Department Assignment Form */}
           <form onSubmit={handleDepartmentSubmit} className="space-y-3">
-            <h4 className="text-xs font-bold text-purple-300 uppercase tracking-wider flex items-center gap-1.5">
-              <Building2 className="w-4 h-4" /> Assign Campus Department
+            <h4 className="text-xs font-bold text-burgundy-900 uppercase tracking-wider flex items-center gap-1.5">
+              <Building2 className="w-4 h-4 text-burgundy-700" /> Assign Campus Department
             </h4>
             <div className="flex gap-2">
               <select
                 value={selectedDept}
                 onChange={(e) => setSelectedDept(e.target.value)}
-                className="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-semibold text-slate-100"
+                className="flex-1 bg-white border border-cream-300 rounded-xl px-3 py-2 text-xs font-bold text-wine-900 focus:outline-none focus:border-burgundy-700"
               >
                 {DEPARTMENTS.map((dept) => (
                   <option key={dept} value={dept}>
@@ -232,7 +224,7 @@ export const AdminIssueView = () => {
               <button
                 type="submit"
                 disabled={updatingDept}
-                className="px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold shadow-md shadow-purple-600/30"
+                className="px-4 py-2 bg-peach-200 hover:bg-peach-300 text-burgundy-950 border border-peach-400 disabled:opacity-50 rounded-xl text-xs font-bold shadow-sm"
               >
                 {updatingDept ? 'Assigning...' : 'Assign'}
               </button>
@@ -250,11 +242,11 @@ export const AdminIssueView = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column: Complaints list */}
         <div className="lg:col-span-1 space-y-3">
-          <h3 className="text-sm font-bold text-white flex items-center gap-2">
-            <FileText className="w-4 h-4 text-indigo-400" />
+          <h3 className="text-sm font-bold text-wine-900 flex items-center gap-2">
+            <FileText className="w-4 h-4 text-burgundy-700" />
             Aggregated Complaints ({complaints.length})
           </h3>
-          <p className="text-[11px] text-slate-400">
+          <p className="text-[11px] text-wine-600 font-medium">
             Select a complaint below to review problem details and reply directly to the verified student.
           </p>
 
@@ -265,21 +257,21 @@ export const AdminIssueView = () => {
                 onClick={() => setActiveComplaintForChat(comp)}
                 className={`p-3.5 rounded-2xl cursor-pointer transition-all border ${
                   activeComplaintForChat?._id === comp._id
-                    ? 'bg-slate-800 border-indigo-500/80 shadow-lg'
-                    : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+                    ? 'bg-peach-50 border-peach-400 shadow-sm'
+                    : 'bg-white border-cream-300 hover:border-burgundy-300'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="font-mono text-xs font-bold text-indigo-300">
+                  <span className="font-mono text-xs font-bold text-burgundy-900">
                     {comp.publicComplaintId}
                   </span>
                   <SeverityBadge severity={comp.severity} />
                 </div>
-                <p className="text-xs text-slate-200 line-clamp-2 mb-2">
+                <p className="text-xs text-wine-800 font-medium line-clamp-2 mb-2">
                   {comp.description}
                 </p>
-                <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1.5 border-t border-slate-800/80">
-                  <span className="text-emerald-400 font-medium">🔒 {comp.reporterBadge}</span>
+                <div className="flex items-center justify-between text-[10px] text-wine-500 pt-1.5 border-t border-cream-300 font-medium">
+                  <span className="text-burgundy-800 font-bold">🔒 {comp.reporterBadge}</span>
                   <span>{new Date(comp.createdAt).toLocaleDateString()}</span>
                 </div>
               </div>
@@ -291,10 +283,10 @@ export const AdminIssueView = () => {
         <div className="lg:col-span-2 space-y-4">
           {activeComplaintForChat ? (
             <div className="space-y-4">
-              <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-3">
-                <div className="flex items-center justify-between">
+              <div className="bg-white p-5 rounded-2xl border border-cream-300 shadow-warm space-y-3">
+                <div className="flex items-center justify-between flex-wrap gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold text-indigo-300 bg-indigo-950 px-2.5 py-1 rounded border border-indigo-500/20">
+                    <span className="font-mono text-xs font-extrabold text-burgundy-900 bg-peach-50 px-2.5 py-1 rounded-lg border border-peach-200">
                       {activeComplaintForChat.publicComplaintId}
                     </span>
                     <VerifiedAnonymousBadge />
@@ -303,13 +295,13 @@ export const AdminIssueView = () => {
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-bold text-slate-400 uppercase">Student Reported Problem:</h4>
-                  <p className="text-sm text-slate-200 mt-1 leading-relaxed whitespace-pre-wrap">
+                  <h4 className="text-xs font-bold text-wine-600 uppercase">Student Reported Problem:</h4>
+                  <p className="text-sm text-wine-900 mt-1 leading-relaxed whitespace-pre-wrap font-medium">
                     {activeComplaintForChat.description}
                   </p>
                 </div>
 
-                <div className="flex items-center gap-4 text-xs text-slate-400 pt-2 border-t border-slate-800">
+                <div className="flex items-center gap-4 text-xs text-wine-600 font-medium pt-2 border-t border-cream-300">
                   <span>📍 {activeComplaintForChat.location}</span>
                   {activeComplaintForChat.affectedArea && (
                     <span>Area: {activeComplaintForChat.affectedArea}</span>
@@ -326,7 +318,7 @@ export const AdminIssueView = () => {
               </div>
             </div>
           ) : (
-            <div className="p-12 text-center text-slate-500 glass-panel rounded-2xl">
+            <div className="p-12 text-center text-wine-500 bg-white border border-cream-300 rounded-2xl shadow-sm font-medium">
               Select a complaint to inspect and communicate.
             </div>
           )}

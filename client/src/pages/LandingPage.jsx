@@ -4,35 +4,24 @@ import { useAuth } from '../context/AuthContext';
 import { issueAPI, complaintAPI, aiAPI } from '../services/api';
 import { 
   ShieldCheck, 
-  Lock, 
-  Sparkles, 
   Users, 
   ArrowRight, 
-  CheckCircle2, 
-  Layers, 
-  MessageSquare, 
   Search, 
   Compass, 
   Building2, 
   Cpu, 
   TrendingUp,
-  BarChart2,
   FileText,
   PlusCircle,
-  Clock,
-  MapPin,
-  Zap,
-  Activity,
-  Check,
-  Flame,
-  HelpCircle,
-  ChevronRight
+  Sparkles,
+  Lock
 } from 'lucide-react';
+import { BrandLogo } from '../components/common/BrandLogo';
 import { StatusBadge, SeverityBadge } from '../components/common/StatusBadge';
 import { PrivacyExplainerModal } from '../components/common/PrivacyExplainerModal';
 
 export const LandingPage = () => {
-  const { isAuthenticated, isStudent, isAdmin } = useAuth();
+  const { isAuthenticated, isStudent } = useAuth();
   const navigate = useNavigate();
   const [featuredIssues, setFeaturedIssues] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -104,52 +93,58 @@ export const LandingPage = () => {
   };
 
   return (
-    <div className="space-y-20 pb-20">
+    <div className="space-y-16 sm:space-y-24 pb-20">
       {/* Hero Section */}
-      <section className="relative pt-12 sm:pt-20 text-center overflow-hidden">
+      <section className="relative pt-8 sm:pt-16 text-center overflow-hidden">
         {/* Ambient Glows */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-indigo-600/20 via-emerald-500/15 to-transparent rounded-full blur-3xl pointer-events-none -z-10"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-peach-300/30 via-burgundy-700/10 to-transparent rounded-full blur-3xl pointer-events-none -z-10"></div>
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 text-xs font-semibold mb-6 shadow-shield-glow">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <span>Verified Anonymous Architecture Active</span>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          {/* Prominent Open-Book Brand Mark */}
+          <div className="inline-flex flex-col items-center mb-6">
+            <div className="p-3 bg-white rounded-3xl border border-cream-300 shadow-warm mb-4 hover:shadow-warm-lg transition-shadow">
+              <BrandLogo className="w-16 h-16 sm:w-20 sm:h-20" showGlow={true} />
+            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-peach-50 border border-peach-300 text-burgundy-900 text-xs font-bold shadow-sm">
+              <ShieldCheck className="w-4 h-4 text-peach-700" />
+              <span>Verified Anonymous Architecture Active</span>
+            </div>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-wine-900 leading-tight">
             Speak up for your campus. <br />
-            <span className="bg-gradient-to-r from-emerald-400 via-indigo-300 to-indigo-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-burgundy-800 via-burgundy-700 to-peach-600 bg-clip-text text-transparent">
               Without fear or retaliation.
             </span>
           </h1>
 
-          <p className="mt-6 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            CampusVoice verifies you are a registered student, but completely isolates your identity from organization-facing systems. No name leaks, no social stigma—just actionable campus improvements.
+          <p className="mt-5 text-sm sm:text-base md:text-lg text-wine-700 max-w-2xl mx-auto leading-relaxed font-medium">
+            Our platform verifies you are an authenticated registered student, but completely isolates your personal identity from organization-facing systems. No name leaks, no social stigma—just actionable campus improvements.
           </p>
 
           {/* Quick Primary Call to Actions */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <Link
               to="/submit"
-              className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-emerald-600 hover:from-indigo-500 hover:to-emerald-500 text-white font-bold rounded-2xl shadow-xl shadow-indigo-600/30 flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5"
+              className="w-full sm:w-auto px-8 py-3.5 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 font-bold rounded-2xl shadow-warm hover:shadow-warm-lg flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5"
             >
-              <PlusCircle className="w-5 h-5 text-emerald-300" />
+              <PlusCircle className="w-5 h-5 text-peach-300" />
               Submit Anonymous Report
             </Link>
 
             <Link
               to="/issues"
-              className="w-full sm:w-auto px-7 py-3.5 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold rounded-2xl flex items-center justify-center gap-2 transition-all"
+              className="w-full sm:w-auto px-7 py-3.5 bg-white hover:bg-cream-100 text-wine-900 border border-cream-300 font-bold rounded-2xl flex items-center justify-center gap-2 transition-all shadow-sm"
             >
-              <Compass className="w-4 h-4 text-indigo-400" />
+              <Compass className="w-4 h-4 text-burgundy-700" />
               Explore Campus Issues
             </Link>
 
             <Link
               to={isAuthenticated && isStudent ? '/my-complaints' : '/login'}
-              className="w-full sm:w-auto px-6 py-3.5 bg-slate-900/60 hover:bg-slate-800/80 text-sky-300 border border-sky-500/30 font-semibold rounded-2xl flex items-center justify-center gap-2 transition-all"
+              className="w-full sm:w-auto px-6 py-3.5 bg-peach-50 hover:bg-peach-100 text-burgundy-900 border border-peach-300 font-bold rounded-2xl flex items-center justify-center gap-2 transition-all shadow-sm"
             >
-              <FileText className="w-4 h-4" />
+              <FileText className="w-4 h-4 text-peach-700" />
               My Reports
             </Link>
           </div>
@@ -160,20 +155,20 @@ export const LandingPage = () => {
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Feature Block 1: Submit Reports Card */}
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-indigo-500/30 relative overflow-hidden flex flex-col justify-between group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-peach-300 relative overflow-hidden flex flex-col justify-between shadow-warm hover:shadow-warm-lg transition-all group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-peach-100/50 rounded-full blur-2xl pointer-events-none"></div>
 
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center mb-4">
-                <PlusCircle className="w-6 h-6" />
+              <div className="w-12 h-12 rounded-2xl bg-peach-100 text-burgundy-800 border border-peach-300 flex items-center justify-center mb-4 shadow-sm">
+                <PlusCircle className="w-6 h-6 text-peach-700" />
               </div>
-              <span className="text-xs uppercase font-bold tracking-wider text-indigo-400">
+              <span className="text-xs uppercase font-extrabold tracking-wider text-burgundy-800">
                 Action Center
               </span>
-              <h3 className="text-xl font-bold text-white mt-1 mb-2">
+              <h3 className="text-xl font-bold text-wine-900 mt-1 mb-2">
                 Submit an Anonymous Complaint
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+              <p className="text-xs sm:text-sm text-wine-700 leading-relaxed mb-6">
                 Have you noticed poor Wi-Fi, broken lab equipment, hostel geyser failures, or canteen hygiene concerns? Report immediately with complete cryptographic anonymity.
               </p>
 
@@ -182,7 +177,7 @@ export const LandingPage = () => {
                 {['Wi-Fi / Internet', 'Laboratory', 'Hostel', 'Food / Canteen', 'Classroom'].map((cat) => (
                   <span
                     key={cat}
-                    className="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-[11px] text-slate-300 font-medium"
+                    className="px-2.5 py-1 rounded-xl bg-cream-100 border border-cream-300 text-[11px] text-wine-800 font-semibold"
                   >
                     #{cat}
                   </span>
@@ -192,29 +187,29 @@ export const LandingPage = () => {
 
             <Link
               to="/submit"
-              className="inline-flex items-center justify-center gap-2 w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-bold rounded-xl shadow-lg shadow-indigo-600/30 transition-all"
+              className="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 text-xs sm:text-sm font-bold rounded-xl shadow-warm transition-all"
             >
               <span>Launch Complaint Wizard</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 text-peach-300" />
             </Link>
           </div>
 
           {/* Feature Block 2: Instant Public ID Tracker Card */}
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-emerald-500/30 relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-cream-300 relative overflow-hidden flex flex-col justify-between shadow-warm hover:shadow-warm-lg transition-all">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-peach-100/30 rounded-full blur-2xl pointer-events-none"></div>
 
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mb-4">
-                <Search className="w-6 h-6" />
+              <div className="w-12 h-12 rounded-2xl bg-cream-100 text-burgundy-800 border border-cream-300 flex items-center justify-center mb-4 shadow-sm">
+                <Search className="w-6 h-6 text-burgundy-700" />
               </div>
-              <span className="text-xs uppercase font-bold tracking-wider text-emerald-400">
+              <span className="text-xs uppercase font-extrabold tracking-wider text-burgundy-800">
                 Live Resolution Tracker
               </span>
-              <h3 className="text-xl font-bold text-white mt-1 mb-2">
+              <h3 className="text-xl font-bold text-wine-900 mt-1 mb-2">
                 Track by Public Complaint ID
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                Enter your public ID (e.g., <code className="text-indigo-300 font-mono">CV-A82F91</code>) to check live status, department assignment, and resolution history instantly.
+              <p className="text-xs sm:text-sm text-wine-700 leading-relaxed mb-4">
+                Enter your public ID (e.g., <code className="text-burgundy-800 font-mono font-bold bg-peach-50 px-1.5 py-0.5 rounded border border-peach-200">CV-A82F91</code>) to check live status, department assignment, and resolution history instantly.
               </p>
 
               {/* Tracker Form */}
@@ -225,12 +220,12 @@ export const LandingPage = () => {
                     value={trackInputId}
                     onChange={(e) => setTrackInputId(e.target.value)}
                     placeholder="Enter Complaint ID (e.g. CV-A82F91)"
-                    className="flex-1 bg-slate-900 border border-slate-700/80 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-emerald-500"
+                    className="flex-1 bg-cream-50 border border-cream-300 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 focus:ring-1 focus:ring-burgundy-700"
                   />
                   <button
                     type="submit"
                     disabled={trackingLoading || !trackInputId.trim()}
-                    className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white text-xs sm:text-sm font-bold rounded-xl transition-all shadow-md shadow-emerald-600/30 shrink-0"
+                    className="px-5 py-2.5 bg-peach-200 hover:bg-peach-300 text-burgundy-950 disabled:opacity-50 text-xs sm:text-sm font-bold rounded-xl transition-all shadow-sm shrink-0 border border-peach-400"
                   >
                     {trackingLoading ? 'Checking...' : 'Track'}
                   </button>
@@ -238,24 +233,24 @@ export const LandingPage = () => {
               </form>
 
               {trackError && (
-                <div className="p-3 rounded-xl bg-rose-950/40 border border-rose-500/30 text-rose-300 text-xs mb-3">
+                <div className="p-3 rounded-xl bg-burgundy-50 border border-burgundy-200 text-burgundy-900 text-xs mb-3 font-medium">
                   {trackError}
                 </div>
               )}
 
               {/* Instant Result Preview */}
               {trackingResult && (
-                <div className="p-4 rounded-xl bg-slate-900/90 border border-emerald-500/40 text-xs space-y-2 animate-fadeIn mb-4">
+                <div className="p-4 rounded-xl bg-cream-50 border border-peach-300 text-xs space-y-2 animate-fadeIn mb-4 shadow-sm">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono font-bold text-indigo-300">{trackingResult.publicComplaintId}</span>
+                    <span className="font-mono font-bold text-burgundy-800">{trackingResult.publicComplaintId}</span>
                     <StatusBadge status={trackingResult.status} />
                   </div>
-                  <div className="text-slate-300">
-                    <span className="text-slate-500">Location:</span> {trackingResult.location}
+                  <div className="text-wine-800">
+                    <span className="text-wine-500 font-medium">Location:</span> {trackingResult.location}
                   </div>
                   {trackingResult.issueCluster && (
-                    <div className="text-emerald-400">
-                      <span className="text-slate-500">Cluster:</span> {trackingResult.issueCluster.title}
+                    <div className="text-burgundy-900 font-semibold">
+                      <span className="text-wine-500 font-medium">Cluster:</span> {trackingResult.issueCluster.title}
                     </div>
                   )}
                 </div>
@@ -264,9 +259,9 @@ export const LandingPage = () => {
 
             <Link
               to={isAuthenticated && isStudent ? '/my-complaints' : '/login'}
-              className="inline-flex items-center justify-center gap-2 w-full py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs sm:text-sm font-bold rounded-xl transition-colors"
+              className="inline-flex items-center justify-center gap-2 w-full py-3 bg-cream-100 hover:bg-cream-200 text-wine-900 text-xs sm:text-sm font-bold rounded-xl transition-colors border border-cream-300"
             >
-              <FileText className="w-4 h-4 text-sky-400" />
+              <FileText className="w-4 h-4 text-burgundy-700" />
               <span>View All My Reports</span>
             </Link>
           </div>
@@ -275,17 +270,17 @@ export const LandingPage = () => {
 
       {/* Feature Block 3: Interactive Real-Time AI Triage Simulator */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="glass-panel p-6 sm:p-10 rounded-3xl border border-slate-800">
+        <div className="bg-white p-6 sm:p-10 rounded-3xl border border-cream-300 shadow-warm">
           <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
             <div>
-              <div className="flex items-center gap-2 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-1">
-                <Sparkles className="w-4 h-4" /> Real-Time Intelligence
+              <div className="flex items-center gap-2 text-burgundy-800 text-xs font-extrabold uppercase tracking-wider mb-1">
+                <Sparkles className="w-4 h-4 text-peach-600" /> Real-Time Intelligence
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-white">
+              <h2 className="text-xl sm:text-2xl font-bold text-wine-900">
                 Interactive AI Triage Simulator
               </h2>
-              <p className="text-xs sm:text-sm text-slate-400 mt-1">
-                See how CampusVoice automatically classifies, tags, and evaluates grievances before routing.
+              <p className="text-xs sm:text-sm text-wine-600 mt-1 font-medium">
+                See how the platform automatically classifies, tags, and evaluates grievances before routing.
               </p>
             </div>
 
@@ -297,7 +292,7 @@ export const LandingPage = () => {
                   setSimText(t);
                   handleSimulateAI(t);
                 }}
-                className="px-3 py-1 bg-slate-900 border border-slate-700 hover:border-indigo-500 rounded-lg text-xs text-indigo-300 transition-colors"
+                className="px-3 py-1 bg-cream-50 border border-cream-300 hover:border-burgundy-400 rounded-lg text-xs font-bold text-burgundy-800 transition-colors"
               >
                 Sample 1: Lab Wi-Fi
               </button>
@@ -307,7 +302,7 @@ export const LandingPage = () => {
                   setSimText(t);
                   handleSimulateAI(t);
                 }}
-                className="px-3 py-1 bg-slate-900 border border-slate-700 hover:border-indigo-500 rounded-lg text-xs text-emerald-300 transition-colors"
+                className="px-3 py-1 bg-cream-50 border border-cream-300 hover:border-burgundy-400 rounded-lg text-xs font-bold text-peach-800 transition-colors"
               >
                 Sample 2: Hostel Geyser
               </button>
@@ -321,45 +316,45 @@ export const LandingPage = () => {
                 value={simText}
                 onChange={(e) => setSimText(e.target.value)}
                 placeholder="Type a campus problem description here (e.g. Broken projector in Room 304)..."
-                className="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl p-4 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-cream-50 border border-cream-300 rounded-2xl p-4 text-xs sm:text-sm text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 focus:ring-1 focus:ring-burgundy-700"
               />
               <button
                 onClick={() => handleSimulateAI()}
                 disabled={simLoading || !simText.trim()}
-                className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold shadow-md shadow-indigo-600/30 flex items-center gap-2"
+                className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 disabled:opacity-50 text-cream-50 rounded-xl text-xs font-bold shadow-sm flex items-center gap-2"
               >
-                <Cpu className="w-4 h-4" />
+                <Cpu className="w-4 h-4 text-peach-300" />
                 {simLoading ? 'Simulating Triage...' : 'Simulate AI Triage Analysis'}
               </button>
             </div>
 
             {/* Simulator Output Display */}
-            <div className="p-5 rounded-2xl bg-slate-950/80 border border-slate-800/80 flex flex-col justify-center">
+            <div className="p-5 rounded-2xl bg-cream-50 border border-cream-300 flex flex-col justify-center">
               {simResult ? (
                 <div className="space-y-3 animate-fadeIn">
                   <div className="flex items-center justify-between flex-wrap gap-2">
-                    <span className="text-xs font-bold text-slate-400">Predicted Category:</span>
-                    <span className="px-2.5 py-0.5 rounded-lg bg-indigo-950 text-indigo-300 font-semibold text-xs border border-indigo-500/30">
+                    <span className="text-xs font-bold text-wine-600">Predicted Category:</span>
+                    <span className="px-2.5 py-0.5 rounded-lg bg-peach-100 text-burgundy-900 font-bold text-xs border border-peach-300">
                       {simResult.category}
                     </span>
                     <SeverityBadge severity={simResult.severity} />
                   </div>
-                  <div className="text-xs text-slate-300">
-                    <strong className="text-slate-400">Routing Dept:</strong> {simResult.possibleDepartment}
+                  <div className="text-xs text-wine-800">
+                    <strong className="text-wine-600 font-bold">Routing Dept:</strong> {simResult.possibleDepartment}
                   </div>
-                  <div className="text-xs text-slate-300">
-                    <strong className="text-slate-400">Concise Summary:</strong> {simResult.summary}
+                  <div className="text-xs text-wine-800">
+                    <strong className="text-wine-600 font-bold">Concise Summary:</strong> {simResult.summary}
                   </div>
                   <div className="flex flex-wrap gap-1.5 pt-1">
                     {simResult.keywords?.map((k, i) => (
-                      <span key={i} className="px-2 py-0.5 rounded bg-slate-900 text-slate-400 text-[11px]">
+                      <span key={i} className="px-2 py-0.5 rounded-lg bg-white border border-cream-300 text-wine-700 text-[11px] font-medium">
                         #{k}
                       </span>
                     ))}
                   </div>
                 </div>
               ) : (
-                <div className="text-center text-slate-500 text-xs py-4">
+                <div className="text-center text-wine-500 text-xs py-4 font-medium">
                   Type a problem on the left or click a sample to see live AI categorization.
                 </div>
               )}
@@ -370,55 +365,55 @@ export const LandingPage = () => {
 
       {/* Verified Anonymity Visual Flow */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800">
+        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-cream-300 shadow-warm">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs uppercase font-bold tracking-widest text-indigo-400">
+            <span className="text-xs uppercase font-extrabold tracking-widest text-burgundy-800">
               The Fundamental Difference
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mt-1">
+            <h2 className="text-2xl sm:text-3xl font-bold text-wine-900 mt-1">
               Why Verified Anonymity Protects You
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 mt-2">
-              Unlike normal complaint systems that merely hide names in the UI, CampusVoice decouples your identity inside the database and API layers.
+            <p className="text-xs sm:text-sm text-wine-600 mt-2 font-medium">
+              Unlike normal complaint systems that merely hide names in the UI, our system decouples your identity inside the database and API layers.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800/80 relative">
-              <div className="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center mb-4 border border-indigo-500/30">
-                <ShieldCheck className="w-5 h-5" />
+            <div className="p-6 rounded-2xl bg-cream-50 border border-cream-300 relative shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-peach-100 text-burgundy-800 flex items-center justify-center mb-4 border border-peach-300">
+                <ShieldCheck className="w-5 h-5 text-burgundy-700" />
               </div>
-              <h3 className="text-base font-bold text-white mb-1.5">1. Student Authentication</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h3 className="text-base font-bold text-wine-900 mb-1.5">1. Student Authentication</h3>
+              <p className="text-xs text-wine-700 leading-relaxed">
                 You login using your university credentials. This guarantees zero spam or bot reports.
               </p>
-              <div className="mt-4 pt-3 border-t border-slate-800 text-[11px] text-emerald-400 font-mono">
+              <div className="mt-4 pt-3 border-t border-cream-300 text-[11px] text-peach-800 font-bold font-mono">
                 ✓ Verified Genuine Student
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-slate-900/90 border border-emerald-500/30 relative">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4 border border-emerald-500/30">
-                <Cpu className="w-5 h-5" />
+            <div className="p-6 rounded-2xl bg-peach-50 border border-peach-300 relative shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-white text-burgundy-800 flex items-center justify-center mb-4 border border-peach-300 shadow-sm">
+                <Cpu className="w-5 h-5 text-peach-600" />
               </div>
-              <h3 className="text-base font-bold text-white mb-1.5">2. Identity Isolation & AI</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h3 className="text-base font-bold text-wine-900 mb-1.5">2. Identity Isolation & AI</h3>
+              <p className="text-xs text-wine-700 leading-relaxed">
                 Backend strips Name, Roll No & Email. AI summarizes the problem and links it with duplicate issues.
               </p>
-              <div className="mt-4 pt-3 border-t border-slate-800 text-[11px] text-indigo-300 font-mono">
+              <div className="mt-4 pt-3 border-t border-peach-200 text-[11px] text-burgundy-800 font-bold font-mono">
                 🔒 Public ID: CV-A82F91
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800/80 relative">
-              <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center mb-4 border border-purple-500/30">
-                <Building2 className="w-5 h-5" />
+            <div className="p-6 rounded-2xl bg-cream-50 border border-cream-300 relative shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-burgundy-100 text-burgundy-800 flex items-center justify-center mb-4 border border-burgundy-200">
+                <Building2 className="w-5 h-5 text-burgundy-700" />
               </div>
-              <h3 className="text-base font-bold text-white mb-1.5">3. Clean Admin Triage</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h3 className="text-base font-bold text-wine-900 mb-1.5">3. Clean Admin Triage</h3>
+              <p className="text-xs text-wine-700 leading-relaxed">
                 Staff sees the aggregated problem & affected student count without having any access to student identities.
               </p>
-              <div className="mt-4 pt-3 border-t border-slate-800 text-[11px] text-purple-400 font-mono">
+              <div className="mt-4 pt-3 border-t border-cream-300 text-[11px] text-burgundy-800 font-bold font-mono">
                 ✓ Verified Anonymous Student
               </div>
             </div>
@@ -430,18 +425,18 @@ export const LandingPage = () => {
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
           <div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-indigo-400" />
+            <h3 className="text-xl sm:text-2xl font-bold text-wine-900 flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-burgundy-700" />
               Active Campus Issue Clusters
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-wine-600 mt-0.5 font-medium">
               Live problems currently being tracked and resolved by campus administration
             </p>
           </div>
 
           <Link
             to="/issues"
-            className="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1"
+            className="text-xs font-bold text-burgundy-800 hover:text-burgundy-900 flex items-center gap-1"
           >
             Explore all issues <ArrowRight className="w-3.5 h-3.5" />
           </Link>
@@ -452,32 +447,32 @@ export const LandingPage = () => {
             <Link
               key={issue._id}
               to={`/issues/${issue.publicIssueId || issue._id}`}
-              className="glass-panel p-5 rounded-2xl glass-panel-hover flex flex-col justify-between"
+              className="bg-white p-5 rounded-2xl border border-cream-300 hover:border-burgundy-300 shadow-sm hover:shadow-warm transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="font-mono text-xs font-semibold text-indigo-300 bg-indigo-950/60 px-2 py-0.5 rounded border border-indigo-500/20">
+                  <span className="font-mono text-xs font-bold text-burgundy-800 bg-peach-50 px-2 py-0.5 rounded-lg border border-peach-200">
                     {issue.publicIssueId}
                   </span>
                   <StatusBadge status={issue.status} />
                 </div>
 
-                <h4 className="text-sm font-bold text-white line-clamp-2 mb-2">
+                <h4 className="text-sm font-bold text-wine-900 line-clamp-2 mb-2">
                   {issue.title}
                 </h4>
 
-                <p className="text-xs text-slate-400 line-clamp-2 mb-4 leading-relaxed">
+                <p className="text-xs text-wine-600 line-clamp-2 mb-4 leading-relaxed font-medium">
                   {issue.summary}
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
-                <div className="flex items-center gap-1 text-slate-300">
-                  <Users className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="font-bold text-emerald-300">{issue.affectedCount}</span>
-                  <span className="text-slate-400">affected</span>
+              <div className="pt-3 border-t border-cream-300 flex items-center justify-between text-xs">
+                <div className="flex items-center gap-1 text-wine-700">
+                  <Users className="w-3.5 h-3.5 text-peach-700" />
+                  <span className="font-bold text-burgundy-900">{issue.affectedCount}</span>
+                  <span className="text-wine-500 font-medium">affected</span>
                 </div>
-                <span className="text-slate-400 truncate max-w-[100px]">{issue.location}</span>
+                <span className="text-wine-500 truncate max-w-[100px] font-medium">{issue.location}</span>
               </div>
             </Link>
           ))}

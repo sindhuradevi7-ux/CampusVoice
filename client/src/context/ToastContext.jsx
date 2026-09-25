@@ -33,21 +33,22 @@ export const ToastProvider = ({ children }) => {
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className={`pointer-events-auto flex items-start gap-3 p-4 rounded-xl shadow-2xl border text-sm font-medium transition-all transform duration-300 animate-slide-up ${
+            className={`pointer-events-auto flex items-start gap-3 p-4 rounded-2xl shadow-xl border text-sm font-semibold transition-all transform duration-300 animate-fadeIn ${
               toast.type === 'success'
-                ? 'bg-slate-900/95 border-emerald-500/50 text-emerald-300'
+                ? 'bg-cream-50 border-peach-400 text-burgundy-900 shadow-warm'
                 : toast.type === 'error'
-                ? 'bg-slate-900/95 border-rose-500/50 text-rose-300'
-                : 'bg-slate-900/95 border-indigo-500/50 text-indigo-300'
+                ? 'bg-burgundy-900 border-burgundy-700 text-cream-50 shadow-warm-lg'
+                : 'bg-white border-cream-300 text-wine-900 shadow-warm'
             }`}
           >
-            {toast.type === 'success' && <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />}
-            {toast.type === 'error' && <AlertCircle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />}
-            {toast.type === 'info' && <Info className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" />}
-            <p className="flex-1 text-slate-200 leading-relaxed">{toast.message}</p>
+            {toast.type === 'success' && <CheckCircle2 className="w-5 h-5 text-peach-600 shrink-0 mt-0.5" />}
+            {toast.type === 'error' && <AlertCircle className="w-5 h-5 text-peach-300 shrink-0 mt-0.5" />}
+            {toast.type === 'info' && <Info className="w-5 h-5 text-burgundy-700 shrink-0 mt-0.5" />}
+            <p className="flex-1 leading-relaxed">{toast.message}</p>
             <button
               onClick={() => removeToast(toast.id)}
-              className="text-slate-400 hover:text-slate-200 shrink-0 p-1"
+              className="opacity-70 hover:opacity-100 shrink-0 p-1"
+              aria-label="Close notification"
             >
               <X className="w-4 h-4" />
             </button>

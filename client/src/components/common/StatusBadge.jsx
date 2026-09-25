@@ -6,56 +6,57 @@ import {
   Flame, 
   ShieldAlert, 
   ArrowUpRight, 
-  HelpCircle 
+  HelpCircle,
+  Lock
 } from 'lucide-react';
 
 export const StatusBadge = ({ status }) => {
   switch (status) {
     case 'Submitted':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/20">
-          <Clock className="w-3.5 h-3.5" />
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-peach-100 text-peach-900 border border-peach-300 shadow-sm">
+          <Clock className="w-3.5 h-3.5 text-peach-700" />
           Submitted
         </span>
       );
     case 'Under Review':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
-          <HelpCircle className="w-3.5 h-3.5" />
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-peach-50 text-wine-800 border border-peach-200 shadow-sm">
+          <HelpCircle className="w-3.5 h-3.5 text-peach-600" />
           Under Review
         </span>
       );
     case 'Assigned':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20">
-          <ArrowUpRight className="w-3.5 h-3.5" />
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-burgundy-50 text-burgundy-800 border border-burgundy-200 shadow-sm">
+          <ArrowUpRight className="w-3.5 h-3.5 text-burgundy-700" />
           Assigned
         </span>
       );
     case 'In Progress':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 animate-pulse">
-          <span className="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-peach-200/70 text-burgundy-900 border border-peach-400 shadow-sm animate-pulse">
+          <span className="w-1.5 h-1.5 rounded-full bg-peach-600"></span>
           In Progress
         </span>
       );
     case 'Resolved':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-          <CheckCircle2 className="w-3.5 h-3.5" />
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-burgundy-800 text-cream-50 border border-burgundy-900 shadow-sm">
+          <CheckCircle2 className="w-3.5 h-3.5 text-peach-300" />
           Resolved
         </span>
       );
     case 'Closed':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-500/10 text-slate-400 border border-slate-500/20">
-          <CheckCircle2 className="w-3.5 h-3.5" />
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-cream-200 text-wine-700 border border-cream-300 shadow-sm">
+          <CheckCircle2 className="w-3.5 h-3.5 text-wine-500" />
           Closed
         </span>
       );
     default:
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-800 text-slate-300">
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-cream-200 text-wine-800 border border-cream-300">
           {status || 'Unknown'}
         </span>
       );
@@ -66,34 +67,34 @@ export const SeverityBadge = ({ severity }) => {
   switch (severity) {
     case 'Critical':
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-rose-500/15 text-rose-400 border border-rose-500/30">
-          <Flame className="w-3 h-3 text-rose-400" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-xs font-bold bg-burgundy-100 text-burgundy-900 border border-burgundy-300">
+          <Flame className="w-3 h-3 text-burgundy-700" />
           Critical
         </span>
       );
     case 'High':
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-orange-500/15 text-orange-400 border border-orange-500/30">
-          <ShieldAlert className="w-3 h-3 text-orange-400" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-xs font-semibold bg-peach-200 text-burgundy-900 border border-peach-400">
+          <ShieldAlert className="w-3 h-3 text-peach-700" />
           High
         </span>
       );
     case 'Medium':
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-amber-500/10 text-amber-300 border border-amber-500/20">
-          <AlertTriangle className="w-3 h-3 text-amber-400" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-xs font-medium bg-peach-100 text-wine-800 border border-peach-200">
+          <AlertTriangle className="w-3 h-3 text-peach-600" />
           Medium
         </span>
       );
     case 'Low':
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-500/10 text-slate-300 border border-slate-700">
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-xs font-medium bg-cream-200 text-wine-700 border border-cream-300">
           Low
         </span>
       );
     default:
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-800 text-slate-400">
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-xs font-medium bg-cream-200 text-wine-700">
           {severity || 'Medium'}
         </span>
       );
@@ -102,12 +103,13 @@ export const SeverityBadge = ({ severity }) => {
 
 export const VerifiedAnonymousBadge = ({ className = '' }) => {
   return (
-    <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-xs font-semibold tracking-wide shadow-sm ${className}`}>
+    <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-peach-50 border border-peach-300 text-burgundy-900 text-xs font-bold tracking-wide shadow-sm ${className}`}>
       <span className="relative flex h-2 w-2">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-peach-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-peach-500"></span>
       </span>
-      🔒 Verified Anonymous Student
+      <Lock className="w-3 h-3 text-burgundy-700" />
+      <span>Verified Anonymous Student</span>
     </div>
   );
 };

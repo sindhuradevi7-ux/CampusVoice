@@ -1,11 +1,33 @@
 import axios from 'axios';
 
+const resolveBaseURL = () => {
+  if (import.meta.env.VITE_API_URL) {
+    const url = import.meta.env.VITE_API_URL.replace(/\/$/, '');
+    return url.endsWith('/api') ? url : `${url}/api`;
+  }
+
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname;
+    const isLocal = host === 'localhost' || host === '127.0.0.1';
+    const isRenderBackend = host.includes('campusvoice-v8n2.onrender.com');
+
+    // Automatically route to Render production backend when on Vercel or custom domain
+    if (!isLocal && !isRenderBackend) {
+      return 'https://campusvoice-v8n2.onrender.com/api';
+    }
+  }
+
+  return '/api';
+};
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: resolveBaseURL(),
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
+
 
 // Attach Authorization Bearer token if present
 api.interceptors.request.use(

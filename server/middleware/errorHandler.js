@@ -25,6 +25,12 @@ export const errorHandler = (err, req, res, next) => {
       .join(', ');
   }
 
+  // Mongoose connection / buffering timeout
+  if (err.message && err.message.includes('buffering timed out')) {
+    statusCode = 503;
+    message = 'Database connection unavailable. Please verify that your MongoDB Atlas URI includes the cluster hash (e.g., cluster0.xxxxx.mongodb.net) and IP Access List allows 0.0.0.0/0 in MongoDB Atlas Network Access.';
+  }
+
   res.status(statusCode).json({
     success: false,
     message,

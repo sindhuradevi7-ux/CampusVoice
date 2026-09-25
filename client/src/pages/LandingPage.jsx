@@ -93,51 +93,35 @@ export const LandingPage = () => {
   return (
     <div className="space-y-16 sm:space-y-24 pb-20">
       {/* Hero Section */}
-      <section className="relative pt-8 sm:pt-16 text-center overflow-hidden">
+      <section className="relative pt-6 sm:pt-12 text-center overflow-hidden">
         {/* Ambient Glows */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-peach-300/30 via-burgundy-700/10 to-transparent dark:from-burgundy-600/20 dark:via-peach-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[300px] bg-gradient-to-tr from-peach-300/25 via-burgundy-700/8 to-transparent dark:from-burgundy-600/15 dark:via-peach-500/8 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-peach-50 dark:bg-wine-900 border border-peach-300 dark:border-peach-400/30 text-burgundy-900 dark:text-peach-300 text-xs font-bold shadow-sm mb-6">
-            <ShieldCheck className="w-4 h-4 text-peach-700 dark:text-peach-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 dark:bg-wine-900/85 backdrop-blur-md border border-peach-300/50 dark:border-peach-400/20 text-burgundy-900 dark:text-peach-200 text-xs font-semibold shadow-xs mb-5">
+            <ShieldCheck className="w-4 h-4 text-peach-600 dark:text-peach-400" />
             <span>Verified Anonymous Architecture Active</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-wine-900 dark:text-cream-50 leading-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-wine-950 dark:text-cream-50 leading-[1.15]">
             Speak up for your campus. <br />
             <span className="bg-gradient-to-r from-burgundy-800 via-burgundy-700 to-peach-600 dark:from-peach-300 dark:via-peach-400 dark:to-peach-200 bg-clip-text text-transparent">
               Without fear or retaliation.
             </span>
           </h1>
 
-          <p className="mt-5 text-sm sm:text-base md:text-lg text-wine-700 dark:text-cream-300 max-w-2xl mx-auto leading-relaxed font-medium">
+          <p className="mt-4 text-sm sm:text-base md:text-lg text-wine-800/85 dark:text-cream-200 max-w-2xl mx-auto leading-relaxed font-normal">
             Our platform verifies you are an authenticated registered student, but completely isolates your personal identity from organization-facing systems. No name leaks, no social stigma—just actionable campus improvements.
           </p>
 
-          {/* Quick Primary Call to Actions with GlassAiButton visual style */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+          {/* Strong Primary Call to Action */}
+          <div className="mt-7 flex items-center justify-center">
             <Link
               to="/submit"
-              className="w-full sm:w-auto px-8 py-3.5 btn-glass btn-glass-primary text-sm flex items-center justify-center gap-2.5"
+              className="w-full sm:w-auto px-8 py-3.5 btn-glass btn-glass-primary text-sm sm:text-base font-bold flex items-center justify-center gap-2.5 shadow-warm"
             >
               <PlusCircle className="w-5 h-5 text-peach-300" />
-              Submit Anonymous Report
-            </Link>
-
-            <Link
-              to="/issues"
-              className="w-full sm:w-auto px-7 py-3.5 btn-glass btn-glass-subtle text-sm flex items-center justify-center gap-2"
-            >
-              <Compass className="w-4 h-4 text-burgundy-700 dark:text-peach-400" />
-              Explore Campus Issues
-            </Link>
-
-            <Link
-              to={isAuthenticated && isStudent ? '/my-complaints' : '/login'}
-              className="w-full sm:w-auto px-6 py-3.5 btn-glass btn-glass-secondary text-sm flex items-center justify-center gap-2"
-            >
-              <FileText className="w-4 h-4 text-peach-700 dark:text-peach-400" />
-              My Reports
+              <span>Submit Anonymous Report</span>
             </Link>
           </div>
         </div>
@@ -147,11 +131,11 @@ export const LandingPage = () => {
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Feature Block 1: Submit Reports Card */}
-          <div className="bg-white dark:bg-wine-900 p-6 sm:p-8 rounded-3xl border border-peach-300 dark:border-peach-400/20 relative overflow-hidden flex flex-col justify-between shadow-warm hover:shadow-warm-lg transition-all group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-peach-100/50 dark:bg-peach-500/5 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="bg-white/90 dark:bg-wine-900/90 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-peach-300/40 dark:border-peach-400/20 relative overflow-hidden flex flex-col justify-between shadow-warm hover:shadow-warm-lg transition-all group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-peach-100/40 dark:bg-peach-500/5 rounded-full blur-2xl pointer-events-none"></div>
 
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-peach-100 dark:bg-wine-800 text-burgundy-800 dark:text-peach-300 border border-peach-300 dark:border-peach-400/30 flex items-center justify-center mb-4 shadow-sm">
+              <div className="w-12 h-12 rounded-2xl bg-peach-100/80 dark:bg-wine-800 text-burgundy-800 dark:text-peach-300 border border-peach-300/50 dark:border-peach-400/30 flex items-center justify-center mb-4 shadow-xs">
                 <PlusCircle className="w-6 h-6 text-peach-700 dark:text-peach-400" />
               </div>
               <span className="text-xs uppercase font-extrabold tracking-wider text-burgundy-800 dark:text-peach-400">
@@ -160,7 +144,7 @@ export const LandingPage = () => {
               <h3 className="text-xl font-bold text-wine-900 dark:text-cream-50 mt-1 mb-2">
                 Submit an Anonymous Complaint
               </h3>
-              <p className="text-xs sm:text-sm text-wine-700 dark:text-cream-300 leading-relaxed mb-6">
+              <p className="text-xs sm:text-sm text-wine-700 dark:text-cream-300 leading-relaxed mb-6 font-normal">
                 Have you noticed poor Wi-Fi, broken lab equipment, hostel geyser failures, or canteen hygiene concerns? Report immediately with complete cryptographic anonymity.
               </p>
 
@@ -169,7 +153,7 @@ export const LandingPage = () => {
                 {['Wi-Fi / Internet', 'Laboratory', 'Hostel', 'Food / Canteen', 'Classroom'].map((cat) => (
                   <span
                     key={cat}
-                    className="px-2.5 py-1 rounded-xl bg-cream-100 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 text-[11px] text-wine-800 dark:text-cream-200 font-semibold"
+                    className="px-2.5 py-1 rounded-xl bg-cream-100/80 dark:bg-wine-950/80 border border-cream-300/80 dark:border-peach-400/20 text-[11px] text-wine-800 dark:text-cream-200 font-semibold"
                   >
                     #{cat}
                   </span>
@@ -187,11 +171,11 @@ export const LandingPage = () => {
           </div>
 
           {/* Feature Block 2: Instant Public ID Tracker Card */}
-          <div className="bg-white dark:bg-wine-900 p-6 sm:p-8 rounded-3xl border border-cream-300 dark:border-peach-400/20 relative overflow-hidden flex flex-col justify-between shadow-warm hover:shadow-warm-lg transition-all">
+          <div className="bg-white/90 dark:bg-wine-900/90 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-peach-300/40 dark:border-peach-400/20 relative overflow-hidden flex flex-col justify-between shadow-warm hover:shadow-warm-lg transition-all">
             <div className="absolute top-0 right-0 w-32 h-32 bg-peach-100/30 dark:bg-burgundy-600/10 rounded-full blur-2xl pointer-events-none"></div>
 
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-cream-100 dark:bg-wine-800 text-burgundy-800 dark:text-peach-300 border border-cream-300 dark:border-peach-400/30 flex items-center justify-center mb-4 shadow-sm">
+              <div className="w-12 h-12 rounded-2xl bg-cream-100/80 dark:bg-wine-800 text-burgundy-800 dark:text-peach-300 border border-cream-300/80 dark:border-peach-400/30 flex items-center justify-center mb-4 shadow-xs">
                 <Search className="w-6 h-6 text-burgundy-700 dark:text-peach-400" />
               </div>
               <span className="text-xs uppercase font-extrabold tracking-wider text-burgundy-800 dark:text-peach-400">
@@ -200,19 +184,19 @@ export const LandingPage = () => {
               <h3 className="text-xl font-bold text-wine-900 dark:text-cream-50 mt-1 mb-2">
                 Track by Public Complaint ID
               </h3>
-              <p className="text-xs sm:text-sm text-wine-700 dark:text-cream-300 leading-relaxed mb-4">
+              <p className="text-xs sm:text-sm text-wine-700 dark:text-cream-300 leading-relaxed mb-4 font-normal">
                 Enter your public ID (e.g., <code className="text-burgundy-800 dark:text-peach-300 font-mono font-bold bg-peach-50 dark:bg-wine-950 px-1.5 py-0.5 rounded border border-peach-200 dark:border-peach-400/20">CV-A82F91</code>) to check live status, department assignment, and resolution history instantly.
               </p>
 
               {/* Tracker Form */}
-              <form onSubmit={handleTrackSubmit} className="space-y-3 mb-4">
+              <form onSubmit={handleTrackSubmit} className="space-y-3 mb-2">
                 <div className="flex gap-2">
                   <input
                     type="text"
                     value={trackInputId}
                     onChange={(e) => setTrackInputId(e.target.value)}
                     placeholder="Enter Complaint ID (e.g. CV-A82F91)"
-                    className="flex-1 bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-wine-900 dark:text-cream-100 placeholder-wine-400 dark:placeholder-wine-500 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 focus:ring-1 focus:ring-burgundy-700"
+                    className="flex-1 bg-cream-50/80 dark:bg-wine-950/80 border border-cream-300 dark:border-peach-400/20 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-wine-900 dark:text-cream-100 placeholder-wine-400 dark:placeholder-wine-500 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 focus:ring-1 focus:ring-burgundy-700"
                   />
                   <button
                     type="submit"
@@ -232,7 +216,7 @@ export const LandingPage = () => {
 
               {/* Instant Result Preview */}
               {trackingResult && (
-                <div className="p-4 rounded-xl bg-cream-50 dark:bg-wine-950 border border-peach-300 dark:border-peach-400/30 text-xs space-y-2 animate-fadeIn mb-4 shadow-sm">
+                <div className="p-4 rounded-xl bg-cream-50 dark:bg-wine-950 border border-peach-300 dark:border-peach-400/30 text-xs space-y-2 animate-fadeIn shadow-xs">
                   <div className="flex items-center justify-between">
                     <span className="font-mono font-bold text-burgundy-800 dark:text-peach-300">{trackingResult.publicComplaintId}</span>
                     <StatusBadge status={trackingResult.status} />
@@ -248,19 +232,11 @@ export const LandingPage = () => {
                 </div>
               )}
             </div>
-
-            <Link
-              to={isAuthenticated && isStudent ? '/my-complaints' : '/login'}
-              className="inline-flex items-center justify-center gap-2 w-full py-3 btn-glass btn-glass-subtle text-xs sm:text-sm"
-            >
-              <FileText className="w-4 h-4 text-burgundy-700 dark:text-peach-400" />
-              <span>View All My Reports</span>
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* Feature Block 3: Interactive Real-Time AI Triage Simulator & ThreeUI GlassAiButton Scene */}
+      {/* Feature Block 3: Interactive Real-Time AI Triage Simulator */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="bg-white dark:bg-wine-900 p-6 sm:p-10 rounded-3xl border border-cream-300 dark:border-peach-400/20 shadow-warm">
           <div className="flex items-center justify-between flex-wrap gap-4 mb-6">

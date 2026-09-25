@@ -234,7 +234,7 @@ const EFFECTS = {
     title: "Particle Network",
     source: particleNetworkSource,
     supportsMode: true,
-    background: (mode) => (mode === "light" ? LIGHT_PAPER : "#05070d"),
+    background: (mode) => (mode === "light" ? "transparent" : "#05070d"),
     targets: [{ selector: "#particle-canvas", role: "background" }],
     patch(source, { size, length, density, mode }) {
       let next = source
@@ -244,10 +244,18 @@ const EFFECTS = {
         .replace("const fov = 300;", `const fov = ${Math.round(300 / Math.max(0.4, size))};`);
       if (mode === "light") {
         next = next
-          .replace("ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';", "ctx.fillStyle = 'rgba(238, 241, 246, 0.55)';")
+          .replace("ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';", "ctx.fillStyle = 'rgba(253, 251, 247, 0.35)';")
           .replace(
             "const hue = Math.random() > 0.5 ? '200, 220, 255' : '106, 157, 237';",
-            "const hue = Math.random() > 0.5 ? '36, 48, 68' : '37, 99, 235';",
+            "const hue = Math.random() > 0.5 ? '107, 31, 50' : '116, 18, 43';",
+          )
+          .replace(
+            "ctx.strokeStyle = this.color.replace('rgb', 'rgba').replace(')', `, ${opacity * 0.9})`);",
+            "ctx.strokeStyle = this.color.replace('rgb', 'rgba').replace(')', `, ${opacity * 0.95})`);",
+          )
+          .replace(
+            "ctx.lineWidth = Math.max(0.25, (1 - (this.z / 1000)) * 0.4);",
+            "ctx.lineWidth = Math.max(0.35, (1 - (this.z / 1000)) * 0.6);",
           );
       }
       return next;

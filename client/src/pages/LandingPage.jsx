@@ -17,15 +17,16 @@ import {
 } from 'lucide-react';
 import { StatusBadge, SeverityBadge } from '../components/common/StatusBadge';
 import { PrivacyExplainerModal } from '../components/common/PrivacyExplainerModal';
+import { useTheme } from '../context/ThemeContext';
 import { ConstellationField } from '@designcodeio/threeui';
 import '@designcodeio/threeui/style.css';
 
-export function Scene() {
+export function Scene({ mode = "dark" }) {
   return (
     <div className="shader-frame">
       <ConstellationField
         variant="particle-network"
-        mode="dark"
+        mode={mode}
         speed={1.00}
         size={1.00}
         length={1.00}
@@ -41,6 +42,7 @@ export function Scene() {
 
 export const LandingPage = () => {
   const { isAuthenticated, isStudent } = useAuth();
+  const { isDark } = useTheme();
   const navigate = useNavigate();
   const [featuredIssues, setFeaturedIssues] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -114,8 +116,8 @@ export const LandingPage = () => {
   return (
     <div className="relative min-h-screen">
       {/* ThreeUI ConstellationField Particle Network Animated Background Layer */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30 dark:opacity-45">
-        <Scene />
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-60 dark:opacity-45">
+        <Scene mode={isDark ? "dark" : "light"} />
       </div>
 
       {/* Foreground UI Layer */}

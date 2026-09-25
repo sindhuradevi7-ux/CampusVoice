@@ -237,25 +237,32 @@ const EFFECTS = {
     background: (mode) => (mode === "light" ? "transparent" : "#05070d"),
     targets: [{ selector: "#particle-canvas", role: "background" }],
     patch(source, { size, length, density, mode }) {
+      const strokeWidth = Number((0.45 * Math.max(0.8, size)).toFixed(2));
+      const dotScale = Number((1.85 * Math.max(0.8, size)).toFixed(2));
       let next = source
-        .replace("const particleCount = 200;", `const particleCount = ${scaleCount(200, density, 40)};`)
+        .replace("const particleCount = 200;", `const particleCount = ${scaleCount(220, density, 40)};`)
         .replace("this.length = Math.random() * 2 + 0.5;", `this.length = (Math.random() * 2 + 0.5) * ${length};`)
         .replace("this.z -= this.speed;", "this.z -= this.speed * ((window.__SF_CONTROLS&&window.__SF_CONTROLS.speed)||1);")
-        .replace("const fov = 300;", `const fov = ${Math.round(300 / Math.max(0.4, size))};`);
+        .replace("const fov = 300;", `const fov = 300;`)
+        .replace(
+          "ctx.stroke();",
+          `ctx.stroke();\n                ctx.fillStyle = ctx.strokeStyle;\n                ctx.beginPath();\n                ctx.arc(px, py, Math.max(0.8, (1 - (this.z / 1000)) * ${dotScale}), 0, Math.PI * 2);\n                ctx.fill();`,
+        )
+        .replace(
+          "ctx.lineWidth = Math.max(0.25, (1 - (this.z / 1000)) * 0.4);",
+          `ctx.lineWidth = Math.max(0.25, (1 - (this.z / 1000)) * ${strokeWidth});`,
+        );
+
       if (mode === "light") {
         next = next
-          .replace("ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';", "ctx.fillStyle = 'rgba(253, 251, 247, 0.35)';")
+          .replace("ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';", "ctx.fillStyle = 'rgba(253, 251, 247, 0.30)';")
           .replace(
             "const hue = Math.random() > 0.5 ? '200, 220, 255' : '106, 157, 237';",
             "const hue = Math.random() > 0.5 ? '107, 31, 50' : '116, 18, 43';",
           )
           .replace(
             "ctx.strokeStyle = this.color.replace('rgb', 'rgba').replace(')', `, ${opacity * 0.9})`);",
-            "ctx.strokeStyle = this.color.replace('rgb', 'rgba').replace(')', `, ${opacity * 0.95})`);",
-          )
-          .replace(
-            "ctx.lineWidth = Math.max(0.25, (1 - (this.z / 1000)) * 0.4);",
-            "ctx.lineWidth = Math.max(0.35, (1 - (this.z / 1000)) * 0.6);",
+            "ctx.strokeStyle = this.color.replace('rgb', 'rgba').replace(')', `, ${opacity * 0.96})`);",
           );
       }
       return next;

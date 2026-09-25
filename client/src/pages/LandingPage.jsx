@@ -27,10 +27,10 @@ export function Scene({ mode = "dark" }) {
       <ConstellationField
         variant="particle-network"
         mode={mode}
-        speed={1.00}
-        size={1.00}
-        length={1.00}
-        density={1.00}
+        speed={1.40}
+        size={1.60}
+        length={1.10}
+        density={1.15}
         opacity={1.00}
         hue={0}
         saturation={1.00}
@@ -116,7 +116,7 @@ export const LandingPage = () => {
   return (
     <div className="relative min-h-screen">
       {/* ThreeUI ConstellationField Particle Network Animated Background Layer */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-60 dark:opacity-45">
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-80 dark:opacity-60">
         <Scene mode={isDark ? "dark" : "light"} />
       </div>
 

@@ -60,7 +60,7 @@ export const Navbar = () => {
                   aria-label="Home" 
                   className="flex items-center group transition-transform duration-200"
                 >
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 aspect-square rounded-full bg-[#FAF6EE] dark:bg-wine-900 shadow-xs border border-burgundy-100/80 dark:border-peach-400/20 group-hover:border-burgundy-300 dark:group-hover:border-peach-400/40 group-hover:shadow-sm transition-all flex items-center justify-center p-1.5 overflow-hidden">
+                  <div className="w-12 h-12 sm:w-13 sm:h-13 aspect-square rounded-full bg-[#FAF7EE] dark:bg-wine-900 shadow-xs border border-burgundy-200/70 dark:border-peach-400/20 group-hover:border-burgundy-400 dark:group-hover:border-peach-400/50 group-hover:shadow-sm transition-all flex items-center justify-center p-1.5 overflow-hidden">
                     <BrandLogo className="w-full h-full" showGlow={false} />
                   </div>
                 </Link>
@@ -76,7 +76,7 @@ export const Navbar = () => {
             </div>
 
             {/* Desktop Navigation (Center/Middle Group) */}
-            <div className="hidden md:flex items-center gap-3 lg:gap-5">
+            <div className="hidden md:flex items-center gap-3.5 lg:gap-6">
               <Link
                 to="/issues"
                 className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
@@ -141,7 +141,7 @@ export const Navbar = () => {
             </div>
 
             {/* Right Action Badges, Quick Track, Theme Toggle, Auth Profile & Far-Right Logout */}
-            <div className="hidden md:flex items-center gap-2.5 lg:gap-3.5 shrink-0">
+            <div className="hidden md:flex items-center gap-3 lg:gap-4 shrink-0">
               {/* Quick ID Tracker Box */}
               {showTrackInput ? (
                 <form onSubmit={handleQuickTrackSubmit} className="flex items-center gap-1.5 animate-fadeIn">
@@ -219,7 +219,7 @@ export const Navbar = () => {
                   </div>
                 </Link>
               ) : (
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2.5">
                   <Link
                     to="/login"
                     className="px-3.5 py-1.5 btn-glass btn-glass-subtle text-xs font-bold"
@@ -240,7 +240,7 @@ export const Navbar = () => {
                 <button
                   onClick={handleLogout}
                   title="Logout"
-                  className="p-2 ml-1 text-wine-600 dark:text-cream-400 hover:text-burgundy-800 dark:hover:text-peach-300 hover:bg-peach-100/60 dark:hover:bg-wine-800 rounded-xl transition-colors shrink-0"
+                  className="p-2 ml-1.5 text-wine-600 dark:text-cream-400 hover:text-burgundy-800 dark:hover:text-peach-300 hover:bg-peach-100/60 dark:hover:bg-wine-800 rounded-xl transition-colors shrink-0"
                 >
                   <LogOut className="w-4 h-4" />
                 </button>

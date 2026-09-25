@@ -1,5 +1,3 @@
-@import "./shaders/threeui.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -33,20 +31,9 @@
   }
 }
 
-/* ThreeUI Shader Frame Container */
-.shader-frame {
-  position: relative;
-  width: 100%;
-  height: 280px;
-  max-width: 580px;
-  margin: 0 auto;
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow: 0 16px 40px -10px rgba(27, 6, 13, 0.4), 0 0 0 1px rgba(245, 159, 135, 0.2);
-}
-
 /* =========================================================================
-   GlassAiButton Visual Treatment for Application Buttons
+   Project-Specific Glassmorphism Button Design System
+   (Burgundy / Deep Wine + Peach / Coral + Warm White / Cream)
    ========================================================================= */
 
 /* Base Glass Button */
@@ -57,14 +44,15 @@
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  border-radius: 9999px;
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 0.75rem; /* rounded-xl */
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
   cursor: pointer;
   outline: none;
   isolation: isolate;
+  text-decoration: none;
 }
 
 .btn-glass:focus-visible,
@@ -75,87 +63,84 @@
 
 .btn-glass:disabled,
 .glass-btn:disabled {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: not-allowed;
   transform: none !important;
   box-shadow: none !important;
 }
 
-/* Primary Glass Button (Burgundy Deep Wine Glass with Luminous Glow) */
+/* 1. Primary Glass Button (Strong Burgundy Glass with subtle inner rim highlight & warm hover elevation) */
 .btn-glass-primary,
 .glass-btn-primary {
-  background: linear-gradient(135deg, rgba(140, 21, 51, 0.92) 0%, rgba(90, 14, 33, 0.96) 100%);
+  background: linear-gradient(135deg, rgba(140, 21, 51, 0.94) 0%, rgba(90, 14, 33, 0.98) 100%);
   color: #fff9f6;
-  border: 1px solid rgba(255, 190, 152, 0.35);
+  border: 1px solid rgba(255, 190, 152, 0.32);
   box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.3),
-    0 4px 16px -2px rgba(82, 11, 28, 0.4);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 12px rgba(255, 190, 152, 0.35);
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25),
+    0 4px 14px -2px rgba(82, 11, 28, 0.35);
 }
 
 .btn-glass-primary:hover:not(:disabled),
 .glass-btn-primary:hover:not(:disabled) {
-  background: linear-gradient(135deg, rgba(168, 25, 61, 0.95) 0%, rgba(116, 18, 43, 0.98) 100%);
-  border-color: rgba(255, 190, 152, 0.6);
+  background: linear-gradient(135deg, rgba(168, 25, 61, 0.96) 0%, rgba(116, 18, 43, 0.98) 100%);
+  border-color: rgba(255, 190, 152, 0.55);
   transform: translateY(-1.5px);
   box-shadow: 
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.65),
-    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.25),
-    0 8px 26px -2px rgba(235, 127, 98, 0.4),
-    0 0 18px 2px rgba(245, 159, 135, 0.3);
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.55),
+    0 8px 22px -3px rgba(116, 18, 43, 0.45),
+    0 0 16px 1px rgba(245, 159, 135, 0.25);
 }
 
 .btn-glass-primary:active:not(:disabled),
 .glass-btn-primary:active:not(:disabled) {
   transform: translateY(0.5px) scale(0.985);
   box-shadow: 
-    inset 0 1px 2px 0 rgba(0, 0, 0, 0.4),
-    0 2px 8px rgba(82, 11, 28, 0.3);
+    inset 0 1px 2px 0 rgba(0, 0, 0, 0.35),
+    0 2px 6px rgba(82, 11, 28, 0.3);
 }
 
-/* Secondary Glass Button (Peach Coral Luminous Glass) */
+/* 2. Secondary Glass Button (Warm White / Cream Translucent Glass with Burgundy Border & Text) */
 .btn-glass-secondary,
 .glass-btn-secondary {
-  background: linear-gradient(135deg, rgba(255, 190, 152, 0.35) 0%, rgba(245, 159, 135, 0.2) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(253, 251, 247, 0.7) 100%);
   color: #520b1c;
-  border: 1px solid rgba(245, 159, 135, 0.55);
+  border: 1px solid rgba(116, 18, 43, 0.2);
   box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.6),
-    inset 0 -1px 1.5px 0 rgba(116, 18, 43, 0.1),
-    0 4px 14px -3px rgba(245, 159, 135, 0.3);
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.8),
+    0 3px 12px -2px rgba(82, 11, 28, 0.08);
 }
 
 .dark .btn-glass-secondary,
 .dark .glass-btn-secondary {
-  background: linear-gradient(135deg, rgba(255, 190, 152, 0.22) 0%, rgba(140, 21, 51, 0.35) 100%);
-  color: #ffdabf;
-  border: 1px solid rgba(255, 190, 152, 0.4);
+  background: linear-gradient(135deg, rgba(58, 20, 30, 0.85) 0%, rgba(35, 10, 18, 0.85) 100%);
+  color: #ffbe98;
+  border: 1px solid rgba(255, 190, 152, 0.28);
   box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.35),
-    0 4px 14px -3px rgba(0, 0, 0, 0.5);
-  text-shadow: 0 0 10px rgba(255, 190, 152, 0.4);
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
+    0 4px 14px -3px rgba(0, 0, 0, 0.45);
 }
 
 .btn-glass-secondary:hover:not(:disabled),
 .glass-btn-secondary:hover:not(:disabled) {
-  background: linear-gradient(135deg, rgba(255, 190, 152, 0.55) 0%, rgba(245, 159, 135, 0.35) 100%);
-  border-color: rgba(235, 127, 98, 0.8);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 237, 232, 0.9) 100%);
+  border-color: rgba(140, 21, 51, 0.45);
   transform: translateY(-1.5px);
   box-shadow: 
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.8),
-    0 8px 22px -2px rgba(245, 159, 135, 0.45),
-    0 0 14px 1px rgba(255, 190, 152, 0.35);
+    inset 0 1px 1.5px 0 #ffffff,
+    0 6px 18px -2px rgba(82, 11, 28, 0.14),
+    0 0 12px 0 rgba(245, 159, 135, 0.2);
 }
 
 .dark .btn-glass-secondary:hover:not(:disabled),
 .dark .glass-btn-secondary:hover:not(:disabled) {
-  background: linear-gradient(135deg, rgba(255, 190, 152, 0.35) 0%, rgba(168, 25, 61, 0.45) 100%);
-  border-color: rgba(255, 190, 152, 0.7);
+  background: linear-gradient(135deg, rgba(83, 36, 48, 0.9) 0%, rgba(58, 20, 30, 0.9) 100%);
+  border-color: rgba(255, 190, 152, 0.55);
+  transform: translateY(-1.5px);
   box-shadow: 
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.5),
-    0 8px 22px -2px rgba(0, 0, 0, 0.6),
-    0 0 16px 2px rgba(245, 159, 135, 0.3);
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.3),
+    0 8px 20px -2px rgba(0, 0, 0, 0.6),
+    0 0 14px 1px rgba(245, 159, 135, 0.25);
 }
 
 .btn-glass-secondary:active:not(:disabled),
@@ -163,44 +148,129 @@
   transform: translateY(0.5px) scale(0.985);
 }
 
-/* Subtle / Neutral Glass Button */
-.btn-glass-subtle,
-.glass-btn-subtle {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 247, 244, 0.6) 100%);
-  color: #3b0914;
-  border: 1px solid rgba(116, 18, 43, 0.15);
+/* 3. Accent Glass Button (Peach / Coral Glass with Deep Wine Text & Glow) */
+.btn-glass-accent,
+.glass-btn-accent {
+  background: linear-gradient(135deg, rgba(255, 190, 152, 0.4) 0%, rgba(245, 159, 135, 0.25) 100%);
+  color: #520b1c;
+  border: 1px solid rgba(245, 159, 135, 0.55);
   box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.8),
-    0 2px 10px -2px rgba(82, 11, 28, 0.08);
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.65),
+    0 3px 12px -2px rgba(245, 159, 135, 0.25);
+}
+
+.dark .btn-glass-accent,
+.dark .glass-btn-accent {
+  background: linear-gradient(135deg, rgba(255, 190, 152, 0.25) 0%, rgba(140, 21, 51, 0.35) 100%);
+  color: #ffdabf;
+  border: 1px solid rgba(255, 190, 152, 0.4);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.3),
+    0 4px 14px -3px rgba(0, 0, 0, 0.5);
+}
+
+.btn-glass-accent:hover:not(:disabled),
+.glass-btn-accent:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(255, 190, 152, 0.6) 0%, rgba(245, 159, 135, 0.4) 100%);
+  border-color: rgba(235, 127, 98, 0.8);
+  transform: translateY(-1.5px);
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.8),
+    0 8px 20px -2px rgba(245, 159, 135, 0.4),
+    0 0 14px 1px rgba(255, 190, 152, 0.35);
+}
+
+.dark .btn-glass-accent:hover:not(:disabled),
+.dark .glass-btn-accent:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(255, 190, 152, 0.35) 0%, rgba(168, 25, 61, 0.45) 100%);
+  border-color: rgba(255, 190, 152, 0.7);
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45),
+    0 8px 20px -2px rgba(0, 0, 0, 0.6),
+    0 0 16px 2px rgba(245, 159, 135, 0.3);
+}
+
+.btn-glass-accent:active:not(:disabled),
+.glass-btn-accent:active:not(:disabled) {
+  transform: translateY(0.5px) scale(0.985);
+}
+
+/* 4. Ghost / Subtle Glass Button (Minimal visual weight for secondary / inline actions) */
+.btn-glass-subtle,
+.glass-btn-subtle,
+.btn-glass-ghost,
+.glass-btn-ghost {
+  background: rgba(255, 255, 255, 0.5);
+  color: #520b1c;
+  border: 1px solid rgba(116, 18, 43, 0.12);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .dark .btn-glass-subtle,
-.dark .glass-btn-subtle {
-  background: linear-gradient(135deg, rgba(58, 20, 30, 0.8) 0%, rgba(35, 10, 18, 0.8) 100%);
+.dark .glass-btn-subtle,
+.dark .btn-glass-ghost,
+.dark .glass-btn-ghost {
+  background: rgba(45, 14, 24, 0.5);
   color: #fdfbf7;
-  border: 1px solid rgba(255, 190, 152, 0.2);
-  box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
-    0 2px 10px -2px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 190, 152, 0.18);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .btn-glass-subtle:hover:not(:disabled),
-.glass-btn-subtle:hover:not(:disabled) {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 237, 232, 0.85) 100%);
-  border-color: rgba(140, 21, 51, 0.35);
+.glass-btn-subtle:hover:not(:disabled),
+.btn-glass-ghost:hover:not(:disabled),
+.glass-btn-ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(140, 21, 51, 0.3);
   transform: translateY(-1px);
   box-shadow: 
     inset 0 1px 1px 0 #ffffff,
-    0 6px 18px -2px rgba(82, 11, 28, 0.12);
+    0 4px 12px -2px rgba(82, 11, 28, 0.1);
 }
 
 .dark .btn-glass-subtle:hover:not(:disabled),
-.dark .glass-btn-subtle:hover:not(:disabled) {
-  background: linear-gradient(135deg, rgba(83, 36, 48, 0.9) 0%, rgba(58, 20, 30, 0.9) 100%);
-  border-color: rgba(255, 190, 152, 0.4);
+.dark .glass-btn-subtle:hover:not(:disabled),
+.dark .btn-glass-ghost:hover:not(:disabled),
+.dark .glass-btn-ghost:hover:not(:disabled) {
+  background: rgba(83, 36, 48, 0.7);
+  border-color: rgba(255, 190, 152, 0.35);
+  transform: translateY(-1px);
   box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.3),
-    0 6px 18px -2px rgba(0, 0, 0, 0.6);
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+    0 4px 14px -2px rgba(0, 0, 0, 0.5);
+}
+
+/* 5. Icon Glass Button (Compact circular or rounded-square for quick actions) */
+.btn-glass-icon,
+.glass-btn-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border-radius: 0.625rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 6. Danger / Destructive Glass Button (Deep Ruby/Wine Glass for destructive confirmations) */
+.btn-glass-danger,
+.glass-btn-danger {
+  background: linear-gradient(135deg, rgba(180, 20, 45, 0.92) 0%, rgba(130, 10, 30, 0.96) 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 150, 150, 0.35);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.4),
+    0 4px 14px -2px rgba(180, 20, 45, 0.35);
+}
+
+.btn-glass-danger:hover:not(:disabled),
+.glass-btn-danger:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(200, 25, 55, 0.95) 0%, rgba(150, 15, 38, 0.98) 100%);
+  border-color: rgba(255, 180, 180, 0.55);
+  transform: translateY(-1.5px);
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.55),
+    0 8px 22px -3px rgba(180, 20, 45, 0.45);
 }
 
 /* Glassmorphism & Surface utilities tuned for Warm Cream + Burgundy + Peach */

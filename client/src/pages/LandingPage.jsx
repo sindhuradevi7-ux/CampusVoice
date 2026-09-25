@@ -15,8 +15,6 @@ import {
   PlusCircle,
   Sparkles
 } from 'lucide-react';
-import { GlassAiButton } from '@designcodeio/threeui';
-import '@designcodeio/threeui/style.css';
 import { StatusBadge, SeverityBadge } from '../components/common/StatusBadge';
 import { PrivacyExplainerModal } from '../components/common/PrivacyExplainerModal';
 
@@ -355,20 +353,6 @@ export const LandingPage = () => {
             </div>
           </div>
 
-          {/* ThreeUI Interactive Glass AI Button Scene */}
-          <div className="mt-10 pt-8 border-t border-cream-300 dark:border-peach-400/20 text-center">
-            <div className="max-w-md mx-auto mb-4">
-              <span className="text-xs uppercase font-extrabold tracking-wider text-burgundy-800 dark:text-peach-300">
-                Interactive ThreeUI Component
-              </span>
-              <h3 className="text-sm font-bold text-wine-900 dark:text-cream-50 mt-0.5">
-                Glass AI Galaxy Shader Study
-              </h3>
-            </div>
-            <div className="shader-frame">
-              <GlassAiButton />
-            </div>
-          </div>
         </div>
       </section>
 

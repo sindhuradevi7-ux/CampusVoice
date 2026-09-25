@@ -1,7 +1,7 @@
 import React from 'react';
 import logoImg from '../../assets/logo.png';
 
-export const BrandLogo = ({ className = "w-11 h-11", showGlow = false, alt = "Campus Voice Brand Mark" }) => {
+export const BrandLogo = ({ className = "w-12 h-12", showGlow = false, alt = "Campus Voice Brand Mark" }) => {
   return (
     <div className={`relative inline-flex items-center justify-center rounded-full overflow-hidden shrink-0 aspect-square ${className}`}>
       {showGlow && (
@@ -10,7 +10,7 @@ export const BrandLogo = ({ className = "w-11 h-11", showGlow = false, alt = "Ca
       <img
         src={logoImg}
         alt={alt}
-        className="w-full h-full object-cover rounded-full select-none"
+        className="w-full h-full object-cover scale-135 rounded-full select-none"
         draggable={false}
       />
     </div>

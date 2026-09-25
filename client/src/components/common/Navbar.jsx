@@ -60,7 +60,7 @@ export const Navbar = () => {
                   aria-label="Home" 
                   className="flex items-center group transition-transform duration-200"
                 >
-                  <div className="w-12 h-12 sm:w-13 sm:h-13 aspect-square rounded-full bg-[#FAF7EE] dark:bg-wine-900 shadow-xs border border-burgundy-200/70 dark:border-peach-400/20 group-hover:border-burgundy-400 dark:group-hover:border-peach-400/50 group-hover:shadow-sm transition-all flex items-center justify-center p-1.5 overflow-hidden">
+                  <div className="w-13 h-13 sm:w-14 sm:h-14 aspect-square rounded-full bg-[#FAF7EE] dark:bg-wine-900 shadow-sm border border-burgundy-200/90 dark:border-peach-400/30 group-hover:border-burgundy-400 dark:group-hover:border-peach-400/60 group-hover:shadow-md transition-all flex items-center justify-center overflow-hidden">
                     <BrandLogo className="w-full h-full" showGlow={false} />
                   </div>
                 </Link>

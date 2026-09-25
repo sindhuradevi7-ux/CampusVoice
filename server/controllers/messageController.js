@@ -12,10 +12,11 @@ export const getMessagesForComplaint = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    // Find complaint by MongoDB ID or Public ID
-    const complaint = await Complaint.findOne({
-      $or: [{ _id: id.match(/^[0-9a-fA-F]{24}$/) ? id : null }, { publicComplaintId: id }],
-    });
+    // Find complaint by MongoDB ID or Public ID safely
+    const isObjectId = id && /^[0-9a-fA-F]{24}$/.test(id);
+    const query = isObjectId ? { $or: [{ _id: id }, { publicComplaintId: id.toUpperCase() }] } : { publicComplaintId: id.toUpperCase() };
+
+    const complaint = await Complaint.findOne(query);
 
     if (!complaint) {
       return res.status(404).json({
@@ -72,9 +73,10 @@ export const postMessage = async (req, res, next) => {
       });
     }
 
-    const complaint = await Complaint.findOne({
-      $or: [{ _id: id.match(/^[0-9a-fA-F]{24}$/) ? id : null }, { publicComplaintId: id }],
-    });
+    const isObjectId = id && /^[0-9a-fA-F]{24}$/.test(id);
+    const query = isObjectId ? { $or: [{ _id: id }, { publicComplaintId: id.toUpperCase() }] } : { publicComplaintId: id.toUpperCase() };
+
+    const complaint = await Complaint.findOne(query);
 
     if (!complaint) {
       return res.status(404).json({

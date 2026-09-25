@@ -85,9 +85,10 @@ export const getIssueById = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const issue = await IssueCluster.findOne({
-      $or: [{ _id: id.match(/^[0-9a-fA-F]{24}$/) ? id : null }, { publicIssueId: id }],
-    });
+    const isObjectId = id && /^[0-9a-fA-F]{24}$/.test(id);
+    const query = isObjectId ? { $or: [{ _id: id }, { publicIssueId: id.toUpperCase() }] } : { publicIssueId: id.toUpperCase() };
+
+    const issue = await IssueCluster.findOne(query);
 
     if (!issue) {
       return res.status(404).json({
@@ -123,9 +124,10 @@ export const supportIssue = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const issue = await IssueCluster.findOne({
-      $or: [{ _id: id.match(/^[0-9a-fA-F]{24}$/) ? id : null }, { publicIssueId: id }],
-    });
+    const isObjectId = id && /^[0-9a-fA-F]{24}$/.test(id);
+    const query = isObjectId ? { $or: [{ _id: id }, { publicIssueId: id.toUpperCase() }] } : { publicIssueId: id.toUpperCase() };
+
+    const issue = await IssueCluster.findOne(query);
 
     if (!issue) {
       return res.status(404).json({

@@ -4,25 +4,48 @@ import { authAPI } from '../services/api';
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem('campusvoice_token') || null);
+  const [user, setUser] = useState(() => {
+    try {
+      const stored = localStorage.getItem('campusvoice_user');
+      return stored && stored !== 'undefined' ? JSON.parse(stored) : null;
+    } catch {
+      return null;
+    }
+  });
+  const [token, setToken] = useState(() => {
+    const storedToken = localStorage.getItem('campusvoice_token');
+    return storedToken && storedToken !== 'null' && storedToken !== 'undefined' ? storedToken : null;
+  });
   const [loading, setLoading] = useState(true);
+
+  const logout = () => {
+    localStorage.removeItem('campusvoice_token');
+    localStorage.removeItem('campusvoice_user');
+    setToken(null);
+    setUser(null);
+  };
 
   useEffect(() => {
     const initializeAuth = async () => {
       const storedToken = localStorage.getItem('campusvoice_token');
-      if (storedToken) {
+      if (storedToken && storedToken !== 'null' && storedToken !== 'undefined' && storedToken !== '') {
         try {
           const res = await authAPI.getMe();
           if (res.data?.success && res.data?.user) {
             setUser(res.data.user);
+            localStorage.setItem('campusvoice_user', JSON.stringify(res.data.user));
           } else {
             logout();
           }
         } catch (error) {
-          console.error('Failed to verify stored session:', error);
-          logout();
+          console.error('Session verification notice:', error.message);
+          // Only clear if unauthenticated (401), not if network glitch / temporary cold start
+          if (error.response?.status === 401) {
+            logout();
+          }
         }
+      } else {
+        logout();
       }
       setLoading(false);
     };
@@ -70,18 +93,11 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem('campusvoice_token');
-    localStorage.removeItem('campusvoice_user');
-    setToken(null);
-    setUser(null);
-  };
-
   const value = {
     user,
     token,
     loading,
-    isAuthenticated: !!user,
+    isAuthenticated: !!user && !!token,
     isStudent: user?.role === 'student',
     isAdmin: user?.role === 'admin',
     login,

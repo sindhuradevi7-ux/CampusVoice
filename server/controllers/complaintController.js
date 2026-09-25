@@ -142,7 +142,12 @@ export const getComplaintByPublicId = async (req, res, next) => {
   try {
     const { publicComplaintId } = req.params;
 
-    const complaint = await Complaint.findOne({ publicComplaintId })
+    const isObjectId = publicComplaintId && /^[0-9a-fA-F]{24}$/.test(publicComplaintId);
+    const query = isObjectId
+      ? { $or: [{ _id: publicComplaintId }, { publicComplaintId: publicComplaintId.toUpperCase() }] }
+      : { publicComplaintId: publicComplaintId.toUpperCase() };
+
+    const complaint = await Complaint.findOne(query)
       .populate('issueClusterId', 'publicIssueId title summary category location severity status affectedCount assignedDepartment statusHistory');
 
     if (!complaint) {
@@ -201,9 +206,12 @@ export const trackComplaintPublicly = async (req, res, next) => {
   try {
     const { publicComplaintId } = req.params;
 
-    const complaint = await Complaint.findOne({
-      publicComplaintId: publicComplaintId.trim().toUpperCase(),
-    }).populate('issueClusterId', 'publicIssueId title status affectedCount assignedDepartment');
+    const isObjectId = publicComplaintId && /^[0-9a-fA-F]{24}$/.test(publicComplaintId);
+    const query = isObjectId
+      ? { $or: [{ _id: publicComplaintId }, { publicComplaintId: publicComplaintId.trim().toUpperCase() }] }
+      : { publicComplaintId: publicComplaintId.trim().toUpperCase() };
+
+    const complaint = await Complaint.findOne(query).populate('issueClusterId', 'publicIssueId title status affectedCount assignedDepartment');
 
     if (!complaint) {
       return res.status(404).json({

@@ -1,17 +1,16 @@
 import React from 'react';
-import { Lock, Database, Code2 } from 'lucide-react';
-import { BrandLogo } from './BrandLogo';
+import { Lock, Database, Code2, ShieldCheck } from 'lucide-react';
 
 export const Footer = () => {
   return (
     <footer className="border-t border-cream-300 dark:border-peach-400/10 bg-cream-100/90 dark:bg-wine-950 mt-auto py-12 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Brand Logo & Mission */}
+          {/* Mission */}
           <div className="md:col-span-2 space-y-3.5">
-            <div className="flex items-center gap-3">
-              <div className="p-1 rounded-xl bg-white dark:bg-wine-900 border border-cream-300 dark:border-peach-400/20 shadow-sm">
-                <BrandLogo className="w-8 h-8" />
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-xl bg-peach-100 dark:bg-wine-900 border border-peach-300 dark:border-peach-400/20 text-burgundy-800 dark:text-peach-300 shadow-sm">
+                <ShieldCheck className="w-5 h-5 text-burgundy-700 dark:text-peach-400" />
               </div>
               <span className="font-bold text-base text-wine-900 dark:text-cream-50">
                 Verified Anonymous Grievance & Resolution Platform

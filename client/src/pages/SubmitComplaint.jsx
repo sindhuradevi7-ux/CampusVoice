@@ -187,7 +187,7 @@ export const SubmitComplaint = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               to={`/complaints/${submittedComplaint.publicComplaintId}`}
-              className="w-full sm:w-auto px-6 py-3 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 text-sm font-bold rounded-xl shadow-warm flex items-center justify-center gap-2"
+              className="btn-glass btn-glass-primary w-full sm:w-auto px-6 py-3 text-cream-50 text-sm font-bold rounded-xl shadow-warm flex items-center justify-center gap-2"
             >
               <span>Track Resolution & Timeline</span>
               <ArrowRight className="w-4 h-4 text-peach-300" />
@@ -207,7 +207,7 @@ export const SubmitComplaint = () => {
                 setAiSuggestion(null);
                 setSimilarIssues([]);
               }}
-              className="w-full sm:w-auto px-5 py-3 bg-cream-100 dark:bg-wine-950 hover:bg-cream-200 dark:hover:bg-wine-800 text-wine-900 dark:text-cream-100 text-sm font-bold rounded-xl border border-cream-300 dark:border-peach-400/20"
+              className="btn-glass btn-glass-secondary w-full sm:w-auto px-5 py-3 text-wine-900 dark:text-cream-100 text-sm font-bold rounded-xl"
             >
               Submit Another Report
             </button>
@@ -238,7 +238,7 @@ export const SubmitComplaint = () => {
             type="button"
             onClick={handleRunAIAnalysis}
             disabled={aiLoading || !formData.description.trim()}
-            className="px-3.5 py-2 bg-peach-100 dark:bg-wine-800 hover:bg-peach-200 dark:hover:bg-wine-700 text-burgundy-950 dark:text-peach-200 border border-peach-300 dark:border-peach-400/30 disabled:opacity-40 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
+            className="btn-glass btn-glass-secondary px-3.5 py-2 text-burgundy-950 dark:text-peach-200 disabled:opacity-40 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
           >
             <Sparkles className={`w-3.5 h-3.5 text-peach-700 dark:text-peach-400 ${aiLoading ? 'animate-spin' : ''}`} />
             {aiLoading ? 'Analyzing Text...' : 'AI Auto-Classify & Duplicate Check'}
@@ -306,7 +306,7 @@ export const SubmitComplaint = () => {
                   <button
                     type="button"
                     onClick={() => handleSupportInstead(similarIssues[0].cluster._id)}
-                    className="px-4 py-2 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 rounded-xl text-xs font-bold shrink-0 transition-colors shadow-sm flex items-center gap-1.5"
+                    className="btn-glass btn-glass-primary px-4 py-2 text-cream-50 rounded-xl text-xs font-bold shrink-0 shadow-sm flex items-center gap-1.5"
                   >
                     <Users className="w-3.5 h-3.5 text-peach-300" />
                     Support This Issue Instead (+1)
@@ -440,7 +440,7 @@ export const SubmitComplaint = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="px-7 py-3.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 disabled:opacity-50 text-cream-50 text-sm font-bold rounded-xl shadow-warm flex items-center gap-2 transition-all"
+              className="btn-glass btn-glass-primary px-7 py-3.5 disabled:opacity-50 text-cream-50 text-sm font-bold rounded-xl shadow-warm flex items-center gap-2 transition-all"
             >
               {submitting ? (
                 <>

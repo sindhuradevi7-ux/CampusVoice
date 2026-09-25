@@ -15,7 +15,8 @@ import {
   PlusCircle,
   Sparkles
 } from 'lucide-react';
-import { BrandLogo } from '../components/common/BrandLogo';
+import { GlassAiButton } from '@designcodeio/threeui';
+import '@designcodeio/threeui/style.css';
 import { StatusBadge, SeverityBadge } from '../components/common/StatusBadge';
 import { PrivacyExplainerModal } from '../components/common/PrivacyExplainerModal';
 
@@ -99,15 +100,9 @@ export const LandingPage = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-peach-300/30 via-burgundy-700/10 to-transparent dark:from-burgundy-600/20 dark:via-peach-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          {/* Prominent Open-Book Brand Mark */}
-          <div className="inline-flex flex-col items-center mb-6">
-            <div className="p-3 bg-white dark:bg-wine-900 rounded-3xl border border-cream-300 dark:border-peach-400/20 shadow-warm mb-4 hover:shadow-warm-lg transition-shadow">
-              <BrandLogo className="w-16 h-16 sm:w-20 sm:h-20" showGlow={true} />
-            </div>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-peach-50 dark:bg-wine-900 border border-peach-300 dark:border-peach-400/30 text-burgundy-900 dark:text-peach-300 text-xs font-bold shadow-sm">
-              <ShieldCheck className="w-4 h-4 text-peach-700 dark:text-peach-400" />
-              <span>Verified Anonymous Architecture Active</span>
-            </div>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-peach-50 dark:bg-wine-900 border border-peach-300 dark:border-peach-400/30 text-burgundy-900 dark:text-peach-300 text-xs font-bold shadow-sm mb-6">
+            <ShieldCheck className="w-4 h-4 text-peach-700 dark:text-peach-400" />
+            <span>Verified Anonymous Architecture Active</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-wine-900 dark:text-cream-50 leading-tight">
@@ -121,11 +116,11 @@ export const LandingPage = () => {
             Our platform verifies you are an authenticated registered student, but completely isolates your personal identity from organization-facing systems. No name leaks, no social stigma—just actionable campus improvements.
           </p>
 
-          {/* Quick Primary Call to Actions */}
+          {/* Quick Primary Call to Actions with GlassAiButton visual style */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <Link
               to="/submit"
-              className="w-full sm:w-auto px-8 py-3.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 font-bold rounded-2xl shadow-warm hover:shadow-warm-lg flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5"
+              className="w-full sm:w-auto px-8 py-3.5 btn-glass btn-glass-primary text-sm flex items-center justify-center gap-2.5"
             >
               <PlusCircle className="w-5 h-5 text-peach-300" />
               Submit Anonymous Report
@@ -133,7 +128,7 @@ export const LandingPage = () => {
 
             <Link
               to="/issues"
-              className="w-full sm:w-auto px-7 py-3.5 bg-white dark:bg-wine-900 hover:bg-cream-100 dark:hover:bg-wine-800 text-wine-900 dark:text-cream-100 border border-cream-300 dark:border-peach-400/20 font-bold rounded-2xl flex items-center justify-center gap-2 transition-all shadow-sm"
+              className="w-full sm:w-auto px-7 py-3.5 btn-glass btn-glass-subtle text-sm flex items-center justify-center gap-2"
             >
               <Compass className="w-4 h-4 text-burgundy-700 dark:text-peach-400" />
               Explore Campus Issues
@@ -141,7 +136,7 @@ export const LandingPage = () => {
 
             <Link
               to={isAuthenticated && isStudent ? '/my-complaints' : '/login'}
-              className="w-full sm:w-auto px-6 py-3.5 bg-peach-50 dark:bg-wine-900/60 hover:bg-peach-100 dark:hover:bg-wine-900 text-burgundy-900 dark:text-peach-300 border border-peach-300 dark:border-peach-400/30 font-bold rounded-2xl flex items-center justify-center gap-2 transition-all shadow-sm"
+              className="w-full sm:w-auto px-6 py-3.5 btn-glass btn-glass-secondary text-sm flex items-center justify-center gap-2"
             >
               <FileText className="w-4 h-4 text-peach-700 dark:text-peach-400" />
               My Reports
@@ -186,7 +181,7 @@ export const LandingPage = () => {
 
             <Link
               to="/submit"
-              className="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 text-xs sm:text-sm font-bold rounded-xl shadow-warm transition-all"
+              className="inline-flex items-center justify-center gap-2 w-full py-3.5 btn-glass btn-glass-primary text-xs sm:text-sm shadow-warm"
             >
               <span>Launch Complaint Wizard</span>
               <ArrowRight className="w-4 h-4 text-peach-300" />
@@ -224,7 +219,7 @@ export const LandingPage = () => {
                   <button
                     type="submit"
                     disabled={trackingLoading || !trackInputId.trim()}
-                    className="px-5 py-2.5 bg-peach-200 dark:bg-peach-300 hover:bg-peach-300 dark:hover:bg-peach-200 text-burgundy-950 disabled:opacity-50 text-xs sm:text-sm font-bold rounded-xl transition-all shadow-sm shrink-0 border border-peach-400"
+                    className="px-5 py-2.5 btn-glass btn-glass-secondary text-xs sm:text-sm shrink-0"
                   >
                     {trackingLoading ? 'Checking...' : 'Track'}
                   </button>
@@ -258,7 +253,7 @@ export const LandingPage = () => {
 
             <Link
               to={isAuthenticated && isStudent ? '/my-complaints' : '/login'}
-              className="inline-flex items-center justify-center gap-2 w-full py-3 bg-cream-100 dark:bg-wine-950 hover:bg-cream-200 dark:hover:bg-wine-800 text-wine-900 dark:text-cream-100 text-xs sm:text-sm font-bold rounded-xl transition-colors border border-cream-300 dark:border-peach-400/20"
+              className="inline-flex items-center justify-center gap-2 w-full py-3 btn-glass btn-glass-subtle text-xs sm:text-sm"
             >
               <FileText className="w-4 h-4 text-burgundy-700 dark:text-peach-400" />
               <span>View All My Reports</span>
@@ -267,7 +262,7 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      {/* Feature Block 3: Interactive Real-Time AI Triage Simulator */}
+      {/* Feature Block 3: Interactive Real-Time AI Triage Simulator & ThreeUI GlassAiButton Scene */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="bg-white dark:bg-wine-900 p-6 sm:p-10 rounded-3xl border border-cream-300 dark:border-peach-400/20 shadow-warm">
           <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
@@ -291,7 +286,7 @@ export const LandingPage = () => {
                   setSimText(t);
                   handleSimulateAI(t);
                 }}
-                className="px-3 py-1 bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 hover:border-burgundy-400 dark:hover:border-peach-400 rounded-lg text-xs font-bold text-burgundy-800 dark:text-peach-300 transition-colors"
+                className="px-3.5 py-1.5 btn-glass btn-glass-subtle text-xs"
               >
                 Sample 1: Lab Wi-Fi
               </button>
@@ -301,7 +296,7 @@ export const LandingPage = () => {
                   setSimText(t);
                   handleSimulateAI(t);
                 }}
-                className="px-3 py-1 bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 hover:border-burgundy-400 dark:hover:border-peach-400 rounded-lg text-xs font-bold text-peach-800 dark:text-peach-300 transition-colors"
+                className="px-3.5 py-1.5 btn-glass btn-glass-secondary text-xs"
               >
                 Sample 2: Hostel Geyser
               </button>
@@ -320,7 +315,7 @@ export const LandingPage = () => {
               <button
                 onClick={() => handleSimulateAI()}
                 disabled={simLoading || !simText.trim()}
-                className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 disabled:opacity-50 text-cream-50 rounded-xl text-xs font-bold shadow-sm flex items-center gap-2"
+                className="px-6 py-3 btn-glass btn-glass-primary text-xs sm:text-sm flex items-center gap-2"
               >
                 <Cpu className="w-4 h-4 text-peach-300" />
                 {simLoading ? 'Simulating Triage...' : 'Simulate AI Triage Analysis'}
@@ -357,6 +352,21 @@ export const LandingPage = () => {
                   Type a problem on the left or click a sample to see live AI categorization.
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* ThreeUI Interactive Glass AI Button Scene */}
+          <div className="mt-10 pt-8 border-t border-cream-300 dark:border-peach-400/20 text-center">
+            <div className="max-w-md mx-auto mb-4">
+              <span className="text-xs uppercase font-extrabold tracking-wider text-burgundy-800 dark:text-peach-300">
+                Interactive ThreeUI Component
+              </span>
+              <h3 className="text-sm font-bold text-wine-900 dark:text-cream-50 mt-0.5">
+                Glass AI Galaxy Shader Study
+              </h3>
+            </div>
+            <div className="shader-frame">
+              <GlassAiButton />
             </div>
           </div>
         </div>

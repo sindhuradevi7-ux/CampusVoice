@@ -127,7 +127,7 @@ export const IssueExplorer = () => {
         {isStudent && (
           <Link
             to="/submit"
-            className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 text-xs sm:text-sm font-bold rounded-xl shadow-warm flex items-center gap-1.5 transition-all"
+            className="btn-glass btn-glass-primary px-5 py-2.5 text-cream-50 text-xs sm:text-sm font-bold rounded-xl shadow-warm flex items-center gap-1.5"
           >
             Submit New Report
           </Link>
@@ -149,7 +149,7 @@ export const IssueExplorer = () => {
           </div>
           <button
             type="submit"
-            className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 text-xs sm:text-sm font-bold rounded-xl transition-colors shrink-0 shadow-sm"
+            className="btn-glass btn-glass-primary px-5 py-2.5 text-cream-50 text-xs sm:text-sm font-bold rounded-xl shrink-0 shadow-sm"
           >
             Search
           </button>
@@ -284,7 +284,7 @@ export const IssueExplorer = () => {
                 ) : issue.isSupportedByMe ? (
                   <button
                     disabled
-                    className="px-3 py-1.5 bg-peach-100 dark:bg-wine-800 border border-peach-300 dark:border-peach-400/30 text-burgundy-900 dark:text-peach-300 rounded-xl text-xs font-bold flex items-center gap-1 cursor-default"
+                    className="btn-glass btn-glass-subtle px-3 py-1.5 text-burgundy-900 dark:text-peach-300 rounded-xl text-xs font-bold flex items-center gap-1 cursor-default"
                   >
                     <Check className="w-3.5 h-3.5 text-peach-700 dark:text-peach-400" />
                     Supported
@@ -293,7 +293,7 @@ export const IssueExplorer = () => {
                   <button
                     onClick={(e) => handleSupport(issue._id, e)}
                     disabled={supportingId === issue._id}
-                    className="px-3 py-1.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-1"
+                    className="btn-glass btn-glass-primary px-3 py-1.5 text-cream-50 rounded-xl text-xs font-bold shadow-sm flex items-center gap-1"
                   >
                     <Users className="w-3.5 h-3.5 text-peach-300" />
                     {supportingId === issue._id ? 'Saving...' : 'I am also affected (+1)'}

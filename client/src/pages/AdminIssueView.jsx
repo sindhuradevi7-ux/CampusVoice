@@ -190,7 +190,7 @@ export const AdminIssueView = () => {
               <button
                 type="submit"
                 disabled={updatingStatus}
-                className="px-4 py-2 bg-burgundy-800 hover:bg-burgundy-900 disabled:opacity-50 text-cream-50 rounded-xl text-xs font-bold shadow-sm"
+                className="btn-glass btn-glass-primary px-4 py-2 disabled:opacity-50 text-cream-50 rounded-xl text-xs font-bold shadow-sm"
               >
                 {updatingStatus ? 'Saving...' : 'Apply Status Update'}
               </button>
@@ -224,7 +224,7 @@ export const AdminIssueView = () => {
               <button
                 type="submit"
                 disabled={updatingDept}
-                className="px-4 py-2 bg-peach-200 dark:bg-wine-800 hover:bg-peach-300 dark:hover:bg-wine-700 text-burgundy-950 dark:text-peach-200 border border-peach-400 dark:border-wine-600 disabled:opacity-50 rounded-xl text-xs font-bold shadow-sm"
+                className="btn-glass btn-glass-secondary px-4 py-2 text-burgundy-950 dark:text-peach-200 disabled:opacity-50 rounded-xl text-xs font-bold shadow-sm"
               >
                 {updatingDept ? 'Assigning...' : 'Assign'}
               </button>

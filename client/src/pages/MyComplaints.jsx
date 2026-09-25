@@ -98,7 +98,7 @@ export const MyComplaints = () => {
 
         <Link
           to="/submit"
-          className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 text-xs sm:text-sm font-bold rounded-xl shadow-warm flex items-center gap-1.5 transition-all"
+          className="btn-glass btn-glass-primary px-5 py-2.5 text-cream-50 text-xs sm:text-sm font-bold rounded-xl shadow-warm flex items-center gap-1.5"
         >
           <PlusCircle className="w-4 h-4 text-peach-300" />
           Submit New Report

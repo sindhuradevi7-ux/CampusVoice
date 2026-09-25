@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
-import { Mail, Lock, ArrowRight, UserCheck, ShieldAlert } from 'lucide-react';
-import { BrandLogo } from '../components/common/BrandLogo';
+import { Mail, Lock, ArrowRight, UserCheck, ShieldAlert, LogIn } from 'lucide-react';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -57,10 +56,10 @@ export const Login = () => {
   return (
     <div className="max-w-md mx-auto my-12 px-4">
       <div className="bg-white dark:bg-wine-900 p-6 sm:p-8 rounded-3xl border border-cream-300 dark:border-peach-400/20 shadow-warm-lg transition-colors">
-        {/* Header with Brand Mark */}
+        {/* Header */}
         <div className="text-center mb-6">
-          <div className="inline-flex p-3 bg-cream-100 dark:bg-wine-800 rounded-2xl border border-cream-300 dark:border-peach-400/20 mb-3 shadow-sm">
-            <BrandLogo className="w-10 h-10" />
+          <div className="inline-flex p-3 bg-cream-100 dark:bg-wine-800 rounded-2xl border border-cream-300 dark:border-peach-400/20 mb-3 shadow-sm text-burgundy-800 dark:text-peach-300">
+            <LogIn className="w-8 h-8 text-burgundy-700 dark:text-peach-400" />
           </div>
           <h2 className="text-2xl font-bold text-wine-900 dark:text-cream-50">Sign in to your account</h2>
           <p className="text-xs text-wine-600 dark:text-cream-300 mt-1 font-medium">
@@ -77,15 +76,15 @@ export const Login = () => {
             <button
               type="button"
               onClick={() => handleQuickLogin('student1@campus.edu', 'Student@123')}
-              className="px-3 py-2 bg-white dark:bg-wine-900 hover:bg-peach-50 dark:hover:bg-wine-800 text-burgundy-900 dark:text-peach-300 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 border border-peach-300 dark:border-peach-400/30 shadow-sm transition-colors"
+              className="px-3 py-2 btn-glass btn-glass-secondary text-xs flex items-center justify-center gap-1.5"
             >
-              <UserCheck className="w-3.5 h-3.5 text-peach-600 dark:text-peach-400" />
+              <UserCheck className="w-3.5 h-3.5 text-peach-700 dark:text-peach-400" />
               Student Demo
             </button>
             <button
               type="button"
               onClick={() => handleQuickLogin('admin@campus.edu', 'Admin@123')}
-              className="px-3 py-2 bg-white dark:bg-wine-900 hover:bg-burgundy-50 dark:hover:bg-wine-800 text-burgundy-900 dark:text-peach-300 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 border border-burgundy-200 dark:border-peach-400/30 shadow-sm transition-colors"
+              className="px-3 py-2 btn-glass btn-glass-subtle text-xs flex items-center justify-center gap-1.5"
             >
               <ShieldAlert className="w-3.5 h-3.5 text-burgundy-700 dark:text-peach-400" />
               Admin Demo
@@ -132,7 +131,7 @@ export const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 disabled:opacity-50 text-cream-50 font-bold rounded-xl text-sm shadow-md shadow-burgundy-900/20 transition-all flex items-center justify-center gap-2 mt-2"
+            className="w-full py-3.5 btn-glass btn-glass-primary text-sm flex items-center justify-center gap-2 mt-2"
           >
             {loading ? 'Authenticating...' : 'Sign In'}
             <ArrowRight className="w-4 h-4 text-peach-300" />

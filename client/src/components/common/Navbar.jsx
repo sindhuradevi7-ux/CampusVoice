@@ -52,17 +52,27 @@ export const Navbar = () => {
       <nav className="sticky top-0 z-40 w-full bg-cream-50/90 dark:bg-wine-950/90 backdrop-blur-md border-b border-burgundy-900/10 dark:border-peach-400/10 shadow-sm transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* Primary Visual Brand Mark (Open-Book Logo Only) */}
+            {/* Primary Visual Brand Mark (Open-Book Logo ONLY in Home page navbar) */}
             <div className="flex items-center">
-              <Link 
-                to="/" 
-                aria-label="Home" 
-                className="flex items-center group transition-transform duration-200"
-              >
-                <div className="p-1.5 rounded-2xl bg-white dark:bg-wine-900 shadow-sm border border-burgundy-100 dark:border-peach-400/20 group-hover:border-burgundy-300 dark:group-hover:border-peach-400/40 group-hover:shadow-md transition-all">
-                  <BrandLogo className="w-9 h-9 sm:w-11 sm:h-11" showGlow={false} />
-                </div>
-              </Link>
+              {location.pathname === '/' ? (
+                <Link 
+                  to="/" 
+                  aria-label="Home" 
+                  className="flex items-center group transition-transform duration-200"
+                >
+                  <div className="p-1.5 rounded-2xl bg-white dark:bg-wine-900 shadow-sm border border-burgundy-100 dark:border-peach-400/20 group-hover:border-burgundy-300 dark:group-hover:border-peach-400/40 group-hover:shadow-md transition-all">
+                    <BrandLogo className="w-9 h-9 sm:w-11 sm:h-11" showGlow={false} />
+                  </div>
+                </Link>
+              ) : (
+                <Link 
+                  to="/" 
+                  aria-label="Home" 
+                  className="px-3.5 py-1.5 btn-glass btn-glass-subtle text-xs font-bold"
+                >
+                  ← Home
+                </Link>
+              )}
             </div>
 
             {/* Desktop Navigation */}
@@ -71,7 +81,7 @@ export const Navbar = () => {
                 to="/issues"
                 className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
                   isActive('/issues')
-                    ? 'bg-burgundy-800 text-cream-50 shadow-sm'
+                    ? 'btn-glass btn-glass-primary shadow-sm'
                     : 'text-wine-800 dark:text-cream-200 hover:text-burgundy-800 dark:hover:text-peach-300 hover:bg-cream-200/70 dark:hover:bg-wine-900/60'
                 }`}
               >
@@ -79,13 +89,13 @@ export const Navbar = () => {
                 Issue Explorer
               </Link>
 
-              {/* Submit Report */}
+              {/* Submit Report with Glass Button Treatment */}
               <Link
                 to="/submit"
-                className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
+                className={`px-4 py-2 text-sm font-bold flex items-center gap-2 ${
                   isActive('/submit')
-                    ? 'bg-burgundy-800 text-cream-50 shadow-sm'
-                    : 'text-burgundy-800 dark:text-peach-200 bg-peach-100 dark:bg-burgundy-900/60 hover:bg-peach-200/90 dark:hover:bg-burgundy-900 border border-peach-300 dark:border-peach-500/30'
+                    ? 'btn-glass btn-glass-primary'
+                    : 'btn-glass btn-glass-secondary'
                 }`}
               >
                 <PlusCircle className="w-4 h-4 text-peach-700 dark:text-peach-400" />
@@ -97,7 +107,7 @@ export const Navbar = () => {
                 to={isAuthenticated && isStudent ? '/my-complaints' : '/login'}
                 className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
                   isActive('/my-complaints')
-                    ? 'bg-burgundy-800 text-cream-50 shadow-sm'
+                    ? 'btn-glass btn-glass-primary shadow-sm'
                     : 'text-wine-800 dark:text-cream-200 hover:text-burgundy-800 dark:hover:text-peach-300 hover:bg-cream-200/70 dark:hover:bg-wine-900/60'
                 }`}
               >
@@ -111,7 +121,7 @@ export const Navbar = () => {
                     to="/admin"
                     className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
                       isActive('/admin')
-                        ? 'bg-burgundy-800 text-cream-50 shadow-sm'
+                        ? 'btn-glass btn-glass-primary shadow-sm'
                         : 'text-wine-800 dark:text-cream-200 hover:text-burgundy-800 dark:hover:text-peach-300 hover:bg-cream-200/70 dark:hover:bg-wine-900/60'
                     }`}
                   >
@@ -123,7 +133,7 @@ export const Navbar = () => {
                     to="/analytics"
                     className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
                       isActive('/analytics')
-                        ? 'bg-burgundy-800 text-cream-50 shadow-sm'
+                        ? 'btn-glass btn-glass-primary shadow-sm'
                         : 'text-wine-800 dark:text-cream-200 hover:text-burgundy-800 dark:hover:text-peach-300 hover:bg-cream-200/70 dark:hover:bg-wine-900/60'
                     }`}
                   >
@@ -149,7 +159,7 @@ export const Navbar = () => {
                   />
                   <button
                     type="submit"
-                    className="p-1.5 bg-burgundy-800 hover:bg-burgundy-900 text-white rounded-xl text-xs transition-colors"
+                    className="p-2 btn-glass btn-glass-primary text-xs"
                     title="Track"
                   >
                     <Zap className="w-3.5 h-3.5 text-peach-300" />
@@ -165,7 +175,7 @@ export const Navbar = () => {
               ) : (
                 <button
                   onClick={() => setShowTrackInput(true)}
-                  className="px-3 py-1.5 rounded-xl bg-white dark:bg-wine-900 border border-cream-300 dark:border-peach-400/20 text-wine-800 dark:text-cream-200 hover:border-burgundy-300 dark:hover:border-peach-400/40 hover:text-burgundy-800 dark:hover:text-peach-300 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm"
+                  className="px-3.5 py-1.5 btn-glass btn-glass-subtle text-xs flex items-center gap-1.5"
                   title="Quick Track by Public Complaint ID"
                 >
                   <Search className="w-3.5 h-3.5 text-burgundy-700 dark:text-peach-400" />
@@ -176,7 +186,7 @@ export const Navbar = () => {
               {/* Privacy Model Explainer Trigger */}
               <button
                 onClick={() => setIsExplainerOpen(true)}
-                className="px-3 py-1.5 rounded-xl bg-peach-100 dark:bg-wine-900 border border-peach-300 dark:border-peach-400/20 text-peach-900 dark:text-peach-300 text-xs font-semibold hover:bg-peach-200 dark:hover:bg-wine-800 transition-colors flex items-center gap-1.5 shadow-sm"
+                className="px-3.5 py-1.5 btn-glass btn-glass-secondary text-xs flex items-center gap-1.5"
               >
                 <ShieldCheck className="w-3.5 h-3.5 text-burgundy-700 dark:text-peach-400" />
                 Privacy Model
@@ -185,7 +195,7 @@ export const Navbar = () => {
               {/* Theme Toggle Button (Light / Dark Mode) */}
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-xl bg-white dark:bg-wine-900 border border-cream-300 dark:border-peach-400/20 text-wine-800 dark:text-peach-300 hover:text-burgundy-800 dark:hover:text-peach-200 hover:border-burgundy-300 dark:hover:border-peach-400/40 transition-all shadow-sm"
+                className="p-2 btn-glass btn-glass-subtle"
                 title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
                 aria-label="Toggle theme"
               >
@@ -200,7 +210,7 @@ export const Navbar = () => {
                 <div className="flex items-center gap-2.5">
                   <Link
                     to="/profile"
-                    className="flex items-center gap-2.5 p-1 pr-3 rounded-full bg-white dark:bg-wine-900 border border-cream-300 dark:border-peach-400/20 hover:border-burgundy-300 dark:hover:border-peach-400/40 shadow-sm transition-all"
+                    className="flex items-center gap-2.5 p-1 pr-3 rounded-full btn-glass btn-glass-subtle"
                   >
                     <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-burgundy-800 to-peach-500 flex items-center justify-center text-xs font-bold text-white shadow-sm">
                       {user?.name?.charAt(0) || 'U'}
@@ -225,13 +235,13 @@ export const Navbar = () => {
                 <div className="flex items-center gap-2">
                   <Link
                     to="/login"
-                    className="px-3.5 py-2 text-xs font-bold text-wine-800 dark:text-cream-200 hover:text-burgundy-800 dark:hover:text-peach-300 transition-colors"
+                    className="px-4 py-2 btn-glass btn-glass-subtle text-xs"
                   >
                     Log In
                   </Link>
                   <Link
                     to="/register"
-                    className="px-4 py-2 text-xs font-bold bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 rounded-xl shadow-sm hover:shadow-glow transition-all"
+                    className="px-4 py-2 btn-glass btn-glass-primary text-xs"
                   >
                     Register
                   </Link>
@@ -243,7 +253,7 @@ export const Navbar = () => {
             <div className="flex md:hidden items-center gap-2">
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-xl bg-white dark:bg-wine-900 text-wine-800 dark:text-peach-300 border border-cream-300 dark:border-peach-400/20"
+                className="p-2 btn-glass btn-glass-subtle"
                 aria-label="Toggle theme"
               >
                 {isDark ? <Sun className="w-4 h-4 text-peach-300" /> : <Moon className="w-4 h-4 text-burgundy-800" />}
@@ -350,14 +360,14 @@ export const Navbar = () => {
                   <Link
                     to="/login"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-center py-2 text-xs font-bold bg-white dark:bg-wine-900 border border-cream-300 dark:border-peach-400/20 rounded-xl text-wine-900 dark:text-cream-100"
+                    className="text-center py-2.5 text-xs font-bold btn-glass btn-glass-subtle"
                   >
                     Log In
                   </Link>
                   <Link
                     to="/register"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-center py-2 text-xs font-bold bg-burgundy-800 text-cream-50 rounded-xl"
+                    className="text-center py-2.5 text-xs font-bold btn-glass btn-glass-primary"
                   >
                     Register
                   </Link>

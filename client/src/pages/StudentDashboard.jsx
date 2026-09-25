@@ -70,7 +70,7 @@ export const StudentDashboard = () => {
 
         <Link
           to="/submit"
-          className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 text-sm font-bold rounded-xl shadow-warm flex items-center gap-2 transition-all"
+          className="btn-glass btn-glass-primary px-5 py-2.5 text-cream-50 text-sm font-bold rounded-xl shadow-warm flex items-center gap-2"
         >
           <PlusCircle className="w-4 h-4 text-peach-300" />
           Submit Anonymous Report
@@ -143,7 +143,7 @@ export const StudentDashboard = () => {
               </p>
               <Link
                 to="/submit"
-                className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-xs font-bold text-cream-50 rounded-xl transition-colors"
+                className="btn-glass btn-glass-primary mt-4 inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-cream-50 rounded-xl"
               >
                 Submit New Report
               </Link>

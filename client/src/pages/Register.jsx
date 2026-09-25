@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
-import { Lock, Mail, User, BadgeAlert, ArrowRight } from 'lucide-react';
-import { BrandLogo } from '../components/common/BrandLogo';
+import { Lock, Mail, User, BadgeAlert, ArrowRight, UserPlus } from 'lucide-react';
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -53,8 +52,8 @@ export const Register = () => {
       <div className="bg-white dark:bg-wine-900 p-6 sm:p-8 rounded-3xl border border-cream-300 dark:border-peach-400/20 shadow-warm-lg transition-colors">
         {/* Header */}
         <div className="text-center mb-6">
-          <div className="inline-flex p-3 bg-cream-100 dark:bg-wine-800 rounded-2xl border border-cream-300 dark:border-peach-400/20 mb-3 shadow-sm">
-            <BrandLogo className="w-10 h-10" />
+          <div className="inline-flex p-3 bg-cream-100 dark:bg-wine-800 rounded-2xl border border-cream-300 dark:border-peach-400/20 mb-3 shadow-sm text-burgundy-800 dark:text-peach-300">
+            <UserPlus className="w-8 h-8 text-burgundy-700 dark:text-peach-400" />
           </div>
           <h2 className="text-2xl font-bold text-wine-900 dark:text-cream-50">Create Verified Account</h2>
           <p className="text-xs text-wine-600 dark:text-cream-300 mt-1 font-medium">
@@ -172,7 +171,7 @@ export const Register = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 disabled:opacity-50 text-cream-50 font-bold rounded-xl text-sm shadow-md shadow-burgundy-900/20 transition-all flex items-center justify-center gap-2 mt-4"
+            className="w-full py-3.5 btn-glass btn-glass-primary text-sm flex items-center justify-center gap-2 mt-4"
           >
             {loading ? 'Creating Verified Account...' : 'Register & Verify Account'}
             <ArrowRight className="w-4 h-4 text-peach-300" />

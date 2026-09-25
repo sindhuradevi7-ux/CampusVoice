@@ -148,7 +148,7 @@ export const AdminDashboard = () => {
 
         <Link
           to="/analytics"
-          className="hidden sm:flex items-center gap-1.5 px-3.5 py-2 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 rounded-xl text-xs font-bold shrink-0 transition-colors shadow-warm"
+          className="btn-glass btn-glass-primary hidden sm:flex items-center gap-1.5 px-3.5 py-2 text-cream-50 rounded-xl text-xs font-bold shrink-0 shadow-warm"
         >
           <BarChart3 className="w-4 h-4 text-peach-300" />
           Campus Analytics
@@ -209,7 +209,7 @@ export const AdminDashboard = () => {
           </div>
           <button
             type="submit"
-            className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 text-xs sm:text-sm font-bold rounded-xl transition-colors shrink-0 shadow-sm"
+            className="btn-glass btn-glass-primary px-5 py-2.5 text-cream-50 text-xs sm:text-sm font-bold rounded-xl shrink-0 shadow-sm"
           >
             Search
           </button>
@@ -335,14 +335,14 @@ export const AdminDashboard = () => {
                     <td className="py-3.5 px-4 text-right space-x-2">
                       <button
                         onClick={(e) => handleOpenStatusModal(issue, e)}
-                        className="px-2.5 py-1.5 bg-cream-100 dark:bg-wine-950 hover:bg-cream-200 dark:hover:bg-wine-800 text-wine-900 dark:text-cream-100 border border-cream-300 dark:border-wine-700 rounded-lg text-xs font-bold transition-colors shadow-sm"
+                        className="btn-glass btn-glass-secondary px-2.5 py-1.5 text-wine-900 dark:text-cream-100 rounded-lg text-xs font-bold shadow-sm"
                         title="Quick Status Update"
                       >
                         Update
                       </button>
                       <Link
                         to={`/admin/issues/${issue.publicIssueId || issue._id}`}
-                        className="px-2.5 py-1.5 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 rounded-lg text-xs font-bold transition-colors inline-block shadow-sm"
+                        className="btn-glass btn-glass-primary px-2.5 py-1.5 text-cream-50 rounded-lg text-xs font-bold inline-block shadow-sm"
                       >
                         View & Reply
                       </Link>
@@ -401,14 +401,14 @@ export const AdminDashboard = () => {
                 <button
                   type="button"
                   onClick={() => setSelectedIssue(null)}
-                  className="px-4 py-2 bg-cream-200 dark:bg-wine-800 text-wine-800 dark:text-cream-200 text-xs font-bold rounded-xl hover:bg-cream-300 dark:hover:bg-wine-700"
+                  className="btn-glass btn-glass-subtle px-4 py-2 text-wine-800 dark:text-cream-200 text-xs font-bold rounded-xl"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={updating}
-                  className="px-4 py-2 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 text-xs font-bold rounded-xl shadow-sm"
+                  className="btn-glass btn-glass-primary px-4 py-2 text-cream-50 text-xs font-bold rounded-xl shadow-sm"
                 >
                   {updating ? 'Saving...' : 'Save Update & Notify'}
                 </button>

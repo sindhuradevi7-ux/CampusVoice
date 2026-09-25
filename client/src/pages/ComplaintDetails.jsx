@@ -57,7 +57,7 @@ export const ComplaintDetails = () => {
           <p className="text-sm text-wine-600 dark:text-cream-300 mb-6 font-medium">{error || 'Unable to locate this complaint.'}</p>
           <Link
             to="/my-complaints"
-            className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 rounded-xl text-xs font-bold"
+            className="btn-glass btn-glass-primary px-5 py-2.5 text-cream-50 rounded-xl text-xs font-bold"
           >
             Back to My Reports
           </Link>

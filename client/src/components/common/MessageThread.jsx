@@ -161,7 +161,7 @@ export const MessageThread = ({ complaintId, currentUserRole }) => {
         <button
           type="submit"
           disabled={sending || !newMessage.trim()}
-          className="px-4 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 disabled:opacity-50 disabled:cursor-not-allowed text-cream-50 text-sm font-bold rounded-xl flex items-center gap-1.5 transition-all shadow-sm"
+          className="btn-glass btn-glass-primary px-4 py-2.5 disabled:opacity-50 disabled:cursor-not-allowed text-cream-50 text-sm font-bold rounded-xl flex items-center gap-1.5 shadow-sm"
         >
           {sending ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
           <span>Send</span>

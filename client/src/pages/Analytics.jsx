@@ -76,7 +76,7 @@ export const Analytics = () => {
 
         <Link
           to="/admin"
-          className="px-4 py-2 bg-cream-100 dark:bg-wine-900 hover:bg-cream-200 dark:hover:bg-wine-800 text-wine-900 dark:text-cream-100 border border-cream-300 dark:border-wine-700 rounded-xl text-xs font-bold"
+          className="btn-glass btn-glass-secondary px-4 py-2 text-wine-900 dark:text-cream-100 rounded-xl text-xs font-bold"
         >
           Back to Admin Hub
         </Link>

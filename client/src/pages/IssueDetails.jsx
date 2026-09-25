@@ -84,7 +84,7 @@ export const IssueDetails = () => {
           <p className="text-sm text-wine-600 dark:text-cream-300 mb-6">Unable to find this issue cluster.</p>
           <Link
             to="/issues"
-            className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 rounded-xl text-xs font-bold"
+            className="btn-glass btn-glass-primary px-5 py-2.5 text-cream-50 rounded-xl text-xs font-bold"
           >
             Back to Explorer
           </Link>
@@ -139,7 +139,7 @@ export const IssueDetails = () => {
               <button
                 onClick={handleSupport}
                 disabled={supporting}
-                className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 rounded-xl text-xs font-bold shadow-warm transition-all flex items-center gap-2"
+                className="btn-glass btn-glass-primary px-5 py-2.5 text-cream-50 rounded-xl text-xs font-bold shadow-warm flex items-center gap-2"
               >
                 <Users className="w-4 h-4 text-peach-300" />
                 {supporting ? 'Saving...' : 'I am also affected (+1)'}

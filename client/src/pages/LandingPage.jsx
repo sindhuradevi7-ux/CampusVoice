@@ -17,6 +17,27 @@ import {
 } from 'lucide-react';
 import { StatusBadge, SeverityBadge } from '../components/common/StatusBadge';
 import { PrivacyExplainerModal } from '../components/common/PrivacyExplainerModal';
+import { ConstellationField } from '@designcodeio/threeui';
+import '@designcodeio/threeui/style.css';
+
+export function Scene() {
+  return (
+    <div className="shader-frame">
+      <ConstellationField
+        variant="particle-network"
+        mode="dark"
+        speed={1.00}
+        size={1.00}
+        length={1.00}
+        density={1.00}
+        opacity={1.00}
+        hue={0}
+        saturation={1.00}
+        brightness={1.00}
+      />
+    </div>
+  );
+}
 
 export const LandingPage = () => {
   const { isAuthenticated, isStudent } = useAuth();
@@ -91,8 +112,15 @@ export const LandingPage = () => {
   };
 
   return (
-    <div className="space-y-16 sm:space-y-24 pb-20">
-      {/* Hero Section */}
+    <div className="relative min-h-screen">
+      {/* ThreeUI ConstellationField Particle Network Animated Background Layer */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30 dark:opacity-45">
+        <Scene />
+      </div>
+
+      {/* Foreground UI Layer */}
+      <div className="relative z-10 space-y-16 sm:space-y-24 pb-20">
+        {/* Hero Section */}
       <section className="relative pt-6 sm:pt-12 text-center overflow-hidden">
         {/* Ambient Glows */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[300px] bg-gradient-to-tr from-peach-300/25 via-burgundy-700/8 to-transparent dark:from-burgundy-600/15 dark:via-peach-500/8 rounded-full blur-3xl pointer-events-none -z-10"></div>
@@ -439,6 +467,7 @@ export const LandingPage = () => {
 
       {/* Explainer Modal */}
       <PrivacyExplainerModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      </div>
     </div>
   );
 };

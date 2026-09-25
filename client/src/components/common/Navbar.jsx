@@ -53,14 +53,14 @@ export const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Primary Visual Brand Mark (Open-Book Logo ONLY in Home page navbar) */}
-            <div className="flex items-center">
+            <div className="flex items-center shrink-0">
               {location.pathname === '/' ? (
                 <Link 
                   to="/" 
                   aria-label="Home" 
                   className="flex items-center group transition-transform duration-200"
                 >
-                  <div className="w-13 h-13 sm:w-15 sm:h-15 md:w-16 md:h-16 p-2 rounded-full bg-white/95 dark:bg-wine-900/95 shadow-xs border border-burgundy-100/80 dark:border-peach-400/20 group-hover:border-burgundy-300 dark:group-hover:border-peach-400/40 group-hover:shadow-sm transition-all flex items-center justify-center overflow-hidden">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 aspect-square rounded-full bg-[#FAF6EE] dark:bg-wine-900 shadow-xs border border-burgundy-100/80 dark:border-peach-400/20 group-hover:border-burgundy-300 dark:group-hover:border-peach-400/40 group-hover:shadow-sm transition-all flex items-center justify-center p-1.5 overflow-hidden">
                     <BrandLogo className="w-full h-full" showGlow={false} />
                   </div>
                 </Link>
@@ -68,18 +68,18 @@ export const Navbar = () => {
                 <Link 
                   to="/" 
                   aria-label="Home" 
-                  className="px-4 py-2 btn-glass btn-glass-subtle text-xs font-bold"
+                  className="px-4 py-2 btn-glass btn-glass-subtle text-xs font-bold shrink-0"
                 >
                   ← Home
                 </Link>
               )}
             </div>
 
-            {/* Desktop Navigation with Generous Breathing Room */}
-            <div className="hidden md:flex items-center gap-3.5 lg:gap-5">
+            {/* Desktop Navigation (Center/Middle Group) */}
+            <div className="hidden md:flex items-center gap-3 lg:gap-5">
               <Link
                 to="/issues"
-                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
+                className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
                   isActive('/issues')
                     ? 'text-burgundy-900 dark:text-peach-200 bg-peach-100/60 dark:bg-wine-900/80 font-bold'
                     : 'text-wine-800/90 dark:text-cream-200 hover:text-burgundy-900 dark:hover:text-peach-300 hover:bg-cream-100 dark:hover:bg-wine-900/40'
@@ -92,7 +92,7 @@ export const Navbar = () => {
               {/* Submit Report - Primary Glass CTA */}
               <Link
                 to="/submit"
-                className="px-4.5 py-2 text-sm font-bold flex items-center gap-2 btn-glass btn-glass-primary shadow-xs"
+                className="px-4 py-2 text-sm font-bold flex items-center gap-2 btn-glass btn-glass-primary shadow-xs"
               >
                 <PlusCircle className="w-4 h-4 text-peach-300" />
                 Submit Report
@@ -101,7 +101,7 @@ export const Navbar = () => {
               {/* My Reports */}
               <Link
                 to={isAuthenticated && isStudent ? '/my-complaints' : '/login'}
-                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
+                className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
                   isActive('/my-complaints')
                     ? 'text-burgundy-900 dark:text-peach-200 bg-peach-100/60 dark:bg-wine-900/80 font-bold'
                     : 'text-wine-800/90 dark:text-cream-200 hover:text-burgundy-900 dark:hover:text-peach-300 hover:bg-cream-100 dark:hover:bg-wine-900/40'
@@ -115,7 +115,7 @@ export const Navbar = () => {
                 <>
                   <Link
                     to="/admin"
-                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
+                    className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
                       isActive('/admin')
                         ? 'text-burgundy-900 dark:text-peach-200 bg-peach-100/60 dark:bg-wine-900/80 font-bold'
                         : 'text-wine-800/90 dark:text-cream-200 hover:text-burgundy-900 dark:hover:text-peach-300 hover:bg-cream-100 dark:hover:bg-wine-900/40'
@@ -127,7 +127,7 @@ export const Navbar = () => {
 
                   <Link
                     to="/analytics"
-                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
+                    className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
                       isActive('/analytics')
                         ? 'text-burgundy-900 dark:text-peach-200 bg-peach-100/60 dark:bg-wine-900/80 font-bold'
                         : 'text-wine-800/90 dark:text-cream-200 hover:text-burgundy-900 dark:hover:text-peach-300 hover:bg-cream-100 dark:hover:bg-wine-900/40'
@@ -140,11 +140,11 @@ export const Navbar = () => {
               )}
             </div>
 
-            {/* Right Action Badges, Quick Track, Theme Toggle & Auth with Spacious Spacing */}
-            <div className="hidden md:flex items-center gap-3 lg:gap-4">
+            {/* Right Action Badges, Quick Track, Theme Toggle, Auth Profile & Far-Right Logout */}
+            <div className="hidden md:flex items-center gap-2.5 lg:gap-3.5 shrink-0">
               {/* Quick ID Tracker Box */}
               {showTrackInput ? (
-                <form onSubmit={handleQuickTrackSubmit} className="flex items-center gap-2 animate-fadeIn">
+                <form onSubmit={handleQuickTrackSubmit} className="flex items-center gap-1.5 animate-fadeIn">
                   <input
                     type="text"
                     value={quickTrackId}
@@ -202,46 +202,48 @@ export const Navbar = () => {
                 )}
               </button>
 
+              {/* User Profile / Login / Register */}
               {isAuthenticated ? (
-                <div className="flex items-center gap-3">
-                  <Link
-                    to="/profile"
-                    className="flex items-center gap-2.5 p-1 pr-3.5 rounded-full btn-glass btn-glass-subtle"
-                  >
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-burgundy-800 to-peach-500 flex items-center justify-center text-xs font-bold text-white shadow-xs">
-                      {user?.name?.charAt(0) || 'U'}
-                    </div>
-                    <div className="text-left">
-                      <p className="text-xs font-bold text-wine-900 dark:text-cream-100 leading-none">{user?.name?.split(' ')[0]}</p>
-                      <p className="text-[10px] text-peach-800 dark:text-peach-400 font-medium leading-none mt-0.5 capitalize">
-                        {user?.role === 'admin' ? 'Admin' : 'Verified'}
-                      </p>
-                    </div>
-                  </Link>
-
-                  <button
-                    onClick={handleLogout}
-                    title="Logout"
-                    className="p-2 text-wine-600 dark:text-cream-400 hover:text-burgundy-800 dark:hover:text-peach-300 hover:bg-peach-100/60 dark:hover:bg-wine-800 rounded-xl transition-colors"
-                  >
-                    <LogOut className="w-4 h-4" />
-                  </button>
-                </div>
+                <Link
+                  to="/profile"
+                  className="flex items-center gap-2.5 p-1 pr-3.5 rounded-full btn-glass btn-glass-subtle"
+                >
+                  <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-burgundy-800 to-peach-500 flex items-center justify-center text-xs font-bold text-white shadow-xs">
+                    {user?.name?.charAt(0) || 'U'}
+                  </div>
+                  <div className="text-left">
+                    <p className="text-xs font-bold text-wine-900 dark:text-cream-100 leading-none">{user?.name?.split(' ')[0]}</p>
+                    <p className="text-[10px] text-peach-800 dark:text-peach-400 font-medium leading-none mt-0.5 capitalize">
+                      {user?.role === 'admin' ? 'Admin' : 'Verified'}
+                    </p>
+                  </div>
+                </Link>
               ) : (
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-2">
                   <Link
                     to="/login"
-                    className="px-4 py-2 btn-glass btn-glass-subtle text-xs font-bold"
+                    className="px-3.5 py-1.5 btn-glass btn-glass-subtle text-xs font-bold"
                   >
                     Log In
                   </Link>
                   <Link
                     to="/register"
-                    className="px-4 py-2 btn-glass btn-glass-primary text-xs font-bold"
+                    className="px-3.5 py-1.5 btn-glass btn-glass-primary text-xs font-bold"
                   >
                     Register
                   </Link>
                 </div>
+              )}
+
+              {/* Far Right Logout Button */}
+              {isAuthenticated && (
+                <button
+                  onClick={handleLogout}
+                  title="Logout"
+                  className="p-2 ml-1 text-wine-600 dark:text-cream-400 hover:text-burgundy-800 dark:hover:text-peach-300 hover:bg-peach-100/60 dark:hover:bg-wine-800 rounded-xl transition-colors shrink-0"
+                >
+                  <LogOut className="w-4 h-4" />
+                </button>
               )}
             </div>
 

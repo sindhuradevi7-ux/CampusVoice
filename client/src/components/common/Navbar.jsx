@@ -60,8 +60,8 @@ export const Navbar = () => {
                   aria-label="Home" 
                   className="flex items-center group transition-transform duration-200"
                 >
-                  <div className="p-2 rounded-2xl bg-white/90 dark:bg-wine-900/90 shadow-xs border border-burgundy-100/80 dark:border-peach-400/20 group-hover:border-burgundy-300 dark:group-hover:border-peach-400/40 group-hover:shadow-sm transition-all">
-                    <BrandLogo className="w-10 h-10 sm:w-12 sm:h-12" showGlow={false} />
+                  <div className="p-1.5 sm:p-2 rounded-2xl bg-white/95 dark:bg-wine-900/95 shadow-xs border border-burgundy-100/80 dark:border-peach-400/20 group-hover:border-burgundy-300 dark:group-hover:border-peach-400/40 group-hover:shadow-sm transition-all flex items-center justify-center">
+                    <BrandLogo className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16" showGlow={false} />
                   </div>
                 </Link>
               ) : (

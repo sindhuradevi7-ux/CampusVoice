@@ -13,12 +13,19 @@ dotenv.config();
 
 const seedDatabase = async () => {
   try {
-    const primaryUri = process.env.MONGODB_URI;
+    let primaryUri = process.env.MONGODB_URI;
+    const VERIFIED_ATLAS_URI =
+      'mongodb+srv://sindhuradevi7_db_user:CvbYI6yaEMe8B6xK@cluster0.4wyjjlw.mongodb.net/campusvoice?retryWrites=true&w=majority&appName=Cluster0';
+
+    if (!primaryUri || primaryUri.includes('@cluster0.mongodb.net')) {
+      primaryUri = VERIFIED_ATLAS_URI;
+    }
+
     const fallbackUri = process.env.LOCAL_MONGODB_URI || 'mongodb://127.0.0.1:27017/campusvoice';
-    let mongoUri = primaryUri || fallbackUri;
+    let mongoUri = primaryUri;
     console.log(`Connecting to database: ${mongoUri}`);
     try {
-      await mongoose.connect(mongoUri, { serverSelectionTimeoutMS: 6000 });
+      await mongoose.connect(mongoUri, { serverSelectionTimeoutMS: 10000 });
     } catch (err) {
       if (fallbackUri && mongoUri !== fallbackUri) {
         console.warn(`Primary connection failed (${err.message}). Trying fallback: ${fallbackUri}`);

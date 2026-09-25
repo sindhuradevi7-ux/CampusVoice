@@ -104,7 +104,7 @@ export const LandingPage = () => {
           </div>
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-wine-950 dark:text-cream-50 leading-[1.15]">
-            Speak up for your campus. <br />
+            Speak up for your campus <br />
             <span className="bg-gradient-to-r from-burgundy-800 via-burgundy-700 to-peach-600 dark:from-peach-300 dark:via-peach-400 dark:to-peach-200 bg-clip-text text-transparent">
               Without fear or retaliation.
             </span>
@@ -113,17 +113,6 @@ export const LandingPage = () => {
           <p className="mt-4 text-sm sm:text-base md:text-lg text-wine-800/85 dark:text-cream-200 max-w-2xl mx-auto leading-relaxed font-normal">
             Our platform verifies you are an authenticated registered student, but completely isolates your personal identity from organization-facing systems. No name leaks, no social stigma—just actionable campus improvements.
           </p>
-
-          {/* Strong Primary Call to Action */}
-          <div className="mt-7 flex items-center justify-center">
-            <Link
-              to="/submit"
-              className="w-full sm:w-auto px-8 py-3.5 btn-glass btn-glass-primary text-sm sm:text-base font-bold flex items-center justify-center gap-2.5 shadow-warm"
-            >
-              <PlusCircle className="w-5 h-5 text-peach-300" />
-              <span>Submit Anonymous Report</span>
-            </Link>
-          </div>
         </div>
       </section>
 

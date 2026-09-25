@@ -137,46 +137,46 @@ export const SubmitComplaint = () => {
   if (submittedComplaint) {
     return (
       <div className="max-w-2xl mx-auto my-8 px-4 animate-fadeIn">
-        <div className="bg-white p-6 sm:p-10 rounded-3xl border border-peach-300 text-center shadow-warm-lg">
-          <div className="w-16 h-16 bg-peach-100 text-burgundy-800 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-peach-300 shadow-sm">
-            <CheckCircle2 className="w-8 h-8 text-peach-700" />
+        <div className="bg-white dark:bg-wine-900 p-6 sm:p-10 rounded-3xl border border-peach-300 dark:border-peach-400/20 text-center shadow-warm-lg">
+          <div className="w-16 h-16 bg-peach-100 dark:bg-wine-800 text-burgundy-800 dark:text-peach-300 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-peach-300 dark:border-peach-400/30 shadow-sm">
+            <CheckCircle2 className="w-8 h-8 text-peach-700 dark:text-peach-400" />
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold text-wine-900 mb-1">
+          <h2 className="text-2xl sm:text-3xl font-bold text-wine-900 dark:text-cream-50 mb-1">
             Complaint Filed Anonymously!
           </h2>
-          <p className="text-xs sm:text-sm text-wine-700 max-w-md mx-auto mb-6 font-medium">
+          <p className="text-xs sm:text-sm text-wine-700 dark:text-cream-300 max-w-md mx-auto mb-6 font-medium">
             Your report is verified, cryptographically isolated, and entered into the campus triage pipeline.
           </p>
 
           {/* Public Tracking ID Card */}
-          <div className="bg-cream-50 border border-cream-300 p-5 rounded-2xl mb-6 text-left max-w-md mx-auto shadow-sm">
-            <div className="flex items-center justify-between border-b border-cream-300 pb-3 mb-3">
-              <span className="text-xs text-wine-600 font-bold">Public Complaint ID</span>
-              <span className="font-mono text-base font-extrabold text-burgundy-900 bg-peach-100 px-3 py-1 rounded-xl border border-peach-300">
+          <div className="bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 p-5 rounded-2xl mb-6 text-left max-w-md mx-auto shadow-sm">
+            <div className="flex items-center justify-between border-b border-cream-300 dark:border-peach-400/20 pb-3 mb-3">
+              <span className="text-xs text-wine-600 dark:text-cream-400 font-bold">Public Complaint ID</span>
+              <span className="font-mono text-base font-extrabold text-burgundy-900 dark:text-peach-300 bg-peach-100 dark:bg-wine-900 px-3 py-1 rounded-xl border border-peach-300 dark:border-peach-400/30">
                 {submittedComplaint.publicComplaintId}
               </span>
             </div>
 
-            <div className="space-y-2.5 text-xs text-wine-800">
+            <div className="space-y-2.5 text-xs text-wine-800 dark:text-cream-200">
               <div className="flex justify-between">
-                <span className="text-wine-500 font-medium">Category:</span>
-                <span className="font-bold text-wine-900">{submittedComplaint.category}</span>
+                <span className="text-wine-500 dark:text-cream-400 font-medium">Category:</span>
+                <span className="font-bold text-wine-900 dark:text-cream-50">{submittedComplaint.category}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-wine-500 font-medium">Location:</span>
-                <span className="font-bold text-wine-900">{submittedComplaint.location}</span>
+                <span className="text-wine-500 dark:text-cream-400 font-medium">Location:</span>
+                <span className="font-bold text-wine-900 dark:text-cream-50">{submittedComplaint.location}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-wine-500 font-medium">Severity:</span>
-                <span className="font-bold text-wine-900">{submittedComplaint.severity}</span>
+                <span className="text-wine-500 dark:text-cream-400 font-medium">Severity:</span>
+                <span className="font-bold text-wine-900 dark:text-cream-50">{submittedComplaint.severity}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-wine-500 font-medium">Initial Status:</span>
+                <span className="text-wine-500 dark:text-cream-400 font-medium">Initial Status:</span>
                 <StatusBadge status={submittedComplaint.status} />
               </div>
               {submittedComplaint.issueClusterId && (
-                <div className="flex justify-between pt-2 border-t border-cream-300 text-burgundy-900 font-semibold">
+                <div className="flex justify-between pt-2 border-t border-cream-300 dark:border-peach-400/20 text-burgundy-900 dark:text-peach-300 font-semibold">
                   <span>Linked Issue Cluster:</span>
                   <span className="font-bold">{submittedComplaint.issueClusterId.publicIssueId}</span>
                 </div>
@@ -187,7 +187,7 @@ export const SubmitComplaint = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               to={`/complaints/${submittedComplaint.publicComplaintId}`}
-              className="w-full sm:w-auto px-6 py-3 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 text-sm font-bold rounded-xl shadow-warm flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-3 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 text-sm font-bold rounded-xl shadow-warm flex items-center justify-center gap-2"
             >
               <span>Track Resolution & Timeline</span>
               <ArrowRight className="w-4 h-4 text-peach-300" />
@@ -207,7 +207,7 @@ export const SubmitComplaint = () => {
                 setAiSuggestion(null);
                 setSimilarIssues([]);
               }}
-              className="w-full sm:w-auto px-5 py-3 bg-cream-100 hover:bg-cream-200 text-wine-900 text-sm font-bold rounded-xl border border-cream-300"
+              className="w-full sm:w-auto px-5 py-3 bg-cream-100 dark:bg-wine-950 hover:bg-cream-200 dark:hover:bg-wine-800 text-wine-900 dark:text-cream-100 text-sm font-bold rounded-xl border border-cream-300 dark:border-peach-400/20"
             >
               Submit Another Report
             </button>
@@ -222,14 +222,14 @@ export const SubmitComplaint = () => {
       {/* Privacy Notice Header */}
       <PrivacyNoticeBanner />
 
-      <div className="bg-white p-6 sm:p-8 rounded-3xl border border-cream-300 shadow-warm">
-        <div className="flex items-center justify-between border-b border-cream-300 pb-5 mb-6 flex-wrap gap-3">
+      <div className="bg-white dark:bg-wine-900 p-6 sm:p-8 rounded-3xl border border-cream-300 dark:border-peach-400/20 shadow-warm">
+        <div className="flex items-center justify-between border-b border-cream-300 dark:border-peach-400/20 pb-5 mb-6 flex-wrap gap-3">
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-wine-900 flex items-center gap-2">
-              <ShieldCheck className="w-6 h-6 text-burgundy-700" />
+            <h2 className="text-xl sm:text-2xl font-bold text-wine-900 dark:text-cream-50 flex items-center gap-2">
+              <ShieldCheck className="w-6 h-6 text-burgundy-700 dark:text-peach-400" />
               File Verified Anonymous Complaint
             </h2>
-            <p className="text-xs text-wine-600 mt-0.5 font-medium">
+            <p className="text-xs text-wine-600 dark:text-cream-300 mt-0.5 font-medium">
               Your identity is separated. Campus administrators will only see problem details.
             </p>
           </div>
@@ -238,29 +238,29 @@ export const SubmitComplaint = () => {
             type="button"
             onClick={handleRunAIAnalysis}
             disabled={aiLoading || !formData.description.trim()}
-            className="px-3.5 py-2 bg-peach-100 hover:bg-peach-200 text-burgundy-950 border border-peach-300 disabled:opacity-40 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
+            className="px-3.5 py-2 bg-peach-100 dark:bg-wine-800 hover:bg-peach-200 dark:hover:bg-wine-700 text-burgundy-950 dark:text-peach-200 border border-peach-300 dark:border-peach-400/30 disabled:opacity-40 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
           >
-            <Sparkles className={`w-3.5 h-3.5 text-peach-700 ${aiLoading ? 'animate-spin' : ''}`} />
+            <Sparkles className={`w-3.5 h-3.5 text-peach-700 dark:text-peach-400 ${aiLoading ? 'animate-spin' : ''}`} />
             {aiLoading ? 'Analyzing Text...' : 'AI Auto-Classify & Duplicate Check'}
           </button>
         </div>
 
         {/* AI Suggestions Box (if generated) */}
         {aiSuggestion && (
-          <div className="mb-6 p-4 rounded-2xl bg-peach-50 border border-peach-300 animate-fadeIn shadow-sm">
-            <div className="flex items-center gap-2 text-xs font-bold text-burgundy-900 mb-2">
-              <Sparkles className="w-4 h-4 text-peach-700" />
+          <div className="mb-6 p-4 rounded-2xl bg-peach-50 dark:bg-wine-950 border border-peach-300 dark:border-peach-400/30 animate-fadeIn shadow-sm">
+            <div className="flex items-center gap-2 text-xs font-bold text-burgundy-900 dark:text-peach-300 mb-2">
+              <Sparkles className="w-4 h-4 text-peach-700 dark:text-peach-400" />
               AI Assistant Recommendations:
             </div>
-            <p className="text-xs text-wine-800 mb-2 font-medium">
+            <p className="text-xs text-wine-800 dark:text-cream-200 mb-2 font-medium">
               <strong>Summary:</strong> {aiSuggestion.summary}
             </p>
             <div className="flex flex-wrap gap-2 text-[11px]">
-              <span className="px-2.5 py-1 rounded-lg bg-white text-burgundy-900 border border-peach-200 font-bold shadow-sm">
+              <span className="px-2.5 py-1 rounded-lg bg-white dark:bg-wine-900 text-burgundy-900 dark:text-peach-300 border border-peach-200 dark:border-peach-400/30 font-bold shadow-sm">
                 Department: {aiSuggestion.possibleDepartment}
               </span>
               {aiSuggestion.keywords?.map((kw, i) => (
-                <span key={i} className="px-2 py-1 rounded-lg bg-cream-100 text-wine-700 font-medium">
+                <span key={i} className="px-2 py-1 rounded-lg bg-cream-100 dark:bg-wine-900 border border-cream-300 dark:border-peach-400/20 text-wine-700 dark:text-cream-300 font-medium">
                   #{kw}
                 </span>
               ))}
@@ -270,43 +270,43 @@ export const SubmitComplaint = () => {
 
         {/* Duplicate / Related Issue Alert Card */}
         {similarIssues.length > 0 && (
-          <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-peach-50 border border-peach-300 animate-fadeIn shadow-sm">
+          <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-peach-50 dark:bg-wine-950 border border-peach-300 dark:border-peach-400/30 animate-fadeIn shadow-sm">
             <div className="flex items-start gap-3">
-              <div className="p-2 bg-peach-200 text-burgundy-900 rounded-xl shrink-0 mt-0.5">
-                <Layers className="w-5 h-5 text-peach-700" />
+              <div className="p-2 bg-peach-200 dark:bg-wine-800 text-burgundy-900 dark:text-peach-300 rounded-xl shrink-0 mt-0.5">
+                <Layers className="w-5 h-5 text-peach-700 dark:text-peach-400" />
               </div>
               <div className="flex-1 min-w-0">
-                <h4 className="text-sm font-bold text-burgundy-900 flex items-center gap-2">
+                <h4 className="text-sm font-bold text-burgundy-900 dark:text-peach-300 flex items-center gap-2">
                   Similar Active Campus Issue Detected!
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-peach-200 text-burgundy-950 font-bold">
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-peach-200 dark:bg-burgundy-900 text-burgundy-950 dark:text-peach-200 font-bold">
                     {similarIssues[0].confidence}% Match
                   </span>
                 </h4>
-                <p className="text-xs text-wine-700 mt-1 font-medium">
+                <p className="text-xs text-wine-700 dark:text-cream-300 mt-1 font-medium">
                   A cluster already exists matching your report. You can support it directly to boost its priority without creating duplicate records.
                 </p>
 
                 {/* Similar issue item */}
-                <div className="mt-3 p-3.5 rounded-xl bg-white border border-peach-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+                <div className="mt-3 p-3.5 rounded-xl bg-white dark:bg-wine-900 border border-peach-200 dark:border-peach-400/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="font-mono text-xs font-bold text-burgundy-800 bg-peach-50 px-2 py-0.5 rounded border border-peach-200">
+                      <span className="font-mono text-xs font-bold text-burgundy-800 dark:text-peach-300 bg-peach-50 dark:bg-wine-950 px-2 py-0.5 rounded border border-peach-200 dark:border-peach-400/20">
                         {similarIssues[0].cluster.publicIssueId}
                       </span>
                       <StatusBadge status={similarIssues[0].cluster.status} />
                     </div>
-                    <p className="text-xs font-bold text-wine-900">{similarIssues[0].cluster.title}</p>
-                    <div className="flex items-center gap-2 text-[11px] text-wine-600 mt-1 font-medium">
+                    <p className="text-xs font-bold text-wine-900 dark:text-cream-50">{similarIssues[0].cluster.title}</p>
+                    <div className="flex items-center gap-2 text-[11px] text-wine-600 dark:text-cream-400 mt-1 font-medium">
                       <span>📍 {similarIssues[0].cluster.location}</span>
                       <span>•</span>
-                      <span className="text-burgundy-800 font-bold">{similarIssues[0].cluster.affectedCount} students affected</span>
+                      <span className="text-burgundy-800 dark:text-peach-300 font-bold">{similarIssues[0].cluster.affectedCount} students affected</span>
                     </div>
                   </div>
 
                   <button
                     type="button"
                     onClick={() => handleSupportInstead(similarIssues[0].cluster._id)}
-                    className="px-4 py-2 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 rounded-xl text-xs font-bold shrink-0 transition-colors shadow-sm flex items-center gap-1.5"
+                    className="px-4 py-2 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 rounded-xl text-xs font-bold shrink-0 transition-colors shadow-sm flex items-center gap-1.5"
                   >
                     <Users className="w-3.5 h-3.5 text-peach-300" />
                     Support This Issue Instead (+1)
@@ -322,14 +322,14 @@ export const SubmitComplaint = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Category */}
             <div>
-              <label className="block text-xs font-bold text-wine-800 mb-1.5">
+              <label className="block text-xs font-bold text-wine-800 dark:text-cream-200 mb-1.5">
                 Complaint Category *
               </label>
               <select
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                 required
-                className="w-full bg-cream-50 border border-cream-300 rounded-xl px-3.5 py-2.5 text-sm text-wine-900 focus:outline-none focus:border-burgundy-700 focus:ring-1 focus:ring-burgundy-700 font-medium"
+                className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl px-3.5 py-2.5 text-sm text-wine-900 dark:text-cream-100 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 font-medium"
               >
                 {CATEGORIES.map((cat) => (
                   <option key={cat} value={cat}>
@@ -341,14 +341,14 @@ export const SubmitComplaint = () => {
 
             {/* Severity */}
             <div>
-              <label className="block text-xs font-bold text-wine-800 mb-1.5">
+              <label className="block text-xs font-bold text-wine-800 dark:text-cream-200 mb-1.5">
                 Severity Level *
               </label>
               <select
                 value={formData.severity}
                 onChange={(e) => setFormData({ ...formData, severity: e.target.value })}
                 required
-                className="w-full bg-cream-50 border border-cream-300 rounded-xl px-3.5 py-2.5 text-sm text-wine-900 focus:outline-none focus:border-burgundy-700 focus:ring-1 focus:ring-burgundy-700 font-medium"
+                className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl px-3.5 py-2.5 text-sm text-wine-900 dark:text-cream-100 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 font-medium"
               >
                 {SEVERITIES.map((sev) => (
                   <option key={sev} value={sev}>
@@ -362,7 +362,7 @@ export const SubmitComplaint = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Location */}
             <div>
-              <label className="block text-xs font-bold text-wine-800 mb-1.5">
+              <label className="block text-xs font-bold text-wine-800 dark:text-cream-200 mb-1.5">
                 Campus Location / Building *
               </label>
               <input
@@ -371,13 +371,13 @@ export const SubmitComplaint = () => {
                 onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                 placeholder="e.g. Computer Lab 3, CS Block 2nd Floor"
                 required
-                className="w-full bg-cream-50 border border-cream-300 rounded-xl px-3.5 py-2.5 text-sm text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 focus:ring-1 focus:ring-burgundy-700"
+                className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl px-3.5 py-2.5 text-sm text-wine-900 dark:text-cream-100 placeholder-wine-400 dark:placeholder-wine-500 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400"
               />
             </div>
 
             {/* Affected Area (Optional) */}
             <div>
-              <label className="block text-xs font-bold text-wine-800 mb-1.5">
+              <label className="block text-xs font-bold text-wine-800 dark:text-cream-200 mb-1.5">
                 Specific Area / Room / Wing (Optional)
               </label>
               <input
@@ -385,7 +385,7 @@ export const SubmitComplaint = () => {
                 value={formData.affectedArea}
                 onChange={(e) => setFormData({ ...formData, affectedArea: e.target.value })}
                 placeholder="e.g. Back row workstations 15 to 30"
-                className="w-full bg-cream-50 border border-cream-300 rounded-xl px-3.5 py-2.5 text-sm text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 focus:ring-1 focus:ring-burgundy-700"
+                className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl px-3.5 py-2.5 text-sm text-wine-900 dark:text-cream-100 placeholder-wine-400 dark:placeholder-wine-500 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400"
               />
             </div>
           </div>
@@ -393,10 +393,10 @@ export const SubmitComplaint = () => {
           {/* Description */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label className="block text-xs font-bold text-wine-800">
+              <label className="block text-xs font-bold text-wine-800 dark:text-cream-200">
                 Detailed Problem Description *
               </label>
-              <span className="text-[11px] text-wine-500 font-medium">
+              <span className="text-[11px] text-wine-500 dark:text-cream-400 font-medium">
                 {formData.description.length}/2000 chars
               </span>
             </div>
@@ -407,19 +407,19 @@ export const SubmitComplaint = () => {
               placeholder="Describe what is broken, how often it occurs, and how it impacts your studies or campus life..."
               maxLength={2000}
               required
-              className="w-full bg-cream-50 border border-cream-300 rounded-xl p-3.5 text-sm text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 focus:ring-1 focus:ring-burgundy-700"
+              className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl p-3.5 text-sm text-wine-900 dark:text-cream-100 placeholder-wine-400 dark:placeholder-wine-500 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400"
             />
           </div>
 
           {/* Contact Preference */}
           <div>
-            <label className="block text-xs font-bold text-wine-800 mb-1.5">
+            <label className="block text-xs font-bold text-wine-800 dark:text-cream-200 mb-1.5">
               Anonymous Communication Preference
             </label>
             <select
               value={formData.contactPreference}
               onChange={(e) => setFormData({ ...formData, contactPreference: e.target.value })}
-              className="w-full bg-cream-50 border border-cream-300 rounded-xl px-3.5 py-2.5 text-sm text-wine-900 focus:outline-none focus:border-burgundy-700 focus:ring-1 focus:ring-burgundy-700 font-medium"
+              className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl px-3.5 py-2.5 text-sm text-wine-900 dark:text-cream-100 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 font-medium"
             >
               <option value="Anonymous In-App Thread">
                 Anonymous In-App Thread (Admin can ask follow-ups without seeing my identity)
@@ -431,16 +431,16 @@ export const SubmitComplaint = () => {
           </div>
 
           {/* Submission Button */}
-          <div className="pt-4 border-t border-cream-300 flex items-center justify-between flex-wrap gap-3">
-            <div className="text-xs text-burgundy-800 font-bold flex items-center gap-1.5">
-              <Lock className="w-3.5 h-3.5 text-peach-600" />
+          <div className="pt-4 border-t border-cream-300 dark:border-peach-400/20 flex items-center justify-between flex-wrap gap-3">
+            <div className="text-xs text-burgundy-800 dark:text-peach-300 font-bold flex items-center gap-1.5">
+              <Lock className="w-3.5 h-3.5 text-peach-600 dark:text-peach-400" />
               <span>Identity stripped before saving to organization database</span>
             </div>
 
             <button
               type="submit"
               disabled={submitting}
-              className="px-7 py-3.5 bg-burgundy-800 hover:bg-burgundy-900 disabled:opacity-50 text-cream-50 text-sm font-bold rounded-xl shadow-warm flex items-center gap-2 transition-all"
+              className="px-7 py-3.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 disabled:opacity-50 text-cream-50 text-sm font-bold rounded-xl shadow-warm flex items-center gap-2 transition-all"
             >
               {submitting ? (
                 <>

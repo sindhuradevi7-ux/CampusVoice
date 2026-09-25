@@ -85,20 +85,20 @@ export const MyComplaints = () => {
       <PrivacyNoticeBanner />
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-cream-300 pb-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-cream-300 dark:border-peach-400/20 pb-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-wine-900 flex items-center gap-2">
-            <FileText className="w-6 h-6 text-burgundy-700" />
+          <h1 className="text-2xl sm:text-3xl font-bold text-wine-900 dark:text-cream-50 flex items-center gap-2">
+            <FileText className="w-6 h-6 text-burgundy-700 dark:text-peach-400" />
             My Anonymous Reports
           </h1>
-          <p className="text-xs sm:text-sm text-wine-600 mt-1 font-medium">
+          <p className="text-xs sm:text-sm text-wine-600 dark:text-cream-300 mt-1 font-medium">
             Track real-time progress and official resolution notes for your submissions.
           </p>
         </div>
 
         <Link
           to="/submit"
-          className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 text-xs sm:text-sm font-bold rounded-xl shadow-warm flex items-center gap-1.5 transition-all"
+          className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 text-xs sm:text-sm font-bold rounded-xl shadow-warm flex items-center gap-1.5 transition-all"
         >
           <PlusCircle className="w-4 h-4 text-peach-300" />
           Submit New Report
@@ -106,16 +106,16 @@ export const MyComplaints = () => {
       </div>
 
       {/* Filters & Search Toolbar */}
-      <div className="bg-white p-4 rounded-2xl border border-cream-300 shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div className="bg-white dark:bg-wine-900 p-4 rounded-2xl border border-cream-300 dark:border-peach-400/20 shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-3">
         {/* Search */}
         <div className="relative">
-          <Search className="w-4 h-4 text-wine-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-wine-400 dark:text-wine-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search by ID, location, or keyword..."
-            className="w-full bg-cream-50 border border-cream-300 rounded-xl pl-10 pr-4 py-2 text-xs sm:text-sm text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 font-medium"
+            className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl pl-10 pr-4 py-2 text-xs sm:text-sm text-wine-900 dark:text-cream-100 placeholder-wine-400 dark:placeholder-wine-500 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 font-medium"
           />
         </div>
 
@@ -124,7 +124,7 @@ export const MyComplaints = () => {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="w-full bg-cream-50 border border-cream-300 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 focus:outline-none focus:border-burgundy-700 font-medium"
+            className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 dark:text-cream-100 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 font-medium"
           >
             {CATEGORIES.map((cat) => (
               <option key={cat} value={cat}>
@@ -139,7 +139,7 @@ export const MyComplaints = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="w-full bg-cream-50 border border-cream-300 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 focus:outline-none focus:border-burgundy-700 font-medium"
+            className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 dark:text-cream-100 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 font-medium"
           >
             {STATUSES.map((st) => (
               <option key={st} value={st}>
@@ -152,14 +152,14 @@ export const MyComplaints = () => {
 
       {/* Complaints List */}
       {loading ? (
-        <div className="p-12 text-center text-wine-500 text-sm bg-white rounded-2xl border border-cream-300">
+        <div className="p-12 text-center text-wine-500 dark:text-cream-400 text-sm bg-white dark:bg-wine-900 rounded-2xl border border-cream-300 dark:border-peach-400/20">
           Loading your verified reports...
         </div>
       ) : filteredComplaints.length === 0 ? (
-        <div className="p-12 text-center bg-white rounded-2xl border border-cream-300 shadow-sm">
-          <FileText className="w-10 h-10 text-wine-400 mx-auto mb-2" />
-          <h3 className="text-base font-bold text-wine-900">No reports found</h3>
-          <p className="text-xs text-wine-600 mt-1 max-w-sm mx-auto font-medium">
+        <div className="p-12 text-center bg-white dark:bg-wine-900 rounded-2xl border border-cream-300 dark:border-peach-400/20 shadow-sm">
+          <FileText className="w-10 h-10 text-wine-400 dark:text-peach-400 mx-auto mb-2" />
+          <h3 className="text-base font-bold text-wine-900 dark:text-cream-50">No reports found</h3>
+          <p className="text-xs text-wine-600 dark:text-cream-300 mt-1 max-w-sm mx-auto font-medium">
             {complaints.length === 0
               ? 'You have not submitted any complaints yet. When you submit one, it will appear here.'
               : 'No complaints match the selected filter criteria.'}
@@ -171,11 +171,11 @@ export const MyComplaints = () => {
             <Link
               key={complaint._id}
               to={`/complaints/${complaint.publicComplaintId}`}
-              className="bg-white p-5 rounded-2xl border border-cream-300 hover:border-burgundy-300 shadow-sm hover:shadow-warm transition-all flex flex-col justify-between block"
+              className="bg-white dark:bg-wine-900 p-5 rounded-2xl border border-cream-300 dark:border-peach-400/20 hover:border-burgundy-300 dark:hover:border-peach-400/40 shadow-sm hover:shadow-warm transition-all flex flex-col justify-between block"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2.5">
-                  <span className="font-mono text-xs font-extrabold text-burgundy-900 bg-peach-50 px-2.5 py-0.5 rounded-lg border border-peach-200">
+                  <span className="font-mono text-xs font-extrabold text-burgundy-900 dark:text-peach-300 bg-peach-50 dark:bg-wine-950 px-2.5 py-0.5 rounded-lg border border-peach-200 dark:border-peach-400/20">
                     {complaint.publicComplaintId}
                   </span>
                   <div className="flex items-center gap-2">
@@ -184,12 +184,12 @@ export const MyComplaints = () => {
                   </div>
                 </div>
 
-                <h4 className="text-sm font-bold text-wine-900 mb-2 line-clamp-2">
+                <h4 className="text-sm font-bold text-wine-900 dark:text-cream-50 mb-2 line-clamp-2">
                   {complaint.category}: {complaint.description}
                 </h4>
 
-                <div className="flex items-center gap-2 text-xs text-wine-600 mb-3 font-medium">
-                  <MapPin className="w-3.5 h-3.5 text-peach-700" />
+                <div className="flex items-center gap-2 text-xs text-wine-600 dark:text-cream-400 mb-3 font-medium">
+                  <MapPin className="w-3.5 h-3.5 text-peach-700 dark:text-peach-400" />
                   <span className="truncate">{complaint.location}</span>
                   {complaint.affectedArea && (
                     <span className="text-wine-400">({complaint.affectedArea})</span>
@@ -197,23 +197,23 @@ export const MyComplaints = () => {
                 </div>
 
                 {complaint.issueClusterId && (
-                  <div className="p-2.5 rounded-xl bg-peach-50/60 border border-peach-200 text-xs mb-3">
-                    <div className="flex items-center justify-between text-[11px] text-wine-700">
-                      <span className="flex items-center gap-1 text-burgundy-900 font-bold">
-                        <Layers className="w-3 h-3 text-peach-700" /> Linked Cluster: {complaint.issueClusterId.publicIssueId}
+                  <div className="p-2.5 rounded-xl bg-peach-50/60 dark:bg-wine-950/60 border border-peach-200 dark:border-peach-400/20 text-xs mb-3">
+                    <div className="flex items-center justify-between text-[11px] text-wine-700 dark:text-cream-300">
+                      <span className="flex items-center gap-1 text-burgundy-900 dark:text-peach-300 font-bold">
+                        <Layers className="w-3 h-3 text-peach-700 dark:text-peach-400" /> Linked Cluster: {complaint.issueClusterId.publicIssueId}
                       </span>
-                      <span className="font-semibold text-peach-800">{complaint.issueClusterId.affectedCount} students</span>
+                      <span className="font-semibold text-peach-800 dark:text-peach-400">{complaint.issueClusterId.affectedCount} students</span>
                     </div>
                   </div>
                 )}
               </div>
 
-              <div className="pt-3 border-t border-cream-300 flex items-center justify-between text-xs">
-                <span className="text-wine-500 font-medium">
+              <div className="pt-3 border-t border-cream-300 dark:border-peach-400/20 flex items-center justify-between text-xs">
+                <span className="text-wine-500 dark:text-cream-400 font-medium">
                   {new Date(complaint.createdAt).toLocaleDateString()}
                 </span>
-                <span className="text-burgundy-800 font-bold flex items-center gap-1 hover:underline">
-                  Track Details <ArrowUpRight className="w-3.5 h-3.5 text-peach-700" />
+                <span className="text-burgundy-800 dark:text-peach-300 font-bold flex items-center gap-1 hover:underline">
+                  Track Details <ArrowUpRight className="w-3.5 h-3.5 text-peach-700 dark:text-peach-400" />
                 </span>
               </div>
             </Link>

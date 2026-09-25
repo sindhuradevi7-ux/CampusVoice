@@ -50,23 +50,23 @@ export const Register = () => {
 
   return (
     <div className="max-w-lg mx-auto my-12 px-4">
-      <div className="bg-white p-6 sm:p-8 rounded-3xl border border-cream-300 shadow-warm-lg">
+      <div className="bg-white dark:bg-wine-900 p-6 sm:p-8 rounded-3xl border border-cream-300 dark:border-peach-400/20 shadow-warm-lg transition-colors">
         {/* Header */}
         <div className="text-center mb-6">
-          <div className="inline-flex p-3 bg-cream-100 rounded-2xl border border-cream-300 mb-3 shadow-sm">
+          <div className="inline-flex p-3 bg-cream-100 dark:bg-wine-800 rounded-2xl border border-cream-300 dark:border-peach-400/20 mb-3 shadow-sm">
             <BrandLogo className="w-10 h-10" />
           </div>
-          <h2 className="text-2xl font-bold text-wine-900">Create Verified Account</h2>
-          <p className="text-xs text-wine-600 mt-1 font-medium">
+          <h2 className="text-2xl font-bold text-wine-900 dark:text-cream-50">Create Verified Account</h2>
+          <p className="text-xs text-wine-600 dark:text-cream-300 mt-1 font-medium">
             Student accounts are authenticated to prevent abuse, while protecting your identity.
           </p>
         </div>
 
         {/* Privacy Note */}
-        <div className="p-3.5 bg-peach-50 border border-peach-300 rounded-2xl mb-5 text-xs text-burgundy-950 flex items-start gap-2.5 shadow-sm">
-          <Lock className="w-4 h-4 text-peach-700 shrink-0 mt-0.5" />
+        <div className="p-3.5 bg-peach-50 dark:bg-wine-950/80 border border-peach-300 dark:border-peach-400/20 rounded-2xl mb-5 text-xs text-burgundy-950 dark:text-cream-200 flex items-start gap-2.5 shadow-sm">
+          <Lock className="w-4 h-4 text-peach-700 dark:text-peach-400 shrink-0 mt-0.5" />
           <span>
-            <strong className="font-bold text-burgundy-900">Privacy Guarantee:</strong> Your Name, Email & Student ID will be isolated from organization views. Admin will only see "Verified Anonymous Student".
+            <strong className="font-bold text-burgundy-900 dark:text-peach-300">Privacy Guarantee:</strong> Your Name, Email & Student ID will be isolated from organization views. Admin will only see "Verified Anonymous Student".
           </span>
         </div>
 
@@ -74,11 +74,11 @@ export const Register = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold text-wine-800 mb-1.5">
+              <label className="block text-xs font-bold text-wine-800 dark:text-cream-200 mb-1.5">
                 Full Name
               </label>
               <div className="relative">
-                <User className="w-4 h-4 text-wine-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <User className="w-4 h-4 text-wine-400 dark:text-wine-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   name="name"
@@ -86,17 +86,17 @@ export const Register = () => {
                   onChange={handleChange}
                   placeholder="e.g. Alex Johnson"
                   required
-                  className="w-full bg-cream-50 border border-cream-300 rounded-xl pl-10 pr-4 py-2.5 text-sm text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 focus:ring-1 focus:ring-burgundy-700"
+                  className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl pl-10 pr-4 py-2.5 text-sm text-wine-900 dark:text-cream-100 placeholder-wine-400 dark:placeholder-wine-500 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 focus:ring-1 focus:ring-burgundy-700"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-wine-800 mb-1.5">
+              <label className="block text-xs font-bold text-wine-800 dark:text-cream-200 mb-1.5">
                 Student ID / Roll No
               </label>
               <div className="relative">
-                <BadgeAlert className="w-4 h-4 text-wine-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <BadgeAlert className="w-4 h-4 text-wine-400 dark:text-wine-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   name="studentId"
@@ -104,18 +104,18 @@ export const Register = () => {
                   onChange={handleChange}
                   placeholder="e.g. STU-202401"
                   required
-                  className="w-full bg-cream-50 border border-cream-300 rounded-xl pl-10 pr-4 py-2.5 text-sm text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 focus:ring-1 focus:ring-burgundy-700"
+                  className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl pl-10 pr-4 py-2.5 text-sm text-wine-900 dark:text-cream-100 placeholder-wine-400 dark:placeholder-wine-500 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 focus:ring-1 focus:ring-burgundy-700"
                 />
               </div>
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-wine-800 mb-1.5">
+            <label className="block text-xs font-bold text-wine-800 dark:text-cream-200 mb-1.5">
               Campus Email Address
             </label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-wine-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Mail className="w-4 h-4 text-wine-400 dark:text-wine-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="email"
                 name="email"
@@ -123,21 +123,21 @@ export const Register = () => {
                 onChange={handleChange}
                 placeholder="e.g. yourname@campus.edu"
                 required
-                className="w-full bg-cream-50 border border-cream-300 rounded-xl pl-10 pr-4 py-2.5 text-sm text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 focus:ring-1 focus:ring-burgundy-700"
+                className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl pl-10 pr-4 py-2.5 text-sm text-wine-900 dark:text-cream-100 placeholder-wine-400 dark:placeholder-wine-500 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 focus:ring-1 focus:ring-burgundy-700"
               />
             </div>
-            <p className="text-[11px] text-wine-500 mt-1">
+            <p className="text-[11px] text-wine-500 dark:text-cream-400 mt-1">
               Supports @campus.edu, @university.ac.in, @student.edu or standard academic domains.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold text-wine-800 mb-1.5">
+              <label className="block text-xs font-bold text-wine-800 dark:text-cream-200 mb-1.5">
                 Password
               </label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-wine-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-wine-400 dark:text-wine-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="password"
                   name="password"
@@ -145,17 +145,17 @@ export const Register = () => {
                   onChange={handleChange}
                   placeholder="Min 6 characters"
                   required
-                  className="w-full bg-cream-50 border border-cream-300 rounded-xl pl-10 pr-4 py-2.5 text-sm text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 focus:ring-1 focus:ring-burgundy-700"
+                  className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl pl-10 pr-4 py-2.5 text-sm text-wine-900 dark:text-cream-100 placeholder-wine-400 dark:placeholder-wine-500 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 focus:ring-1 focus:ring-burgundy-700"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-wine-800 mb-1.5">
+              <label className="block text-xs font-bold text-wine-800 dark:text-cream-200 mb-1.5">
                 Confirm Password
               </label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-wine-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-wine-400 dark:text-wine-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="password"
                   name="confirmPassword"
@@ -163,7 +163,7 @@ export const Register = () => {
                   onChange={handleChange}
                   placeholder="Repeat password"
                   required
-                  className="w-full bg-cream-50 border border-cream-300 rounded-xl pl-10 pr-4 py-2.5 text-sm text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 focus:ring-1 focus:ring-burgundy-700"
+                  className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl pl-10 pr-4 py-2.5 text-sm text-wine-900 dark:text-cream-100 placeholder-wine-400 dark:placeholder-wine-500 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 focus:ring-1 focus:ring-burgundy-700"
                 />
               </div>
             </div>
@@ -172,7 +172,7 @@ export const Register = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-burgundy-800 hover:bg-burgundy-900 disabled:opacity-50 text-cream-50 font-bold rounded-xl text-sm shadow-md shadow-burgundy-900/20 transition-all flex items-center justify-center gap-2 mt-4"
+            className="w-full py-3 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 disabled:opacity-50 text-cream-50 font-bold rounded-xl text-sm shadow-md shadow-burgundy-900/20 transition-all flex items-center justify-center gap-2 mt-4"
           >
             {loading ? 'Creating Verified Account...' : 'Register & Verify Account'}
             <ArrowRight className="w-4 h-4 text-peach-300" />
@@ -180,10 +180,10 @@ export const Register = () => {
         </form>
 
         {/* Footer */}
-        <div className="mt-6 pt-5 border-t border-cream-300 text-center">
-          <p className="text-xs text-wine-600">
+        <div className="mt-6 pt-5 border-t border-cream-300 dark:border-peach-400/20 text-center">
+          <p className="text-xs text-wine-600 dark:text-cream-300">
             Already have an account?{' '}
-            <Link to="/login" className="text-burgundy-800 hover:underline font-bold">
+            <Link to="/login" className="text-burgundy-800 dark:text-peach-300 hover:underline font-bold">
               Sign In
             </Link>
           </p>

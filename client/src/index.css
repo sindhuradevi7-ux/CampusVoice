@@ -6,16 +6,23 @@
   html {
     @apply scroll-smooth antialiased;
     -webkit-text-size-adjust: 100%;
-    color-scheme: light;
   }
 
   body {
-    @apply bg-cream-50 text-wine-900 font-sans overflow-x-hidden min-h-screen w-full;
+    @apply bg-cream-50 text-wine-900 font-sans overflow-x-hidden min-h-screen w-full transition-colors duration-200;
     background-image: 
       radial-gradient(at 0% 0%, rgba(116, 18, 43, 0.04) 0px, transparent 50%),
       radial-gradient(at 100% 0%, rgba(245, 159, 135, 0.08) 0px, transparent 50%),
       radial-gradient(at 50% 100%, rgba(116, 18, 43, 0.03) 0px, transparent 60%);
     background-attachment: fixed;
+  }
+
+  html.dark body {
+    @apply bg-wine-950 text-cream-100;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(140, 21, 51, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(245, 159, 135, 0.08) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(116, 18, 43, 0.12) 0px, transparent 60%);
   }
 
   /* Accessible touch sizing for interactive elements on mobile */
@@ -33,6 +40,12 @@
   box-shadow: 0 4px 20px -4px rgba(82, 11, 28, 0.05);
 }
 
+.dark .glass-panel {
+  background: rgba(35, 10, 18, 0.85);
+  border: 1px solid rgba(245, 159, 135, 0.12);
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.5);
+}
+
 .glass-panel-hover {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -44,6 +57,12 @@
     transform: translateY(-2px);
     box-shadow: 0 14px 30px -10px rgba(82, 11, 28, 0.12), 0 0 20px -5px rgba(245, 159, 135, 0.25);
   }
+
+  .dark .glass-panel-hover:hover {
+    background: rgba(45, 14, 24, 0.95);
+    border-color: rgba(245, 159, 135, 0.3);
+    box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(245, 159, 135, 0.2);
+  }
 }
 
 .glass-card-shield {
@@ -51,6 +70,12 @@
   backdrop-filter: blur(12px);
   border: 1px solid rgba(245, 159, 135, 0.4);
   box-shadow: 0 4px 15px -3px rgba(245, 159, 135, 0.15);
+}
+
+.dark .glass-card-shield {
+  background: rgba(45, 14, 24, 0.9);
+  border: 1px solid rgba(245, 159, 135, 0.25);
+  box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.4);
 }
 
 /* Custom sleek warm scrollbar for desktop */
@@ -64,13 +89,25 @@
     background: #f4ece0;
   }
 
+  .dark ::-webkit-scrollbar-track {
+    background: #1b060d;
+  }
+
   ::-webkit-scrollbar-thumb {
     background: #d9b2bc;
     border-radius: 9999px;
   }
 
+  .dark ::-webkit-scrollbar-thumb {
+    background: #532430;
+  }
+
   ::-webkit-scrollbar-thumb:hover {
     background: #74122b;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #8c1533;
   }
 }
 

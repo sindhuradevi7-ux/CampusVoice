@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -36,7 +37,7 @@ export default {
           900: '#7a301d',
           950: '#42160b',
         },
-        // Warm White / Cream Surfaces
+        // Warm White / Cream Surfaces (Light mode base)
         cream: {
           50: '#fdfbf7', // Primary warm white background
           100: '#faf6ee', // Surface cards
@@ -50,7 +51,7 @@ export default {
           900: '#382f25', // Heading / dark warm text
           950: '#211b14',
         },
-        // Wine tones for typography & deep elements
+        // Wine tones for typography & dark mode surfaces
         wine: {
           50: '#fcf8f9',
           100: '#f8edef',
@@ -62,7 +63,8 @@ export default {
           700: '#693340',
           800: '#532430',
           900: '#3a141e', // Rich wine dark text
-          950: '#230810',
+          950: '#1b060d', // Deep wine dark mode background
+          980: '#130308',
         },
         // Semantic aliases
         brand: {
@@ -100,6 +102,7 @@ export default {
         'peach-glow': '0 0 25px -5px rgba(245, 159, 135, 0.4)',
         'warm': '0 10px 30px -10px rgba(82, 11, 28, 0.08)',
         'warm-lg': '0 20px 40px -15px rgba(82, 11, 28, 0.12)',
+        'dark-glow': '0 0 25px -5px rgba(245, 159, 135, 0.15)',
       }
     },
   },

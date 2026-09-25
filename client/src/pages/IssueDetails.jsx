@@ -70,7 +70,7 @@ export const IssueDetails = () => {
 
   if (loading) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-16 text-center text-wine-500 font-medium">
+      <div className="max-w-4xl mx-auto px-4 py-16 text-center text-wine-500 dark:text-cream-400 font-medium">
         Loading campus issue cluster...
       </div>
     );
@@ -79,12 +79,12 @@ export const IssueDetails = () => {
   if (!issue) {
     return (
       <div className="max-w-xl mx-auto px-4 py-16 text-center">
-        <div className="bg-white p-8 rounded-3xl border border-burgundy-200 shadow-warm">
-          <h2 className="text-xl font-bold text-wine-900 mb-2">Issue Cluster Not Found</h2>
-          <p className="text-sm text-wine-600 mb-6">Unable to find this issue cluster.</p>
+        <div className="bg-white dark:bg-wine-900 p-8 rounded-3xl border border-burgundy-200 dark:border-peach-400/20 shadow-warm">
+          <h2 className="text-xl font-bold text-wine-900 dark:text-cream-50 mb-2">Issue Cluster Not Found</h2>
+          <p className="text-sm text-wine-600 dark:text-cream-300 mb-6">Unable to find this issue cluster.</p>
           <Link
             to="/issues"
-            className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 rounded-xl text-xs font-bold"
+            className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 rounded-xl text-xs font-bold"
           >
             Back to Explorer
           </Link>
@@ -99,28 +99,28 @@ export const IssueDetails = () => {
       <div className="flex items-center justify-between">
         <Link
           to="/issues"
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-wine-600 hover:text-burgundy-800 transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-wine-600 dark:text-cream-400 hover:text-burgundy-800 dark:hover:text-peach-300 transition-colors"
         >
-          <ArrowLeft className="w-4 h-4 text-burgundy-700" />
+          <ArrowLeft className="w-4 h-4 text-burgundy-700 dark:text-peach-400" />
           Back to Issue Explorer
         </Link>
-        <span className="text-xs text-burgundy-800 font-semibold font-mono">🔒 Aggregated Public View</span>
+        <span className="text-xs text-burgundy-800 dark:text-peach-300 font-semibold font-mono">🔒 Aggregated Public View</span>
       </div>
 
       <PrivacyNoticeBanner />
 
       {/* Main Issue Header Card */}
-      <div className="bg-white p-6 sm:p-8 rounded-3xl border border-cream-300 shadow-warm space-y-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-cream-300 pb-5">
+      <div className="bg-white dark:bg-wine-900 p-6 sm:p-8 rounded-3xl border border-cream-300 dark:border-peach-400/20 shadow-warm space-y-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-cream-300 dark:border-peach-400/20 pb-5">
           <div>
             <div className="flex items-center gap-2.5 flex-wrap">
-              <span className="font-mono text-sm font-extrabold text-burgundy-900 bg-peach-50 px-3 py-1 rounded-xl border border-peach-200">
+              <span className="font-mono text-sm font-extrabold text-burgundy-900 dark:text-peach-300 bg-peach-50 dark:bg-wine-950 px-3 py-1 rounded-xl border border-peach-200 dark:border-peach-400/20">
                 {issue.publicIssueId}
               </span>
               <StatusBadge status={issue.status} />
               <SeverityBadge severity={issue.severity} />
             </div>
-            <h1 className="text-xl sm:text-2xl font-bold text-wine-900 mt-2">
+            <h1 className="text-xl sm:text-2xl font-bold text-wine-900 dark:text-cream-50 mt-2">
               {issue.title}
             </h1>
           </div>
@@ -128,18 +128,18 @@ export const IssueDetails = () => {
           {/* Support Action Button */}
           <div>
             {issue.status === 'Resolved' || issue.status === 'Closed' ? (
-              <span className="px-4 py-2 bg-peach-100 border border-peach-300 text-burgundy-900 text-xs font-bold rounded-xl flex items-center gap-1.5 shadow-sm">
-                <Check className="w-4 h-4 text-peach-700" /> Resolved by Administration
+              <span className="px-4 py-2 bg-peach-100 dark:bg-wine-800 border border-peach-300 dark:border-peach-400/30 text-burgundy-900 dark:text-peach-300 text-xs font-bold rounded-xl flex items-center gap-1.5 shadow-sm">
+                <Check className="w-4 h-4 text-peach-700 dark:text-peach-400" /> Resolved by Administration
               </span>
             ) : issue.isSupportedByMe ? (
-              <span className="px-4 py-2 bg-peach-100 border border-peach-300 text-burgundy-900 text-xs font-bold rounded-xl flex items-center gap-1.5 shadow-sm">
-                <Check className="w-4 h-4 text-peach-700" /> Supported (+1)
+              <span className="px-4 py-2 bg-peach-100 dark:bg-wine-800 border border-peach-300 dark:border-peach-400/30 text-burgundy-900 dark:text-peach-300 text-xs font-bold rounded-xl flex items-center gap-1.5 shadow-sm">
+                <Check className="w-4 h-4 text-peach-700 dark:text-peach-400" /> Supported (+1)
               </span>
             ) : (
               <button
                 onClick={handleSupport}
                 disabled={supporting}
-                className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 rounded-xl text-xs font-bold shadow-warm transition-all flex items-center gap-2"
+                className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 rounded-xl text-xs font-bold shadow-warm transition-all flex items-center gap-2"
               >
                 <Users className="w-4 h-4 text-peach-300" />
                 {supporting ? 'Saving...' : 'I am also affected (+1)'}
@@ -150,44 +150,44 @@ export const IssueDetails = () => {
 
         {/* Stats and metadata cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="p-4 rounded-2xl bg-cream-50 border border-cream-300 shadow-sm">
-            <span className="text-xs text-wine-500 font-bold block mb-1">Affected Students</span>
-            <div className="flex items-center gap-2 text-burgundy-900 text-lg font-bold">
-              <Users className="w-5 h-5 text-peach-700" />
+          <div className="p-4 rounded-2xl bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 shadow-sm">
+            <span className="text-xs text-wine-500 dark:text-cream-400 font-bold block mb-1">Affected Students</span>
+            <div className="flex items-center gap-2 text-burgundy-900 dark:text-peach-300 text-lg font-bold">
+              <Users className="w-5 h-5 text-peach-700 dark:text-peach-400" />
               <span>{issue.affectedCount} Verified Students</span>
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-cream-50 border border-cream-300 shadow-sm">
-            <span className="text-xs text-wine-500 font-bold block mb-1">Campus Location</span>
-            <div className="flex items-center gap-2 text-wine-900 text-sm font-semibold truncate">
-              <MapPin className="w-4 h-4 text-peach-700 shrink-0" />
+          <div className="p-4 rounded-2xl bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 shadow-sm">
+            <span className="text-xs text-wine-500 dark:text-cream-400 font-bold block mb-1">Campus Location</span>
+            <div className="flex items-center gap-2 text-wine-900 dark:text-cream-100 text-sm font-semibold truncate">
+              <MapPin className="w-4 h-4 text-peach-700 dark:text-peach-400 shrink-0" />
               <span className="truncate">{issue.location}</span>
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-cream-50 border border-cream-300 shadow-sm">
-            <span className="text-xs text-wine-500 font-bold block mb-1">Assigned Department</span>
-            <div className="flex items-center gap-2 text-burgundy-800 text-sm font-semibold truncate">
-              <Building2 className="w-4 h-4 text-burgundy-700 shrink-0" />
+          <div className="p-4 rounded-2xl bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 shadow-sm">
+            <span className="text-xs text-wine-500 dark:text-cream-400 font-bold block mb-1">Assigned Department</span>
+            <div className="flex items-center gap-2 text-burgundy-800 dark:text-peach-300 text-sm font-semibold truncate">
+              <Building2 className="w-4 h-4 text-burgundy-700 dark:text-peach-400 shrink-0" />
               <span className="truncate">{issue.assignedDepartment}</span>
             </div>
           </div>
         </div>
 
         {/* Issue Summary */}
-        <div className="p-5 rounded-2xl bg-cream-50 border border-cream-300 shadow-sm">
-          <h3 className="text-xs font-bold text-wine-700 uppercase tracking-wider mb-2">
+        <div className="p-5 rounded-2xl bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 shadow-sm">
+          <h3 className="text-xs font-bold text-wine-700 dark:text-peach-400 uppercase tracking-wider mb-2">
             Issue Cluster Overview
           </h3>
-          <p className="text-sm text-wine-900 leading-relaxed font-medium">
+          <p className="text-sm text-wine-900 dark:text-cream-200 leading-relaxed font-medium">
             {issue.summary}
           </p>
 
           {issue.keywords && issue.keywords.length > 0 && (
-            <div className="mt-4 pt-3 border-t border-cream-300 flex flex-wrap gap-1.5">
+            <div className="mt-4 pt-3 border-t border-cream-300 dark:border-peach-400/20 flex flex-wrap gap-1.5">
               {issue.keywords.map((kw, i) => (
-                <span key={i} className="text-[11px] px-2.5 py-0.5 rounded-lg bg-white border border-cream-300 text-wine-700 font-medium">
+                <span key={i} className="text-[11px] px-2.5 py-0.5 rounded-lg bg-white dark:bg-wine-900 border border-cream-300 dark:border-peach-400/20 text-wine-700 dark:text-cream-300 font-medium">
                   #{kw}
                 </span>
               ))}
@@ -196,9 +196,9 @@ export const IssueDetails = () => {
         </div>
 
         {/* Resolution Timeline */}
-        <div className="pt-4 border-t border-cream-300">
-          <h3 className="text-sm font-bold text-wine-900 mb-6 flex items-center gap-2">
-            <Clock className="w-4 h-4 text-burgundy-700" />
+        <div className="pt-4 border-t border-cream-300 dark:border-peach-400/20">
+          <h3 className="text-sm font-bold text-wine-900 dark:text-cream-50 mb-6 flex items-center gap-2">
+            <Clock className="w-4 h-4 text-burgundy-700 dark:text-peach-400" />
             Official Resolution Timeline
           </h3>
           <Timeline status={issue.status} statusHistory={issue.statusHistory} />

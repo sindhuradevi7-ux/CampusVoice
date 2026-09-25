@@ -113,13 +113,13 @@ export const IssueExplorer = () => {
       <PrivacyNoticeBanner />
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-cream-300 pb-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-cream-300 dark:border-peach-400/20 pb-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-wine-900 flex items-center gap-2">
-            <Compass className="w-6 h-6 text-burgundy-700" />
+          <h1 className="text-2xl sm:text-3xl font-bold text-wine-900 dark:text-cream-50 flex items-center gap-2">
+            <Compass className="w-6 h-6 text-burgundy-700 dark:text-peach-400" />
             Campus Issue Explorer
           </h1>
-          <p className="text-xs sm:text-sm text-wine-600 mt-1 font-medium">
+          <p className="text-xs sm:text-sm text-wine-600 dark:text-cream-300 mt-1 font-medium">
             Browse aggregated campus problem clusters. Click "I am also affected" to highlight scale without duplicate complaints.
           </p>
         </div>
@@ -127,7 +127,7 @@ export const IssueExplorer = () => {
         {isStudent && (
           <Link
             to="/submit"
-            className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 text-xs sm:text-sm font-bold rounded-xl shadow-warm flex items-center gap-1.5 transition-all"
+            className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 text-xs sm:text-sm font-bold rounded-xl shadow-warm flex items-center gap-1.5 transition-all"
           >
             Submit New Report
           </Link>
@@ -135,21 +135,21 @@ export const IssueExplorer = () => {
       </div>
 
       {/* Search & Filter Toolbar */}
-      <div className="bg-white p-4 sm:p-5 rounded-2xl border border-cream-300 shadow-sm space-y-4">
+      <div className="bg-white dark:bg-wine-900 p-4 sm:p-5 rounded-2xl border border-cream-300 dark:border-peach-400/20 shadow-sm space-y-4">
         <form onSubmit={handleSearchSubmit} className="flex gap-2">
           <div className="relative flex-1">
-            <Search className="w-4 h-4 text-wine-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-wine-400 dark:text-wine-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by keyword, location, or issue ID (e.g. Lab 3, Wi-Fi, CV-ISSUE-104)..."
-              className="w-full bg-cream-50 border border-cream-300 rounded-xl pl-10 pr-4 py-2.5 text-xs sm:text-sm text-wine-900 placeholder-wine-400 focus:outline-none focus:border-burgundy-700 font-medium"
+              className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl pl-10 pr-4 py-2.5 text-xs sm:text-sm text-wine-900 dark:text-cream-100 placeholder-wine-400 dark:placeholder-wine-500 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 font-medium"
             />
           </div>
           <button
             type="submit"
-            className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 text-xs sm:text-sm font-bold rounded-xl transition-colors shrink-0 shadow-sm"
+            className="px-5 py-2.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 text-xs sm:text-sm font-bold rounded-xl transition-colors shrink-0 shadow-sm"
           >
             Search
           </button>
@@ -161,7 +161,7 @@ export const IssueExplorer = () => {
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full bg-cream-50 border border-cream-300 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 focus:outline-none focus:border-burgundy-700 font-medium"
+              className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 dark:text-cream-100 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 font-medium"
             >
               {CATEGORIES.map((cat) => (
                 <option key={cat} value={cat}>
@@ -175,7 +175,7 @@ export const IssueExplorer = () => {
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="w-full bg-cream-50 border border-cream-300 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 focus:outline-none focus:border-burgundy-700 font-medium"
+              className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 dark:text-cream-100 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 font-medium"
             >
               {STATUSES.map((st) => (
                 <option key={st} value={st}>
@@ -189,7 +189,7 @@ export const IssueExplorer = () => {
             <select
               value={severity}
               onChange={(e) => setSeverity(e.target.value)}
-              className="w-full bg-cream-50 border border-cream-300 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 focus:outline-none focus:border-burgundy-700 font-medium"
+              className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 dark:text-cream-100 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 font-medium"
             >
               {SEVERITIES.map((sev) => (
                 <option key={sev} value={sev}>
@@ -203,7 +203,7 @@ export const IssueExplorer = () => {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="w-full bg-cream-50 border border-cream-300 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 focus:outline-none focus:border-burgundy-700 font-medium"
+              className="w-full bg-cream-50 dark:bg-wine-950 border border-cream-300 dark:border-peach-400/20 rounded-xl px-3 py-2 text-xs sm:text-sm text-wine-900 dark:text-cream-100 focus:outline-none focus:border-burgundy-700 dark:focus:border-peach-400 font-medium"
             >
               <option value="affectedCount">Sort: Most Affected</option>
               <option value="newest">Sort: Newest First</option>
@@ -215,14 +215,14 @@ export const IssueExplorer = () => {
 
       {/* Issue Clusters Grid */}
       {loading ? (
-        <div className="p-16 text-center text-wine-500 text-sm bg-white rounded-2xl border border-cream-300 shadow-sm">
+        <div className="p-16 text-center text-wine-500 dark:text-cream-400 text-sm bg-white dark:bg-wine-900 rounded-2xl border border-cream-300 dark:border-peach-400/20 shadow-sm">
           Loading active campus issue clusters...
         </div>
       ) : issues.length === 0 ? (
-        <div className="p-16 text-center bg-white rounded-2xl border border-cream-300 shadow-sm">
-          <Layers className="w-10 h-10 text-wine-400 mx-auto mb-2" />
-          <h3 className="text-base font-bold text-wine-900">No issue clusters found</h3>
-          <p className="text-xs text-wine-600 mt-1 max-w-sm mx-auto font-medium">
+        <div className="p-16 text-center bg-white dark:bg-wine-900 rounded-2xl border border-cream-300 dark:border-peach-400/20 shadow-sm">
+          <Layers className="w-10 h-10 text-wine-400 dark:text-peach-400 mx-auto mb-2" />
+          <h3 className="text-base font-bold text-wine-900 dark:text-cream-50">No issue clusters found</h3>
+          <p className="text-xs text-wine-600 dark:text-cream-300 mt-1 max-w-sm mx-auto font-medium">
             Try adjusting your search terms or filter selection.
           </p>
         </div>
@@ -231,11 +231,11 @@ export const IssueExplorer = () => {
           {issues.map((issue) => (
             <div
               key={issue._id}
-              className="bg-white p-5 rounded-2xl border border-cream-300 hover:border-burgundy-300 shadow-sm hover:shadow-warm transition-all flex flex-col justify-between"
+              className="bg-white dark:bg-wine-900 p-5 rounded-2xl border border-cream-300 dark:border-peach-400/20 hover:border-burgundy-300 dark:hover:border-peach-400/40 shadow-sm hover:shadow-warm transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="font-mono text-xs font-extrabold text-burgundy-900 bg-peach-50 px-2.5 py-0.5 rounded-lg border border-peach-200">
+                  <span className="font-mono text-xs font-extrabold text-burgundy-900 dark:text-peach-300 bg-peach-50 dark:bg-wine-950 px-2.5 py-0.5 rounded-lg border border-peach-200 dark:border-peach-400/20">
                     {issue.publicIssueId}
                   </span>
                   <div className="flex items-center gap-1.5">
@@ -248,52 +248,52 @@ export const IssueExplorer = () => {
                   to={`/issues/${issue.publicIssueId || issue._id}`}
                   className="block group"
                 >
-                  <h3 className="text-sm font-bold text-wine-900 group-hover:text-burgundy-800 transition-colors line-clamp-2 mb-2">
+                  <h3 className="text-sm font-bold text-wine-900 dark:text-cream-50 group-hover:text-burgundy-800 dark:group-hover:text-peach-300 transition-colors line-clamp-2 mb-2">
                     {issue.title}
                   </h3>
                 </Link>
 
-                <p className="text-xs text-wine-600 line-clamp-2 mb-4 leading-relaxed font-medium">
+                <p className="text-xs text-wine-600 dark:text-cream-300 line-clamp-2 mb-4 leading-relaxed font-medium">
                   {issue.summary}
                 </p>
 
-                <div className="space-y-1.5 text-xs text-wine-700 mb-4 bg-cream-50 p-3 rounded-xl border border-cream-300">
-                  <div className="flex items-center gap-1.5 text-wine-900 font-medium truncate">
-                    <MapPin className="w-3.5 h-3.5 text-peach-700 shrink-0" />
+                <div className="space-y-1.5 text-xs text-wine-700 dark:text-cream-300 mb-4 bg-cream-50 dark:bg-wine-950 p-3 rounded-xl border border-cream-300 dark:border-peach-400/20">
+                  <div className="flex items-center gap-1.5 text-wine-900 dark:text-cream-100 font-medium truncate">
+                    <MapPin className="w-3.5 h-3.5 text-peach-700 dark:text-peach-400 shrink-0" />
                     <span className="truncate">{issue.location}</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-wine-600 truncate font-medium">
-                    <Building2 className="w-3.5 h-3.5 text-burgundy-700 shrink-0" />
+                  <div className="flex items-center gap-1.5 text-wine-600 dark:text-cream-400 truncate font-medium">
+                    <Building2 className="w-3.5 h-3.5 text-burgundy-700 dark:text-peach-400 shrink-0" />
                     <span className="truncate">{issue.assignedDepartment}</span>
                   </div>
                 </div>
               </div>
 
               {/* Bottom Actions */}
-              <div className="pt-3 border-t border-cream-300 flex items-center justify-between gap-2">
+              <div className="pt-3 border-t border-cream-300 dark:border-peach-400/20 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-1 text-xs">
-                  <Users className="w-3.5 h-3.5 text-peach-700" />
-                  <span className="font-extrabold text-burgundy-900 text-sm">{issue.affectedCount}</span>
-                  <span className="text-wine-500 text-[11px] font-medium">affected</span>
+                  <Users className="w-3.5 h-3.5 text-peach-700 dark:text-peach-400" />
+                  <span className="font-extrabold text-burgundy-900 dark:text-peach-300 text-sm">{issue.affectedCount}</span>
+                  <span className="text-wine-500 dark:text-cream-400 text-[11px] font-medium">affected</span>
                 </div>
 
                 {issue.status === 'Resolved' || issue.status === 'Closed' ? (
-                  <span className="text-[11px] text-burgundy-900 font-bold px-2.5 py-1 bg-peach-100 rounded-lg border border-peach-300">
+                  <span className="text-[11px] text-burgundy-900 dark:text-peach-300 font-bold px-2.5 py-1 bg-peach-100 dark:bg-wine-800 rounded-lg border border-peach-300 dark:border-peach-400/30">
                     ✓ Resolved
                   </span>
                 ) : issue.isSupportedByMe ? (
                   <button
                     disabled
-                    className="px-3 py-1.5 bg-peach-100 border border-peach-300 text-burgundy-900 rounded-xl text-xs font-bold flex items-center gap-1 cursor-default"
+                    className="px-3 py-1.5 bg-peach-100 dark:bg-wine-800 border border-peach-300 dark:border-peach-400/30 text-burgundy-900 dark:text-peach-300 rounded-xl text-xs font-bold flex items-center gap-1 cursor-default"
                   >
-                    <Check className="w-3.5 h-3.5 text-peach-700" />
+                    <Check className="w-3.5 h-3.5 text-peach-700 dark:text-peach-400" />
                     Supported
                   </button>
                 ) : (
                   <button
                     onClick={(e) => handleSupport(issue._id, e)}
                     disabled={supportingId === issue._id}
-                    className="px-3 py-1.5 bg-burgundy-800 hover:bg-burgundy-900 text-cream-50 rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-1"
+                    className="px-3 py-1.5 bg-burgundy-800 hover:bg-burgundy-900 dark:bg-burgundy-700 dark:hover:bg-burgundy-600 text-cream-50 rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-1"
                   >
                     <Users className="w-3.5 h-3.5 text-peach-300" />
                     {supportingId === issue._id ? 'Saving...' : 'I am also affected (+1)'}

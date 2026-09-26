@@ -10,13 +10,16 @@ import {
   Compass, 
   Building2, 
   Cpu, 
-  TrendingUp,
-  FileText,
-  PlusCircle,
-  Sparkles
+  TrendingUp, 
+  PlusCircle, 
+  Sparkles,
+  HelpCircle,
+  CheckCircle2,
+  Lock
 } from 'lucide-react';
 import { StatusBadge, SeverityBadge } from '../components/common/StatusBadge';
 import { PrivacyExplainerModal } from '../components/common/PrivacyExplainerModal';
+import { CampusGuide } from '../components/common/CampusGuide';
 import { useTheme } from '../context/ThemeContext';
 
 export const LandingPage = () => {
@@ -96,48 +99,107 @@ export const LandingPage = () => {
     <div className="relative min-h-screen w-full max-w-full overflow-x-hidden">
       {/* Foreground Content */}
       <div className="relative z-10 space-y-12 sm:space-y-20 pb-16 sm:pb-20 w-full max-w-full">
-        {/* Hero Section */}
-        <section className="relative pt-6 sm:pt-12 text-center overflow-hidden px-4 sm:px-6 w-full box-border">
-          {/* Subtle Ambient Glows - Scaled safely on mobile */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[320px] sm:max-w-[550px] h-[160px] sm:h-[300px] bg-gradient-to-tr from-peach-300/25 via-burgundy-700/8 to-transparent dark:from-burgundy-600/15 dark:via-peach-500/8 rounded-full blur-2xl sm:blur-3xl pointer-events-none -z-10"></div>
+        
+        {/* =========================================================================
+            1. HERO SECTION WITH CAMPUS GUIDE CHARACTER (ARIA)
+            ========================================================================= */}
+        <section className="relative pt-6 sm:pt-14 overflow-hidden px-4 sm:px-6 w-full box-border">
+          {/* Subtle Ambient Glows */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[320px] sm:max-w-[650px] h-[160px] sm:h-[320px] bg-gradient-to-tr from-peach-300/25 via-burgundy-700/8 to-transparent dark:from-burgundy-600/15 dark:via-peach-500/8 rounded-full blur-2xl sm:blur-3xl pointer-events-none -z-10"></div>
 
-          <div className="max-w-4xl mx-auto w-full box-border">
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-wine-900/90 backdrop-blur-md border border-peach-300/50 dark:border-peach-400/20 text-burgundy-900 dark:text-peach-200 text-[11px] sm:text-xs font-semibold shadow-xs mb-4 sm:mb-5 max-w-full">
-              <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-peach-600 dark:text-peach-400 shrink-0" />
-              <span className="truncate">Verified Anonymous Architecture Active</span>
+          <div className="max-w-6xl mx-auto w-full box-border">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+              
+              {/* Left Column: Hero Text & Call to Actions */}
+              <div className="flex-1 text-center lg:text-left">
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-wine-900/90 backdrop-blur-md border border-peach-300/50 dark:border-peach-400/20 text-burgundy-900 dark:text-peach-200 text-[11px] sm:text-xs font-semibold shadow-xs mb-4 sm:mb-5 max-w-full">
+                  <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-peach-600 dark:text-peach-400 shrink-0" />
+                  <span className="truncate">Verified Anonymous Architecture Active</span>
+                </div>
+
+                <h1 className="text-2xl xs:text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-wine-950 dark:text-cream-50 leading-[1.2] sm:leading-[1.15] break-words">
+                  Speak up for your campus <br className="hidden sm:inline" />
+                  <span className="bg-gradient-to-r from-burgundy-800 via-burgundy-700 to-peach-600 dark:from-peach-300 dark:via-peach-400 dark:to-peach-200 bg-clip-text text-transparent">
+                    Without fear or retaliation.
+                  </span>
+                </h1>
+
+                <p className="mt-3 sm:mt-5 text-xs sm:text-base md:text-lg text-wine-800/85 dark:text-cream-200 max-w-2xl leading-relaxed font-normal">
+                  Our platform verifies you are an authenticated registered student, but completely isolates your personal identity from organization-facing systems. No name leaks, no social stigma—just actionable campus improvements.
+                </p>
+
+                {/* Hero Quick CTA Buttons */}
+                <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                  <Link
+                    to="/submit"
+                    className="px-5 sm:px-6 py-3 sm:py-3.5 btn-glass btn-glass-primary text-xs sm:text-sm shadow-warm flex items-center gap-2"
+                  >
+                    <PlusCircle className="w-4 h-4 text-peach-300" />
+                    <span>Submit Anonymous Report</span>
+                  </Link>
+                  <Link
+                    to="/issues"
+                    className="px-5 sm:px-6 py-3 sm:py-3.5 btn-glass btn-glass-subtle text-xs sm:text-sm flex items-center gap-2"
+                  >
+                    <Compass className="w-4 h-4 text-burgundy-700 dark:text-peach-400" />
+                    <span>Explore Issues</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right Column: Interactive Campus Guide Aria Hero Presentation */}
+              <div className="shrink-0 flex flex-col items-center justify-center relative">
+                {/* Welcoming Speech Balloon from Aria */}
+                <div className="mb-2 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-wine-900/95 backdrop-blur-md border border-peach-300/60 dark:border-peach-400/30 text-wine-900 dark:text-cream-100 shadow-warm text-xs font-semibold flex items-center gap-2 animate-guide-pop max-w-[280px] sm:max-w-[320px]">
+                  <Sparkles className="w-4 h-4 text-peach-600 dark:text-peach-400 shrink-0" />
+                  <span className="text-[11px] sm:text-xs">
+                    "Hi! I'm Aria, your Virtual Campus Guide. I'm here to ensure your voice is heard safely."
+                  </span>
+                </div>
+
+                {/* Guide Character in Hero Pose with breathing/idle float */}
+                <div className="relative group cursor-pointer" onClick={() => setIsModalOpen(true)} title="Click to learn about Aria & Verified Anonymity">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-peach-400/20 via-burgundy-700/10 to-transparent rounded-full blur-xl -z-10 group-hover:scale-110 transition-transform"></div>
+                  <CampusGuide pose="hero" size="hero" className="animate-guide-float" />
+                </div>
+              </div>
+
             </div>
-
-            <h1 className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-wine-950 dark:text-cream-50 leading-[1.2] sm:leading-[1.15] break-words">
-              Speak up for your campus <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-burgundy-800 via-burgundy-700 to-peach-600 dark:from-peach-300 dark:via-peach-400 dark:to-peach-200 bg-clip-text text-transparent">
-                Without fear or retaliation.
-              </span>
-            </h1>
-
-            <p className="mt-3 sm:mt-4 text-xs sm:text-base md:text-lg text-wine-800/85 dark:text-cream-200 max-w-2xl mx-auto leading-relaxed font-normal px-2">
-              Our platform verifies you are an authenticated registered student, but completely isolates your personal identity from organization-facing systems. No name leaks, no social stigma—just actionable campus improvements.
-            </p>
           </div>
         </section>
 
-        {/* Feature Blocks: Quick Actions Grid */}
+        {/* =========================================================================
+            2. FEATURE BLOCKS: QUICK ACTIONS WITH REUSABLE CAMPUS GUIDE POSES
+            ========================================================================= */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 w-full box-border">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 w-full">
-            {/* Feature Block 1: Submit Reports Card */}
+            
+            {/* Feature Block 1: Submit Reports Card (Aria holding Verification Clipboard) */}
             <div className="bg-white/95 dark:bg-wine-900/95 backdrop-blur-sm p-5 sm:p-8 rounded-2xl sm:rounded-3xl border border-peach-300/40 dark:border-peach-400/20 relative overflow-hidden flex flex-col justify-between shadow-warm hover:shadow-warm-lg transition-all group w-full box-border">
               <div className="absolute top-0 right-0 w-28 sm:w-32 h-28 sm:h-32 bg-peach-100/40 dark:bg-peach-500/5 rounded-full blur-2xl pointer-events-none"></div>
 
               <div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-peach-100/80 dark:bg-wine-800 text-burgundy-800 dark:text-peach-300 border border-peach-300/50 dark:border-peach-400/30 flex items-center justify-center mb-3 sm:mb-4 shadow-xs">
-                  <PlusCircle className="w-5 h-5 sm:w-6 sm:h-6 text-peach-700 dark:text-peach-400" />
+                {/* Header with Title & Guide Pose */}
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <div>
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-peach-100/80 dark:bg-wine-800 text-burgundy-800 dark:text-peach-300 border border-peach-300/50 dark:border-peach-400/30 flex items-center justify-center mb-2 shadow-xs">
+                      <PlusCircle className="w-5 h-5 sm:w-6 sm:h-6 text-peach-700 dark:text-peach-400" />
+                    </div>
+                    <span className="text-[11px] sm:text-xs uppercase font-extrabold tracking-wider text-burgundy-800 dark:text-peach-400">
+                      Action Center
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-bold text-wine-900 dark:text-cream-50 mt-1 mb-1">
+                      Submit an Anonymous Complaint
+                    </h3>
+                  </div>
+
+                  {/* Character in Complaint Pose */}
+                  <div className="hidden sm:block shrink-0 -mt-2">
+                    <CampusGuide pose="complaint" size="card" className="group-hover:scale-105 transition-transform" />
+                  </div>
                 </div>
-                <span className="text-[11px] sm:text-xs uppercase font-extrabold tracking-wider text-burgundy-800 dark:text-peach-400">
-                  Action Center
-                </span>
-                <h3 className="text-lg sm:text-xl font-bold text-wine-900 dark:text-cream-50 mt-1 mb-2">
-                  Submit an Anonymous Complaint
-                </h3>
-                <p className="text-xs sm:text-sm text-wine-700 dark:text-cream-300 leading-relaxed mb-5 font-normal">
+
+                <p className="text-xs sm:text-sm text-wine-700 dark:text-cream-300 leading-relaxed mb-4 font-normal">
                   Have you noticed poor Wi-Fi, broken lab equipment, hostel geyser failures, or canteen hygiene concerns? Report immediately with complete cryptographic anonymity.
                 </p>
 
@@ -163,20 +225,31 @@ export const LandingPage = () => {
               </Link>
             </div>
 
-            {/* Feature Block 2: Instant Public ID Tracker Card */}
-            <div className="bg-white/95 dark:bg-wine-900/95 backdrop-blur-sm p-5 sm:p-8 rounded-2xl sm:rounded-3xl border border-peach-300/40 dark:border-peach-400/20 relative overflow-hidden flex flex-col justify-between shadow-warm hover:shadow-warm-lg transition-all w-full box-border">
+            {/* Feature Block 2: Instant Public ID Tracker Card (Aria inspecting Tracking Scanner) */}
+            <div className="bg-white/95 dark:bg-wine-900/95 backdrop-blur-sm p-5 sm:p-8 rounded-2xl sm:rounded-3xl border border-peach-300/40 dark:border-peach-400/20 relative overflow-hidden flex flex-col justify-between shadow-warm hover:shadow-warm-lg transition-all group w-full box-border">
               <div className="absolute top-0 right-0 w-28 sm:w-32 h-28 sm:h-32 bg-peach-100/30 dark:bg-burgundy-600/10 rounded-full blur-2xl pointer-events-none"></div>
 
               <div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-cream-100/80 dark:bg-wine-800 text-burgundy-800 dark:text-peach-300 border border-cream-300/80 dark:border-peach-400/30 flex items-center justify-center mb-3 sm:mb-4 shadow-xs">
-                  <Search className="w-5 h-5 sm:w-6 sm:h-6 text-burgundy-700 dark:text-peach-400" />
+                {/* Header with Title & Guide Pose */}
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <div>
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-cream-100/80 dark:bg-wine-800 text-burgundy-800 dark:text-peach-300 border border-cream-300/80 dark:border-peach-400/30 flex items-center justify-center mb-2 shadow-xs">
+                      <Search className="w-5 h-5 sm:w-6 sm:h-6 text-burgundy-700 dark:text-peach-400" />
+                    </div>
+                    <span className="text-[11px] sm:text-xs uppercase font-extrabold tracking-wider text-burgundy-800 dark:text-peach-400">
+                      Live Resolution Tracker
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-bold text-wine-900 dark:text-cream-50 mt-1 mb-1">
+                      Track by Public Complaint ID
+                    </h3>
+                  </div>
+
+                  {/* Character in Tracking Pose */}
+                  <div className="hidden sm:block shrink-0 -mt-2">
+                    <CampusGuide pose="tracking" size="card" className="group-hover:scale-105 transition-transform" />
+                  </div>
                 </div>
-                <span className="text-[11px] sm:text-xs uppercase font-extrabold tracking-wider text-burgundy-800 dark:text-peach-400">
-                  Live Resolution Tracker
-                </span>
-                <h3 className="text-lg sm:text-xl font-bold text-wine-900 dark:text-cream-50 mt-1 mb-2">
-                  Track by Public Complaint ID
-                </h3>
+
                 <p className="text-xs sm:text-sm text-wine-700 dark:text-cream-300 leading-relaxed mb-4 font-normal">
                   Enter your public ID (e.g., <code className="text-burgundy-800 dark:text-peach-300 font-mono font-bold bg-peach-50 dark:bg-wine-950 px-1.5 py-0.5 rounded border border-peach-200 dark:border-peach-400/20">CV-A82F91</code>) to check live status, department assignment, and resolution history instantly.
                 </p>
@@ -229,20 +302,28 @@ export const LandingPage = () => {
           </div>
         </section>
 
-        {/* Feature Block 3: Interactive Real-Time AI Triage Simulator */}
+        {/* =========================================================================
+            3. AI TRIAGE SIMULATOR SECTION (Aria analyzing with Laptop & AI Sparkles)
+            ========================================================================= */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 w-full box-border">
           <div className="bg-white dark:bg-wine-900 p-5 sm:p-10 rounded-2xl sm:rounded-3xl border border-cream-300 dark:border-peach-400/20 shadow-warm w-full box-border">
             <div className="flex items-start sm:items-center justify-between flex-col sm:flex-row gap-4 mb-6 w-full">
-              <div>
-                <div className="flex items-center gap-2 text-burgundy-800 dark:text-peach-400 text-xs font-extrabold uppercase tracking-wider mb-1">
-                  <Sparkles className="w-4 h-4 text-peach-600 dark:text-peach-400 shrink-0" /> Real-Time Intelligence
+              <div className="flex items-center gap-4">
+                {/* Guide Pose beside AI Triage */}
+                <div className="hidden sm:block shrink-0">
+                  <CampusGuide pose="ai" size="card" className="animate-guide-pop" />
                 </div>
-                <h2 className="text-lg sm:text-2xl font-bold text-wine-900 dark:text-cream-50">
-                  Interactive AI Triage Simulator
-                </h2>
-                <p className="text-xs sm:text-sm text-wine-600 dark:text-cream-300 mt-1 font-medium">
-                  See how the platform automatically classifies, tags, and evaluates grievances before routing.
-                </p>
+                <div>
+                  <div className="flex items-center gap-2 text-burgundy-800 dark:text-peach-400 text-xs font-extrabold uppercase tracking-wider mb-1">
+                    <Sparkles className="w-4 h-4 text-peach-600 dark:text-peach-400 shrink-0" /> Real-Time Intelligence
+                  </div>
+                  <h2 className="text-lg sm:text-2xl font-bold text-wine-900 dark:text-cream-50">
+                    Interactive AI Triage Simulator
+                  </h2>
+                  <p className="text-xs sm:text-sm text-wine-600 dark:text-cream-300 mt-1 font-medium">
+                    See how Aria & the platform automatically classify, tag, and route grievances before routing.
+                  </p>
+                </div>
               </div>
 
               {/* Pre-made sample pill buttons */}
@@ -328,19 +409,29 @@ export const LandingPage = () => {
           </div>
         </section>
 
-        {/* Verified Anonymity Visual Flow */}
+        {/* =========================================================================
+            4. VERIFIED ANONYMITY SECTION (Aria with Cryptographic Security Shield)
+            ========================================================================= */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 w-full box-border">
           <div className="bg-white dark:bg-wine-900 rounded-2xl sm:rounded-3xl p-5 sm:p-10 border border-cream-300 dark:border-peach-400/20 shadow-warm w-full box-border">
-            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-              <span className="text-[11px] sm:text-xs uppercase font-extrabold tracking-widest text-burgundy-800 dark:text-peach-400">
-                The Fundamental Difference
-              </span>
-              <h2 className="text-xl sm:text-3xl font-bold text-wine-900 dark:text-cream-50 mt-1">
-                Why Verified Anonymity Protects You
-              </h2>
-              <p className="text-xs sm:text-sm text-wine-600 dark:text-cream-300 mt-2 font-medium">
-                Unlike normal complaint systems that merely hide names in the UI, our system decouples your identity inside the database and API layers.
-              </p>
+            
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8 sm:mb-10">
+              <div className="text-center md:text-left max-w-2xl">
+                <span className="text-[11px] sm:text-xs uppercase font-extrabold tracking-widest text-burgundy-800 dark:text-peach-400">
+                  The Fundamental Difference
+                </span>
+                <h2 className="text-xl sm:text-3xl font-bold text-wine-900 dark:text-cream-50 mt-1">
+                  Why Verified Anonymity Protects You
+                </h2>
+                <p className="text-xs sm:text-sm text-wine-600 dark:text-cream-300 mt-2 font-medium">
+                  Unlike normal complaint systems that merely hide names in the UI, our system decouples your identity inside the database and API layers.
+                </p>
+              </div>
+
+              {/* Character in Privacy & Security Shield Pose */}
+              <div className="shrink-0 flex items-center gap-3">
+                <CampusGuide pose="privacy" size="card" className="animate-guide-pop" />
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full">
@@ -386,7 +477,9 @@ export const LandingPage = () => {
           </div>
         </section>
 
-        {/* Featured Active Issue Clusters */}
+        {/* =========================================================================
+            5. FEATURED ACTIVE ISSUE CLUSTERS
+            ========================================================================= */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 w-full box-border">
           <div className="flex items-start sm:items-center justify-between gap-3 mb-5 sm:mb-6 flex-col sm:flex-row w-full">
             <div>
@@ -450,3 +543,5 @@ export const LandingPage = () => {
     </div>
   );
 };
+
+export default LandingPage;

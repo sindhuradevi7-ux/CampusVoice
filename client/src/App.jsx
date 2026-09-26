@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
+import { CampusChatbot } from './components/common/CampusChatbot';
+import { PrivacyExplainerModal } from './components/common/PrivacyExplainerModal';
 
 // Pages
 import { LandingPage } from './pages/LandingPage';
@@ -43,8 +45,10 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
 };
 
 export const App = () => {
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+
   return (
-    <div className="min-h-screen flex flex-col bg-cream-50 dark:bg-wine-950 text-wine-900 dark:text-cream-100 selection:bg-burgundy-800 selection:text-cream-50 transition-colors duration-200">
+    <div className="min-h-screen flex flex-col bg-cream-50 dark:bg-wine-950 text-wine-900 dark:text-cream-100 selection:bg-burgundy-800 selection:text-cream-50 transition-colors duration-200 relative">
       <Navbar />
 
       <main className="flex-1">
@@ -134,8 +138,15 @@ export const App = () => {
       </main>
 
       <Footer />
+
+      {/* Global Interactive Campus Guide Chatbot Widget */}
+      <CampusChatbot onOpenPrivacyModal={() => setIsPrivacyModalOpen(true)} />
+
+      {/* Global Privacy Explainer Modal */}
+      <PrivacyExplainerModal isOpen={isPrivacyModalOpen} onClose={() => setIsPrivacyModalOpen(false)} />
     </div>
   );
 };
 
 export default App;
+

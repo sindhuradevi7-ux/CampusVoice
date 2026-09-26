@@ -223,10 +223,10 @@ export const SubmitComplaint = () => {
       <PrivacyNoticeBanner />
 
       <div className="bg-white dark:bg-wine-900 p-6 sm:p-8 rounded-3xl border border-cream-300 dark:border-peach-400/20 shadow-warm">
-        <div className="flex items-center justify-between border-b border-cream-300 dark:border-peach-400/20 pb-5 mb-6 flex-wrap gap-3">
+        <div className="flex items-start sm:items-center justify-between border-b border-cream-300 dark:border-peach-400/20 pb-4 sm:pb-5 mb-5 sm:mb-6 flex-col sm:flex-row gap-3">
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-wine-900 dark:text-cream-50 flex items-center gap-2">
-              <ShieldCheck className="w-6 h-6 text-burgundy-700 dark:text-peach-400" />
+            <h2 className="text-lg sm:text-2xl font-bold text-wine-900 dark:text-cream-50 flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-burgundy-700 dark:text-peach-400 shrink-0" />
               File Verified Anonymous Complaint
             </h2>
             <p className="text-xs text-wine-600 dark:text-cream-300 mt-0.5 font-medium">
@@ -238,7 +238,7 @@ export const SubmitComplaint = () => {
             type="button"
             onClick={handleRunAIAnalysis}
             disabled={aiLoading || !formData.description.trim()}
-            className="btn-glass btn-glass-secondary px-3.5 py-2 text-burgundy-950 dark:text-peach-200 disabled:opacity-40 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
+            className="w-full sm:w-auto btn-glass btn-glass-secondary px-3.5 py-2.5 sm:py-2 text-burgundy-950 dark:text-peach-200 disabled:opacity-40 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition-all"
           >
             <Sparkles className={`w-3.5 h-3.5 text-peach-700 dark:text-peach-400 ${aiLoading ? 'animate-spin' : ''}`} />
             {aiLoading ? 'Analyzing Text...' : 'AI Auto-Classify & Duplicate Check'}
@@ -247,15 +247,15 @@ export const SubmitComplaint = () => {
 
         {/* AI Suggestions Box (if generated) */}
         {aiSuggestion && (
-          <div className="mb-6 p-4 rounded-2xl bg-peach-50 dark:bg-wine-950 border border-peach-300 dark:border-peach-400/30 animate-fadeIn shadow-sm">
+          <div className="mb-5 sm:mb-6 p-3.5 sm:p-4 rounded-2xl bg-peach-50 dark:bg-wine-950 border border-peach-300 dark:border-peach-400/30 animate-fadeIn shadow-sm">
             <div className="flex items-center gap-2 text-xs font-bold text-burgundy-900 dark:text-peach-300 mb-2">
-              <Sparkles className="w-4 h-4 text-peach-700 dark:text-peach-400" />
+              <Sparkles className="w-4 h-4 text-peach-700 dark:text-peach-400 shrink-0" />
               AI Assistant Recommendations:
             </div>
-            <p className="text-xs text-wine-800 dark:text-cream-200 mb-2 font-medium">
+            <p className="text-xs text-wine-800 dark:text-cream-200 mb-2 font-medium break-words">
               <strong>Summary:</strong> {aiSuggestion.summary}
             </p>
-            <div className="flex flex-wrap gap-2 text-[11px]">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[11px]">
               <span className="px-2.5 py-1 rounded-lg bg-white dark:bg-wine-900 text-burgundy-900 dark:text-peach-300 border border-peach-200 dark:border-peach-400/30 font-bold shadow-sm">
                 Department: {aiSuggestion.possibleDepartment}
               </span>
@@ -270,14 +270,14 @@ export const SubmitComplaint = () => {
 
         {/* Duplicate / Related Issue Alert Card */}
         {similarIssues.length > 0 && (
-          <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-peach-50 dark:bg-wine-950 border border-peach-300 dark:border-peach-400/30 animate-fadeIn shadow-sm">
+          <div className="mb-5 sm:mb-6 p-4 sm:p-5 rounded-2xl bg-peach-50 dark:bg-wine-950 border border-peach-300 dark:border-peach-400/30 animate-fadeIn shadow-sm">
             <div className="flex items-start gap-3">
               <div className="p-2 bg-peach-200 dark:bg-wine-800 text-burgundy-900 dark:text-peach-300 rounded-xl shrink-0 mt-0.5">
                 <Layers className="w-5 h-5 text-peach-700 dark:text-peach-400" />
               </div>
               <div className="flex-1 min-w-0">
-                <h4 className="text-sm font-bold text-burgundy-900 dark:text-peach-300 flex items-center gap-2">
-                  Similar Active Campus Issue Detected!
+                <h4 className="text-xs sm:text-sm font-bold text-burgundy-900 dark:text-peach-300 flex items-center justify-between flex-wrap gap-1.5">
+                  <span>Similar Active Campus Issue Detected!</span>
                   <span className="text-[10px] px-2 py-0.5 rounded bg-peach-200 dark:bg-burgundy-900 text-burgundy-950 dark:text-peach-200 font-bold">
                     {similarIssues[0].confidence}% Match
                   </span>
@@ -287,16 +287,16 @@ export const SubmitComplaint = () => {
                 </p>
 
                 {/* Similar issue item */}
-                <div className="mt-3 p-3.5 rounded-xl bg-white dark:bg-wine-900 border border-peach-200 dark:border-peach-400/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
+                <div className="mt-3 p-3 sm:p-3.5 rounded-xl bg-white dark:bg-wine-900 border border-peach-200 dark:border-peach-400/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
                       <span className="font-mono text-xs font-bold text-burgundy-800 dark:text-peach-300 bg-peach-50 dark:bg-wine-950 px-2 py-0.5 rounded border border-peach-200 dark:border-peach-400/20">
                         {similarIssues[0].cluster.publicIssueId}
                       </span>
                       <StatusBadge status={similarIssues[0].cluster.status} />
                     </div>
-                    <p className="text-xs font-bold text-wine-900 dark:text-cream-50">{similarIssues[0].cluster.title}</p>
-                    <div className="flex items-center gap-2 text-[11px] text-wine-600 dark:text-cream-400 mt-1 font-medium">
+                    <p className="text-xs font-bold text-wine-900 dark:text-cream-50 break-words">{similarIssues[0].cluster.title}</p>
+                    <div className="flex items-center gap-2 text-[11px] text-wine-600 dark:text-cream-400 mt-1 font-medium flex-wrap">
                       <span>📍 {similarIssues[0].cluster.location}</span>
                       <span>•</span>
                       <span className="text-burgundy-800 dark:text-peach-300 font-bold">{similarIssues[0].cluster.affectedCount} students affected</span>
@@ -306,10 +306,10 @@ export const SubmitComplaint = () => {
                   <button
                     type="button"
                     onClick={() => handleSupportInstead(similarIssues[0].cluster._id)}
-                    className="btn-glass btn-glass-primary px-4 py-2 text-cream-50 rounded-xl text-xs font-bold shrink-0 shadow-sm flex items-center gap-1.5"
+                    className="w-full sm:w-auto btn-glass btn-glass-primary px-3.5 py-2 text-cream-50 rounded-xl text-xs font-bold shrink-0 shadow-sm flex items-center justify-center gap-1.5"
                   >
                     <Users className="w-3.5 h-3.5 text-peach-300" />
-                    Support This Issue Instead (+1)
+                    <span>Support This Issue (+1)</span>
                   </button>
                 </div>
               </div>
@@ -431,25 +431,25 @@ export const SubmitComplaint = () => {
           </div>
 
           {/* Submission Button */}
-          <div className="pt-4 border-t border-cream-300 dark:border-peach-400/20 flex items-center justify-between flex-wrap gap-3">
-            <div className="text-xs text-burgundy-800 dark:text-peach-300 font-bold flex items-center gap-1.5">
-              <Lock className="w-3.5 h-3.5 text-peach-600 dark:text-peach-400" />
+          <div className="pt-4 border-t border-cream-300 dark:border-peach-400/20 flex items-center justify-between flex-col sm:flex-row gap-3">
+            <div className="text-xs text-burgundy-800 dark:text-peach-300 font-bold flex items-center gap-1.5 w-full sm:w-auto">
+              <Lock className="w-3.5 h-3.5 text-peach-600 dark:text-peach-400 shrink-0" />
               <span>Identity stripped before saving to organization database</span>
             </div>
 
             <button
               type="submit"
               disabled={submitting}
-              className="btn-glass btn-glass-primary px-7 py-3.5 disabled:opacity-50 text-cream-50 text-sm font-bold rounded-xl shadow-warm flex items-center gap-2 transition-all"
+              className="w-full sm:w-auto btn-glass btn-glass-primary px-6 py-3.5 disabled:opacity-50 text-cream-50 text-sm font-bold rounded-xl shadow-warm flex items-center justify-center gap-2 transition-all"
             >
               {submitting ? (
                 <>
-                  <RefreshCw className="w-4 h-4 animate-spin text-peach-300" />
+                  <RefreshCw className="w-4 h-4 animate-spin text-peach-300 shrink-0" />
                   <span>Encrypting & Submitting...</span>
                 </>
               ) : (
                 <>
-                  <Send className="w-4 h-4 text-peach-300" />
+                  <Send className="w-4 h-4 text-peach-300 shrink-0" />
                   <span>Submit Verified Anonymous Report</span>
                 </>
               )}

@@ -49,149 +49,146 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-40 w-full bg-cream-50/92 dark:bg-wine-950/92 backdrop-blur-md border-b border-burgundy-900/8 dark:border-peach-400/10 shadow-xs transition-colors duration-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* Primary Visual Brand Mark (Open-Book Logo ONLY in Home page navbar) */}
+      <header className="sticky top-0 z-40 w-full bg-cream-50/95 dark:bg-wine-950/95 backdrop-blur-md border-b border-burgundy-900/10 dark:border-peach-400/10 shadow-xs transition-colors duration-200">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20 w-full gap-2 lg:gap-3">
+            
+            {/* 1. Brand Logo */}
             <div className="flex items-center shrink-0">
-              {location.pathname === '/' ? (
-                <Link 
-                  to="/" 
-                  aria-label="Home" 
-                  className="flex items-center group transition-transform duration-200"
-                >
-                  <div className="w-13 h-13 sm:w-14 sm:h-14 aspect-square rounded-full bg-[#FAF7EE] dark:bg-wine-900 shadow-sm border border-burgundy-200/90 dark:border-peach-400/30 group-hover:border-burgundy-400 dark:group-hover:border-peach-400/60 group-hover:shadow-md transition-all flex items-center justify-center overflow-hidden">
-                    <BrandLogo className="w-full h-full" showGlow={false} />
-                  </div>
-                </Link>
-              ) : (
-                <Link 
-                  to="/" 
-                  aria-label="Home" 
-                  className="px-4 py-2 btn-glass btn-glass-subtle text-xs font-bold shrink-0"
-                >
-                  ← Home
-                </Link>
-              )}
+              <Link 
+                to="/" 
+                aria-label="Campus Voice Home" 
+                className="flex items-center group transition-transform duration-200 hover:scale-105"
+              >
+                <div className="w-10 h-10 sm:w-11 sm:h-11 aspect-square rounded-full bg-[#FAF7EE] dark:bg-wine-900 shadow-xs border border-burgundy-200/90 dark:border-peach-400/30 group-hover:border-burgundy-400 dark:group-hover:border-peach-400/60 transition-all flex items-center justify-center overflow-hidden">
+                  <BrandLogo className="w-full h-full" showGlow={false} />
+                </div>
+              </Link>
             </div>
 
-            {/* Desktop Navigation (Center/Middle Group) */}
-            <div className="hidden md:flex items-center gap-3.5 lg:gap-6">
+            {/* 2. Desktop Navigation Stream */}
+            <nav className="hidden md:flex items-center gap-1.5 lg:gap-2 min-w-0" aria-label="Main Navigation">
+              {/* Issue Explorer */}
               <Link
                 to="/issues"
-                className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
+                className={`h-10 px-3 lg:px-3.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 ${
                   isActive('/issues')
-                    ? 'text-burgundy-900 dark:text-peach-200 bg-peach-100/60 dark:bg-wine-900/80 font-bold'
-                    : 'text-wine-800/90 dark:text-cream-200 hover:text-burgundy-900 dark:hover:text-peach-300 hover:bg-cream-100 dark:hover:bg-wine-900/40'
+                    ? 'text-burgundy-900 dark:text-peach-200 bg-peach-100/90 dark:bg-wine-900 border border-peach-300 dark:border-peach-400/30 shadow-xs'
+                    : 'btn-glass btn-glass-subtle text-wine-800 dark:text-cream-200'
                 }`}
               >
-                <Compass className="w-4 h-4 text-burgundy-700 dark:text-peach-400" />
-                Issue Explorer
+                <Compass className="w-4 h-4 text-burgundy-700 dark:text-peach-400 shrink-0" />
+                <span>Issue Explorer</span>
               </Link>
 
-              {/* Submit Report - Primary Glass CTA */}
+              {/* Submit Report - PRIMARY CTA */}
               <Link
                 to="/submit"
-                className="px-4 py-2 text-sm font-bold flex items-center gap-2 btn-glass btn-glass-primary shadow-xs"
+                className="h-10 px-3.5 lg:px-4 rounded-xl text-xs font-bold flex items-center gap-1.5 btn-glass btn-glass-primary shadow-sm shrink-0"
               >
-                <PlusCircle className="w-4 h-4 text-peach-300" />
-                Submit Report
+                <PlusCircle className="w-4 h-4 text-peach-300 shrink-0" />
+                <span>Submit Report</span>
               </Link>
 
               {/* My Reports */}
               <Link
                 to={isAuthenticated && isStudent ? '/my-complaints' : '/login'}
-                className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
+                className={`h-10 px-3 lg:px-3.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 ${
                   isActive('/my-complaints')
-                    ? 'text-burgundy-900 dark:text-peach-200 bg-peach-100/60 dark:bg-wine-900/80 font-bold'
-                    : 'text-wine-800/90 dark:text-cream-200 hover:text-burgundy-900 dark:hover:text-peach-300 hover:bg-cream-100 dark:hover:bg-wine-900/40'
+                    ? 'text-burgundy-900 dark:text-peach-200 bg-peach-100/90 dark:bg-wine-900 border border-peach-300 dark:border-peach-400/30 shadow-xs'
+                    : 'btn-glass btn-glass-subtle text-wine-800 dark:text-cream-200'
                 }`}
               >
-                <FileText className="w-4 h-4 text-burgundy-700 dark:text-peach-400" />
-                My Reports
+                <FileText className="w-4 h-4 text-burgundy-700 dark:text-peach-400 shrink-0" />
+                <span>My Reports</span>
               </Link>
 
+              {/* Admin Hub & Analytics (When Admin) */}
               {isAdmin && (
                 <>
                   <Link
                     to="/admin"
-                    className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
+                    className={`h-10 px-3 lg:px-3.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 ${
                       isActive('/admin')
-                        ? 'text-burgundy-900 dark:text-peach-200 bg-peach-100/60 dark:bg-wine-900/80 font-bold'
-                        : 'text-wine-800/90 dark:text-cream-200 hover:text-burgundy-900 dark:hover:text-peach-300 hover:bg-cream-100 dark:hover:bg-wine-900/40'
+                        ? 'text-burgundy-900 dark:text-peach-200 bg-peach-100/90 dark:bg-wine-900 border border-peach-300 dark:border-peach-400/30 shadow-xs'
+                        : 'btn-glass btn-glass-subtle text-wine-800 dark:text-cream-200'
                     }`}
                   >
-                    <LayoutDashboard className="w-4 h-4 text-burgundy-700 dark:text-peach-400" />
-                    Admin Hub
+                    <LayoutDashboard className="w-4 h-4 text-burgundy-700 dark:text-peach-400 shrink-0" />
+                    <span>Admin Hub</span>
                   </Link>
 
                   <Link
                     to="/analytics"
-                    className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
+                    className={`h-10 px-3 lg:px-3.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 ${
                       isActive('/analytics')
-                        ? 'text-burgundy-900 dark:text-peach-200 bg-peach-100/60 dark:bg-wine-900/80 font-bold'
-                        : 'text-wine-800/90 dark:text-cream-200 hover:text-burgundy-900 dark:hover:text-peach-300 hover:bg-cream-100 dark:hover:bg-wine-900/40'
+                        ? 'text-burgundy-900 dark:text-peach-200 bg-peach-100/90 dark:bg-wine-900 border border-peach-300 dark:border-peach-400/30 shadow-xs'
+                        : 'btn-glass btn-glass-subtle text-wine-800 dark:text-cream-200'
                     }`}
                   >
-                    <BarChart3 className="w-4 h-4 text-burgundy-700 dark:text-peach-400" />
-                    Analytics
+                    <BarChart3 className="w-4 h-4 text-burgundy-700 dark:text-peach-400 shrink-0" />
+                    <span>Analytics</span>
                   </Link>
                 </>
               )}
-            </div>
 
-            {/* Right Action Badges, Quick Track, Theme Toggle, Auth Profile & Far-Right Logout */}
-            <div className="hidden md:flex items-center gap-3 lg:gap-4 shrink-0">
-              {/* Quick ID Tracker Box */}
+              {/* Track ID */}
               {showTrackInput ? (
-                <form onSubmit={handleQuickTrackSubmit} className="flex items-center gap-1.5 animate-fadeIn">
+                <form onSubmit={handleQuickTrackSubmit} className="flex items-center gap-1 h-10 animate-fadeIn shrink-0">
                   <input
                     type="text"
                     value={quickTrackId}
                     onChange={(e) => setQuickTrackId(e.target.value)}
-                    placeholder="e.g. CV-A82F91"
-                    className="w-36 bg-white dark:bg-wine-900 border border-burgundy-600 dark:border-peach-400 rounded-xl px-3 py-1.5 text-xs text-wine-900 dark:text-cream-50 placeholder-wine-400 dark:placeholder-wine-300 focus:outline-none focus:ring-1 focus:ring-peach-400 shadow-xs"
+                    placeholder="CV-A82F91"
+                    className="w-28 lg:w-32 h-10 bg-white dark:bg-wine-900 border border-burgundy-600 dark:border-peach-400 rounded-xl px-3 text-xs text-wine-900 dark:text-cream-50 placeholder-wine-400 focus:outline-none focus:ring-1 focus:ring-peach-400 shadow-xs"
                     autoFocus
                   />
                   <button
                     type="submit"
-                    className="p-2 btn-glass btn-glass-primary text-xs"
-                    title="Track"
+                    className="h-10 w-10 btn-glass btn-glass-primary text-xs rounded-xl flex items-center justify-center shrink-0"
+                    title="Track ID"
                   >
-                    <Zap className="w-3.5 h-3.5 text-peach-300" />
+                    <Zap className="w-4 h-4 text-peach-300" />
                   </button>
                   <button
                     type="button"
                     onClick={() => setShowTrackInput(false)}
-                    className="p-1.5 text-wine-500 hover:text-wine-900 dark:text-cream-300 dark:hover:text-white"
+                    className="h-10 w-6 flex items-center justify-center text-wine-500 hover:text-wine-900 dark:text-cream-300 dark:hover:text-white"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
                 </form>
               ) : (
                 <button
+                  type="button"
                   onClick={() => setShowTrackInput(true)}
-                  className="px-3.5 py-1.5 btn-glass btn-glass-subtle text-xs flex items-center gap-1.5"
+                  className="h-10 px-3 lg:px-3.5 btn-glass btn-glass-subtle text-xs font-bold flex items-center gap-1.5 shrink-0"
                   title="Quick Track by Public Complaint ID"
                 >
-                  <Search className="w-3.5 h-3.5 text-burgundy-700 dark:text-peach-400" />
+                  <Search className="w-4 h-4 text-burgundy-700 dark:text-peach-400 shrink-0" />
                   <span>Track ID</span>
                 </button>
               )}
 
-              {/* Privacy Model Explainer Trigger */}
+              {/* Privacy Model */}
               <button
+                type="button"
                 onClick={() => setIsExplainerOpen(true)}
-                className="px-3.5 py-1.5 btn-glass btn-glass-secondary text-xs flex items-center gap-1.5"
+                className="h-10 px-3 lg:px-3.5 btn-glass btn-glass-subtle text-xs font-bold flex items-center gap-1.5 shrink-0"
+                title="Verified Anonymity Architecture"
               >
-                <ShieldCheck className="w-3.5 h-3.5 text-burgundy-700 dark:text-peach-400" />
+                <ShieldCheck className="w-4 h-4 text-burgundy-700 dark:text-peach-400 shrink-0" />
                 <span>Privacy Model</span>
               </button>
+            </nav>
 
-              {/* Theme Toggle Button (Light / Dark Mode) */}
+            {/* 3. Account Controls & Far Right Logout Group */}
+            <div className="hidden md:flex items-center gap-2 lg:gap-2.5 ml-auto shrink-0">
+              {/* Theme Toggle */}
               <button
+                type="button"
                 onClick={toggleTheme}
-                className="p-2 btn-glass btn-glass-subtle"
+                className="h-10 w-10 btn-glass btn-glass-subtle rounded-xl flex items-center justify-center shrink-0"
                 title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
                 aria-label="Toggle theme"
               >
@@ -202,75 +199,85 @@ export const Navbar = () => {
                 )}
               </button>
 
-              {/* User Profile / Login / Register */}
+              {/* User Profile or Log In / Register */}
               {isAuthenticated ? (
                 <Link
                   to="/profile"
-                  className="flex items-center gap-2.5 p-1 pr-3.5 rounded-full btn-glass btn-glass-subtle"
+                  className={`h-10 flex items-center gap-2 px-3 rounded-xl btn-glass btn-glass-subtle shrink-0 ${
+                    isActive('/profile') ? 'border-peach-400/50 bg-peach-100/90 dark:bg-wine-900' : ''
+                  }`}
+                  title="View Profile"
                 >
-                  <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-burgundy-800 to-peach-500 flex items-center justify-center text-xs font-bold text-white shadow-xs">
+                  <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-burgundy-800 to-peach-500 flex items-center justify-center text-[11px] font-extrabold text-white shadow-xs shrink-0">
                     {user?.name?.charAt(0) || 'U'}
                   </div>
                   <div className="text-left">
-                    <p className="text-xs font-bold text-wine-900 dark:text-cream-100 leading-none">{user?.name?.split(' ')[0]}</p>
+                    <p className="text-xs font-bold text-wine-900 dark:text-cream-100 leading-none truncate max-w-[90px]">
+                      {user?.name?.split(' ')[0]}
+                    </p>
                     <p className="text-[10px] text-peach-800 dark:text-peach-400 font-medium leading-none mt-0.5 capitalize">
                       {user?.role === 'admin' ? 'Admin' : 'Verified'}
                     </p>
                   </div>
                 </Link>
               ) : (
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-2 shrink-0">
                   <Link
                     to="/login"
-                    className="px-3.5 py-1.5 btn-glass btn-glass-subtle text-xs font-bold"
+                    className="h-10 px-3.5 btn-glass btn-glass-subtle text-xs font-bold flex items-center justify-center"
                   >
                     Log In
                   </Link>
                   <Link
                     to="/register"
-                    className="px-3.5 py-1.5 btn-glass btn-glass-primary text-xs font-bold"
+                    className="h-10 px-3.5 btn-glass btn-glass-secondary text-xs font-bold flex items-center justify-center"
                   >
                     Register
                   </Link>
                 </div>
               )}
 
-              {/* Far Right Logout Button */}
+              {/* 4. Logout Control (Strictly at Far Right) */}
               {isAuthenticated && (
                 <button
+                  type="button"
                   onClick={handleLogout}
-                  title="Logout"
-                  className="p-2 ml-1.5 text-wine-600 dark:text-cream-400 hover:text-burgundy-800 dark:hover:text-peach-300 hover:bg-peach-100/60 dark:hover:bg-wine-800 rounded-xl transition-colors shrink-0"
+                  title="Logout from session"
+                  className="h-10 px-3 btn-glass btn-glass-subtle rounded-xl text-xs font-bold text-wine-800 dark:text-cream-200 hover:text-burgundy-950 dark:hover:text-peach-300 flex items-center gap-1.5 shrink-0 transition-colors"
                 >
-                  <LogOut className="w-4 h-4" />
+                  <LogOut className="w-4 h-4 text-burgundy-700 dark:text-peach-400 shrink-0" />
+                  <span className="inline">Logout</span>
                 </button>
               )}
             </div>
 
-            {/* Mobile menu toggle */}
-            <div className="flex md:hidden items-center gap-2">
+            {/* 5. Mobile header actions */}
+            <div className="flex md:hidden items-center gap-1.5 ml-auto shrink-0">
               <button
+                type="button"
                 onClick={toggleTheme}
-                className="p-2 btn-glass btn-glass-subtle"
+                className="h-9 w-9 btn-glass btn-glass-subtle rounded-xl flex items-center justify-center"
                 aria-label="Toggle theme"
               >
                 {isDark ? <Sun className="w-4 h-4 text-peach-300" /> : <Moon className="w-4 h-4 text-burgundy-800" />}
               </button>
 
               <button
+                type="button"
                 onClick={() => setIsExplainerOpen(true)}
-                className="p-2 rounded-xl bg-peach-100 dark:bg-wine-900 text-burgundy-800 dark:text-peach-300 border border-peach-300 dark:border-peach-400/20"
+                className="h-9 w-9 btn-glass btn-glass-subtle rounded-xl flex items-center justify-center"
                 aria-label="Privacy Model"
               >
-                <ShieldCheck className="w-4 h-4" />
+                <ShieldCheck className="w-4 h-4 text-burgundy-700 dark:text-peach-400" />
               </button>
 
               <button
+                type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl bg-white dark:bg-wine-900 border border-cream-300 dark:border-peach-400/20 text-wine-800 dark:text-cream-100 hover:text-burgundy-800"
+                className="h-9 w-9 rounded-xl bg-white dark:bg-wine-900 border border-cream-300 dark:border-peach-400/20 text-wine-800 dark:text-cream-100 flex items-center justify-center"
                 aria-label="Open menu"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>
@@ -278,7 +285,24 @@ export const Navbar = () => {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-cream-300 dark:border-peach-400/10 bg-cream-50/98 dark:bg-wine-950/98 px-4 py-4 space-y-2 animate-fadeIn shadow-lg">
+          <div className="md:hidden border-t border-cream-300 dark:border-peach-400/10 bg-cream-50/98 dark:bg-wine-950/98 px-3 sm:px-4 py-3 sm:py-4 space-y-2 animate-fadeIn shadow-lg">
+            {/* Quick Track Input in Mobile */}
+            <form onSubmit={(e) => { setMobileMenuOpen(false); handleQuickTrackSubmit(e); }} className="flex items-center gap-1.5 pb-1">
+              <input
+                type="text"
+                value={quickTrackId}
+                onChange={(e) => setQuickTrackId(e.target.value)}
+                placeholder="Track Complaint (e.g. CV-A82F91)"
+                className="flex-1 h-9 bg-white dark:bg-wine-900 border border-peach-300 dark:border-peach-400/30 rounded-xl px-3 text-xs text-wine-900 dark:text-cream-50 placeholder-wine-400 focus:outline-none focus:ring-1 focus:ring-peach-400"
+              />
+              <button
+                type="submit"
+                className="h-9 px-3 btn-glass btn-glass-primary text-xs rounded-xl flex items-center justify-center font-bold"
+              >
+                <Search className="w-3.5 h-3.5 mr-1" /> Track
+              </button>
+            </form>
+
             <Link
               to="/issues"
               onClick={() => setMobileMenuOpen(false)}
@@ -344,11 +368,12 @@ export const Navbar = () => {
                     <span>{user?.name}</span>
                   </Link>
                   <button
+                    type="button"
                     onClick={() => {
                       setMobileMenuOpen(false);
                       handleLogout();
                     }}
-                    className="text-xs font-bold text-burgundy-700 dark:text-peach-400 hover:text-burgundy-900 flex items-center gap-1"
+                    className="text-xs font-bold text-burgundy-700 dark:text-peach-400 hover:text-burgundy-900 flex items-center gap-1 py-1 px-2 rounded-lg hover:bg-peach-100 dark:hover:bg-wine-900"
                   >
                     <LogOut className="w-3.5 h-3.5" /> Log Out
                   </button>
@@ -374,7 +399,7 @@ export const Navbar = () => {
             </div>
           </div>
         )}
-      </nav>
+      </header>
 
       {/* Privacy Explainer Modal */}
       <PrivacyExplainerModal isOpen={isExplainerOpen} onClose={() => setIsExplainerOpen(false)} />

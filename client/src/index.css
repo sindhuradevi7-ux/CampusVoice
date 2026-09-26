@@ -3,9 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
   html {
     @apply scroll-smooth antialiased;
     -webkit-text-size-adjust: 100%;
+    max-width: 100%;
   }
 
   body {
@@ -15,6 +20,7 @@
       radial-gradient(at 100% 0%, rgba(245, 159, 135, 0.08) 0px, transparent 50%),
       radial-gradient(at 50% 100%, rgba(116, 18, 43, 0.03) 0px, transparent 60%);
     background-attachment: fixed;
+    max-width: 100%;
   }
 
   html.dark body {
@@ -28,6 +34,7 @@
   /* Accessible touch sizing for interactive elements on mobile */
   button, a, input, select, textarea {
     @apply touch-manipulation;
+    max-width: 100%;
   }
 }
 
@@ -53,6 +60,8 @@
   outline: none;
   isolation: isolate;
   text-decoration: none;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .btn-glass:focus-visible,
